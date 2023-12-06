@@ -1,0 +1,28 @@
+
+
+button{
+    text-decoration: none;
+
+}
+
+.navbar{
+    width: 100%;
+    background-color: var(--blue);
+}
+
+
+
+
+
+
+
+:root{
+
+
+
+
+  
+    --blue: #012f98;
+    --white: #f3f7f8;
+    --grey: #bcbcd1;
+  }
