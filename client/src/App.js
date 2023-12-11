@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './pages/Register';
 import CreateMatch from './pages/CreateMatch';
+import AddStadium from './pages/AddStadium';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/matches' element={<Login />} />
           <Route path='/matchdetails' element={<Login />} />
           <Route path='/creatematch' element={<CreateMatch />} />
+          <Route path='/addstadium' element={<AddStadium />} />
         </Routes>
       </Router>
     </div>

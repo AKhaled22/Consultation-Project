@@ -11,7 +11,7 @@ const CreateMatch = () => {
             placeholder: "Al Ahly",
             name: "HomeTeam",
             optionsArr: [
-                 "Al Ahly",
+                "Al Ahly",
                 "Al-Ittihad",
                 "Al Masry",
                 "Al Mokawloon",
