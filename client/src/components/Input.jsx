@@ -7,13 +7,12 @@ const Input = ({ type, label, placeholder, name, optionsArr, radioOne, radioTwo 
         <div className='myInput'>
             <div>{label}</div>
             {type == "dropdown" ?
-
                 <select className="form-select" aria-label="Default select example" name={name}>
-                    <option selected>Please Select a City</option>
-                    {optionsArr.map((option) => {
+                    <option selected>Please Select {label}</option>
+                    {optionsArr.map((options) =>{
                         return (
 
-                            <option value={option}>{option}</option>
+                            <option value={options}>{options}</option>
 
                         )
                     })}
