@@ -6,7 +6,6 @@ import Button from './Button.jsx'
 const Form = ({ title, inputArr, buttText }) => {
 
 
-    console.log(inputArr);
 
 
     return (
@@ -25,14 +24,14 @@ const Form = ({ title, inputArr, buttText }) => {
                 }
 
 
-                {/* {title == "Login" ?
+                {title == "Login" ?
 
-                <Link to="/login">Forget Password? </Link>
+                <Link to="/forgetpassword">Forget Password? </Link>
 
                 :
                 null
-            } */}
-                <div>Forget Password?</div>
+            }
+                
 
                 <Button buttText={buttText} />
 
