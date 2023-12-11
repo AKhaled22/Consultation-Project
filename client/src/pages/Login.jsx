@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../assets/OIP.jpg'
 import Form from '../components/Form'
+import Header from '../components/Header'
 
 const Login = () => {
     // type, label, placeholder, name, optionsArr, radioOne, radioTwo 
@@ -25,27 +25,19 @@ const Login = () => {
     ]
 
 
-  return (
-    <div>
-        <div className='loginHeader'>
-
-            <img src={logo} width="150px" height="100px" />
-
-
-
-        </div>
-
+    return (
         <div>
-            <Form inputArr = {inputArr} title="Login" buttText="Login"/>
+            <Header />
+
+            <Form inputArr={inputArr} title="Login" buttText="Login" />
+
+
+
+
+
 
         </div>
-
-
-
-
-
-    </div>
-  )
+    )
 }
 
 export default Login

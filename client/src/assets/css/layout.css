@@ -30,6 +30,19 @@ h1{
 
 }
 
+.radioButtons{
+    display: flex;
+    /* flex-direction: colroumn; */
+    justify-content: center;
+    align-items: space-evenly;
+    gap: 1rem
+}
+
+.radiobutt{
+    display: flex;
+    gap: 0.5em;
+}
+
 .blue-butt{
     background-color: var(--blue);
     color: var(--grey);
@@ -56,9 +69,10 @@ h1{
 .myInput{
     width: 50%;
 }
-input{
+input , select{
     width: 100%;
     padding: 0.3rem 1rem;
+    border-radius: 0.5em
 }
 
 form{
