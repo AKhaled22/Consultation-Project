@@ -10,10 +10,10 @@ import Register from './pages/Register';
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      {/* <Login /> */}
+       {/* <Login />  */}
 
       <Router>
+        <NavBar />
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
@@ -24,6 +24,7 @@ function App() {
 
         </Routes>
       </Router>
+      
     </div>
   );
 }

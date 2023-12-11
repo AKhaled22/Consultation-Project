@@ -72,7 +72,9 @@ h1{
 input , select{
     width: 100%;
     padding: 0.3rem 1rem;
-    border-radius: 0.5em
+    border-radius: 0.5em;
+    border: solid;
+    border-color: var(--blue);
 }
 
 form{
@@ -100,6 +102,15 @@ ul{
     padding: 1rem 2rem;
 }
 
+.navrightside a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.navrightside a:hover{
+    opacity: 0.5;
+}
+
 .navleftside{
     padding: 1rem 2rem;
 }
@@ -120,6 +131,7 @@ ul{
 
 button{
     text-decoration: none;
+    font-weight: 700;
 
 }
 

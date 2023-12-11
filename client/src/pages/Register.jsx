@@ -93,7 +93,7 @@ const Register = () => {
             type: "radio",
             // label: "",
             // placeholder: "username@gmail.com",
-            name: "gender",
+            name: "type",
             // optionsArr:
             radioOne: "Fan",
             radioTwo: "Manager"
