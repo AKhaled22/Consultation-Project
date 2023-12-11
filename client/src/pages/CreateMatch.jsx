@@ -1,6 +1,8 @@
 import React from 'react'
 import Form from '../components/Form'
 import Header from '../components/Header'
+import Sidebar from "../components/SideBar";
+import * as AiIcons from "react-icons/ai";
 
 const CreateMatch = () => {
 
@@ -165,10 +167,21 @@ const CreateMatch = () => {
             ]
         }
     ]
-
-
+    const SidebarData = [
+        {
+            title: " Create a new match",
+            path: "/CreateMatch",
+            icon: <AiIcons.AiFillHome />,
+        },
+        {
+            title: " Add a new stadium",
+            path: "/AddStadium",
+            icon: <AiIcons.AiFillHome />,
+        }
+    ]
     return (
         <div>
+            <Sidebar SidebarData={SidebarData}/>
             <Header />
             <Form inputArr={inputArr} title="Create Match" buttText="Create Match" />
         </div>
