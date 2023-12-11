@@ -2,23 +2,18 @@ import React from 'react'
 import logo from '../assets/OIP.jpg'
 const NavBar = () => {
     return (
-        <div className='navbar'>
-            <div className='navbar-container'>
-                <div className='navbar-container-leftside'>
+      
+        <nav className="navbar navbar-expand-lg">
+            <div className='navleftside'>E7GEZLY</div>
+            <ul className='navrightside'>
+                <li>Home</li>
+                <li>Login</li>
+                <li>Sign Up</li>
+                <li>About Us</li>
 
-                    <div>open Side Bar</div>
-                    <img src={logo} />
-
-
-
-                </div>
-                <div className='navbar-container-rightside'>
-                    <div>Register</div>
-                    <div>Sign in</div>
-                </div>
-
-            </div>
-        </div>
+            </ul>
+            
+        </nav>
     )
 }
 

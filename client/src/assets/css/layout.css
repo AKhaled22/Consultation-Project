@@ -1,5 +1,109 @@
 
 
+@font-face {
+    font-family: motley;
+    src: url("./Motley\ Forces.ttf") format('truetype'); 
+}
+
+@font-face {
+    font-family: donuts;
+    src: url("./Chocolate\ Donuts.otf") ; 
+}
+
+
+body{
+    color: var(--blue) ;
+    height: 100vh;
+    background-color: var(--grey);
+    font-family: 'Roboto', sans-serif !important;
+
+}
+
+h1{
+    font-size: 4rem;
+}
+
+.navleftside{
+    font-size: x-large;
+    font-family: motley;
+
+
+}
+
+.blue-butt{
+    background-color: var(--blue);
+    color: var(--grey);
+    border: var(--blue);
+    width: fit-content;
+    padding: 0.3em 2em;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.blue-butt:active{
+
+    background-color: var(--grey);
+    color: var(--blue);
+    filter: brightness(1);
+
+}
+
+.blue-butt:hover{
+
+    filter: brightness(1.5);
+
+}
+
+.myInput{
+    width: 50%;
+}
+input{
+    width: 100%;
+    padding: 0.3rem 1rem;
+}
+
+form{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    padding: 3rem;
+}
+
+ul{
+
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+
+}
+.navrightside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+}
+
+.navleftside{
+    padding: 1rem 2rem;
+}
+
+.loginHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1.5rem 1.5rem ;
+    /* margin: 3rem auto ; */
+
+    background-color: white;
+
+}
+
+
+
 button{
     text-decoration: none;
 
@@ -8,6 +112,18 @@ button{
 .navbar{
     width: 100%;
     background-color: var(--blue);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    
+}
+
+.myForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -24,5 +140,5 @@ button{
   
     --blue: #012f98;
     --white: #f3f7f8;
-    --grey: #bcbcd1;
+    --grey: #e5e5ed;
   }
