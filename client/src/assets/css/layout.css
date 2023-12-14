@@ -8,11 +8,15 @@
   src: url("./EncodeSansExpanded-Medium.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: timeScore;
+  src: url("./Soccer\ Scoreboard.otf");
+}
+
 body {
   color: var(--blue);
   height: 100vh;
   background-color: var(--grey);
-  /* font-family: "Roboto", sans-serif !important; */
   font-family: "donuts";
 }
 
@@ -27,7 +31,6 @@ h1 {
 
 .radioButtons {
   display: flex;
-  /* flex-direction: colroumn; */
   justify-content: center;
   align-items: space-evenly;
   gap: 1rem;
@@ -124,9 +127,240 @@ button {
   justify-content: center;
   align-items: center;
 }
+.editForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
 
 :root {
   --blue: #012f98;
   --white: #f3f7f8;
   --grey: #e5e5ed;
+}
+
+.match-details-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.match-details-container {
+  flex-direction: column;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid #7b80ae; */
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 2rem;
+  border: 1px solid var(--blue);
+
+  width: 50%;
+  height: 10%;
+  margin: 20px auto;
+  background-color: transparent;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+
+  transition: box-shadow 0.3s ease-in-out;
+
+  /* box-shadow: 0px 1px 236px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 1px 236px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 236px -1px rgba(0, 0, 0, 0.75); */
+}
+
+.match-details-container:hover {
+  flex-direction: column;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid #7b80ae; */
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 2rem;
+  border: 1px solid var(--blue);
+
+  width: 50%;
+  height: 10%;
+  margin: 20px auto;
+  background-color: transparent;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+
+  box-shadow: 0px 1px 50px -10px var(--blue);
+  -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
+  -moz-box-shadow: 0px 1px 50px -10px var(--blue);
+}
+
+.team-logo {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  overflow: hidden;
+  /* border-radius: 100%; */ /* momkn lw 3aiz a5lih circular */
+  background-color: var(--grey);
+}
+
+.home-logo {
+  margin-right: 10px;
+  justify-content: start;
+  background-color: transparent;
+  /* margin-left: 10px; */
+}
+
+.away-logo {
+  margin-left: 10px;
+  background-color: transparent;
+  /* margin-right: 10px; */
+}
+
+.time-container {
+  /* font-family: "timeScore";
+  font-weight: bolder; */
+  font-weight: bolder;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 20%;
+  width: 9%;
+  padding: 8px;
+  background-color: #e0e0e0;
+  display: inline-block;
+  text-align: center;
+  background-color: var(--grey);
+}
+
+.upper-match-div {
+  display: flex;
+  border: 1px solid var(--blue);
+  border-radius: 100px;
+  padding: 1%;
+  background-color: var(--blue);
+  color: var(--grey);
+  margin-bottom: 5px;
+}
+
+.main-match-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: center;
+  margin: 0 auto;
+  border: 1px solid var(--grey);
+  border-radius: 100px;
+  padding: 1%;
+  width: 100%;
+  background-color: var(--blue);
+}
+
+.match-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.home-team-pack {
+  color: var(--grey);
+  margin-left: 50px;
+  position: relative;
+  align-self: flex-start;
+  /* align-self: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.away-team-pack {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
+  width: 30%;
+  color: var(--grey);
+}
+
+.lower-match-div {
+  color: var(--blue);
+  background-color: var(--grey);
+  display: flex;
+  margin-top: 1%;
+}
+
+.stadLogo {
+  width: 70px;
+  height: 100px;
+  object-fit: contain;
+  overflow: hidden;
+  border-radius: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  background-color: var(--grey);
+}
+
+.stadPack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.stadName {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.refLogo {
+  width: 70px;
+  height: 40px;
+  background-color: var(--grey);
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+}
+
+.sideRefLogo {
+  width: 40px;
+  height: 40px;
+  background-color: var(--grey);
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  margin-right: 10px;
+}
+
+.allRefPack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: center;
+  margin: 0 auto;
+  padding: 1%;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.refPack {
+  margin-left: 50px;
+  position: relative;
+  align-self: flex-start;
+  /* align-self: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.sideRefPack {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
+  width: 30%;
 }
