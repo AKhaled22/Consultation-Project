@@ -73,10 +73,7 @@ const MatchDetails = ({
           </div>
         </div>
       </div>
-
-      <div className="lower-match-div">
-        <Button buttText={"Get Ticket"} />
-      </div>
+      <Button buttText={"Get Ticket"} />
     </div>
   );
 };

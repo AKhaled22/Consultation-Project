@@ -364,3 +364,9 @@ button {
   margin-right: 50px;
   width: 30%;
 }
+
+.testBut {
+  border: 1px solid var(--blue);
+  border-radius: 100px;
+  padding: 1%;
+}
