@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className='loginHeader'>
 
-            <img src={logo} width="150px" height="100px" />
+            <img src={logo} width="150px" height="auto" />
 
 
 
