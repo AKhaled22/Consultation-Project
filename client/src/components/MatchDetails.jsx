@@ -29,7 +29,7 @@ const MatchDetails = ({
             alt={homeTeam}
             className="team-logo home-logo"
           />
-          <div>{homeTeam} (H)</div>
+          <div className="home-club-name">{homeTeam} (H)</div>
         </div>
         <div className="time-container">
           {(() => {
@@ -49,7 +49,7 @@ const MatchDetails = ({
             alt={awayTeam}
             className="team-logo away-logo"
           />
-          <div>{awayTeam} (A)</div>
+          <div className="away-club-name">{awayTeam} (A)</div>
         </div>
       </div>
 
