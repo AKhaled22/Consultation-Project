@@ -14,7 +14,7 @@ const ViewMatches = () => {
     {
       homeTeam: "Manchester United",
       homeTeamLogo: ManchesterUnitedLogo,
-      awayTeam: "Liverpool",
+      awayTeam: "Manchester City",
       awayTeamLogo: LiverpoolLogo,
       stadium: "Old Trafford",
       date: "2021-10-24",
