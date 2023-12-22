@@ -15,6 +15,7 @@ const MatchDetails = ({
   stadLogo,
   whistle,
   sideRefLogo,
+  hideButton,
 }) => {
   return (
     <div className="match-details-container">
@@ -73,7 +74,7 @@ const MatchDetails = ({
           </div>
         </div>
       </div>
-      <Button buttText={"Get Ticket"} />
+      <Button className={hideButton && "d-none"}  buttText={"Get Ticket"} />
     </div>
   );
 };

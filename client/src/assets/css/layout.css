@@ -1,10 +1,13 @@
 @font-face {
   font-family: motley;
+  font-display: fallback;
   src: url("./Motley\ Forces.ttf") format("truetype");
 }
 
 @font-face {
   font-family: donuts;
+  font-display: fallback;
+
   src: url("./EncodeSansExpanded-Medium.ttf") format("truetype");
 }
 
@@ -13,6 +16,11 @@ body {
   height: 100vh;
   background-color: var(--grey);
   font-family: "donuts";
+}
+
+.App {
+  padding-bottom: 1rem;
+
 }
 
 h1 {
@@ -54,6 +62,7 @@ h1 {
 .myInput {
   width: 50%;
 }
+
 input,
 select {
   width: 100%;
@@ -78,6 +87,7 @@ ul {
   list-style-type: none;
   margin: 0;
 }
+
 .navrightside {
   display: flex;
   justify-content: center;
@@ -120,6 +130,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+
 .editForm {
   display: flex;
   flex-direction: column;
@@ -197,7 +208,8 @@ button {
   height: 50px;
   object-fit: contain;
   overflow: hidden;
-  /* border-radius: 100%; */ /* momkn lw 3aiz a5lih circular */
+  /* border-radius: 100%; */
+  /* momkn lw 3aiz a5lih circular */
   background-color: var(--grey);
 }
 
@@ -363,6 +375,7 @@ button {
   border-radius: 100px;
   padding: 1%;
 }
+
 .home-club-name {
   font-size: 100%;
   overflow: hidden;
@@ -378,31 +391,37 @@ button {
   white-space: nowrap;
   text-align: center;
 }
+
 @media only screen and (min-width: 414px) and (max-width: 700px) {
   .match-details-container {
     width: 90%;
   }
+
   .home-logo {
     height: 40px;
     width: 40px;
     align-items: center;
     margin-right: 0px;
   }
+
   .away-logo {
     height: 40px;
     width: 40px;
     margin-left: 0px;
   }
+
   .home-team-pack {
     width: 50px;
     height: 50px;
     align-self: center;
   }
+
   .away-team-pack {
     width: 50px;
     height: 50px;
     align-self: center;
   }
+
   .home-club-name {
     /* font-size: 8px; */
     font-size: 80%;
@@ -411,6 +430,7 @@ button {
     white-space: nowrap;
     text-align: center;
   }
+
   .away-club-name {
     /* font-size: 8px; */
     font-size: 80%;
@@ -420,13 +440,16 @@ button {
     text-align: center;
     position: relative;
   }
+
   .sideRefName {
     white-space: nowrap;
   }
+
   .refPack {
     margin-left: 10%;
     /* margin-right: 1%; */
   }
+
   .sideRefPack {
     /* margin-left: 10%; */
     margin-right: 10%;
@@ -459,6 +482,7 @@ button {
     -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
     -moz-box-shadow: 0px 1px 50px -10px var(--blue);
   }
+
   .upper-match-div {
     padding: 0.5rem;
   }
@@ -469,6 +493,7 @@ ul {
   list-style-type: none;
   margin: 0;
 }
+
 .navrightside {
   display: flex;
   justify-content: right;
@@ -487,6 +512,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 .navrightsideitem {
   text-decoration: none;
   color: inherit;
@@ -532,6 +558,7 @@ button {
   align-items: center;
   color: var(--white) !important;
 }
+
 .navbar-brand,
 .nav-link,
 .navbar-toggler {
@@ -571,6 +598,7 @@ button {
   width: 3rem;
   height: 2rem;
 }
+
 .crsp {
   cursor: pointer;
 }
@@ -611,17 +639,51 @@ button {
   height: auto;
 }
 
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
 .seat {
-  border: solid grey;
+  border: none;
   /* border-radius: 1rem; */
   /* padding: 1%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   width: auto;
   height: 3rem;
-  background-color: grey;
+  background-color: var(--bs-secondary);
   cursor: pointer;
+  transition: transform 0.3s ease-out;
+  border-radius: 5%;
+  box-shadow: 0px 8px 10px 0px rgba(108,117,125, 0.6);
+  -webkit-box-shadow: 0px 8px 10px 0px rgba(108,117,125, 0.6);
+  -moz-box-shadow: 0px 8px 10px 0px rgba(108,117,125, 0.6);
+
+}
+
+.disabled-seat {
+
+  border: none;
+
+
+  width: auto;
+  height: 3rem;
+  background-color: var(--bs-danger);
+
+}
+
+.seat:active {
+  animation: beat 0.3s ease-out;
 }
 
 .seat:hover {
@@ -635,7 +697,7 @@ button {
   gap: 2rem;
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: fit-content;
 }
 
 .booking-grid {
@@ -648,6 +710,52 @@ button {
   display: grid;
   gap: 1rem 1%;
 }
+
+.booking-grid input[type=checkbox]:checked+.seat {
+  background-color: var(--bs-success);
+
+}
+
+
+.index-seats-alpha {
+  left: -20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2.2rem;
+}
+
+.index-alpha {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-gray-500);
+}
+
+.index-seats-numeric {
+  bottom: -30px;
+  display: grid;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+
+.index-numeric {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.2rem;
+  color: var(--bs-gray-500);
+}
+
+
+
+
+
 
 /* .booking-grid-row{
     display: flex;

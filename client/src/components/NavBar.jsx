@@ -72,19 +72,18 @@ const NavBar = () => {
             <Navbar expand="lg" className=" navbar">
                 <Sidebar toggleSideBar={toggleSidebar} sideBar={sideBar} />
                 <Container>
-                    <Navbar.Brand >
+                    <Nav >
                         <div className="navleftside">
 
                             <FaIcons.FaBars className={`crsp  ${userType == "guest" && "d-none"}`} onClick={() => { setSideBar(!sideBar) }} />
-                            <div>E7GEZLY</div>
+                            <Nav.Link href="/home">E7GEZLY</Nav.Link>
+
                         </div>
-                    </Navbar.Brand>
+                    </Nav>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className={`navrightside`}>
                         <Nav className={`${userType == "guest" && "d-none"} avatar`}>
-                            {/* <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
-                            <Nav.Link href="/signup">Signup</Nav.Link> */}
+                           
                             <li>Hello Ahmed</li>
                             <img src={avatar} className={`avatar-image `} />
 
