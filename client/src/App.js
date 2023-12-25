@@ -15,8 +15,14 @@ import { Provider } from "react-redux";
 import EditDetails from "./pages/EditDetails";
 import MatchDetails from "./components/MatchDetails";
 import ViewMatches from "./pages/ViewMatches";
+// import  from 'react-redux'
+// import { setActivePage } from './features/pageSlice'
 
 function App() {
+
+  // const activePage = useSelector((state) => state.page.value)
+  // const dispatch = useDispatch()
+
   return (
     <Provider store={store}>
       <div className="App">
@@ -25,7 +31,7 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login"   element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgetpassword" element={<Login />} />
             <Route path="/admin" element={<Login />} />

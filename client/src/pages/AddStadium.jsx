@@ -1,10 +1,29 @@
-import React from 'react'
-import Form from '../components/Form'
+import React , {useEffect}from 'react'
+import MyForm from '../components/MyForm'
 import Header from '../components/Header'
 import Sidebar from "../components/SideBar";
 import SidebarData from '../assets/Data/ManagerSideBarData';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { setActivePage } from '../features/pageSlice'
+
+
+
+
+    
+
 const AddStadium = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+    
+    
+        dispatch(setActivePage("addstadium")) 
+      
+    }, [])
+
+    
     const inputArr = [
         {
             type: "text",
@@ -80,7 +99,7 @@ const AddStadium = () => {
         <div>
             <Sidebar SidebarData={SidebarData}/>
             <Header />
-            <Form inputArr={inputArr} title="Add Stadium" buttText="Add Stadium" />
+            <MyForm inputArr={inputArr} title="Add Stadium" buttText="Add Stadium" />
         </div>
     )
 }

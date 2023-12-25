@@ -1,7 +1,20 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import Header from '../components/Header'
-import Form from '../components/Form'
+import MyForm from '../components/MyForm'
+import { useSelector, useDispatch } from 'react-redux'
+import { setActivePage } from '../features/pageSlice'
 const Register = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+    
+    
+        dispatch(setActivePage("register")) 
+      
+    }, [])
+
+
     const inputArr = [
         {
             type: "text",
@@ -23,7 +36,7 @@ const Register = () => {
             type: "text",
             label: "First Name",
             placeholder: "Ahmed",
-            name: "firstname"
+            name: "firstName"
             // optionsArr:
             // radioOne:
             // radioTwo:
@@ -33,7 +46,7 @@ const Register = () => {
             type: "text",
             label: "Last Name",
             placeholder: "Toaima",
-            name: "lastname"
+            name: "lastName"
             // optionsArr:
             // radioOne:
             // radioTwo:
@@ -71,9 +84,9 @@ const Register = () => {
         },
         {
             type: "text",
-            label: "Adress",
+            label: "Address",
             placeholder: "8138 Mokattam",
-            name: "adress"
+            name: "address"
             // optionsArr:
             // radioOne:
             // radioTwo:
@@ -106,7 +119,7 @@ const Register = () => {
         <div>
             <Header />
 
-            <Form inputArr={inputArr} title="Register" buttText="Register" />
+            <MyForm type="register" inputArr={inputArr} title="Register" buttText="Register" />
 
 
 

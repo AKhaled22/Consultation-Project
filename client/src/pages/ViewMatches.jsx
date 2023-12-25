@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect} from "react";
 import MatchDetails from "../components/MatchDetails";
 import Header from "../components/Header";
 import ManchesterUnitedLogo from "../assets/Manchester_United_FC_crest.svg.png";
@@ -8,8 +8,21 @@ import AlAhlyLogo from "../assets/AlAhly.png";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
+import { useSelector, useDispatch } from 'react-redux'
+import { setActivePage } from '../features/pageSlice'
 
 const ViewMatches = () => {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+  
+  
+      dispatch(setActivePage("viewmatches")) 
+    
+  }, [])
+
+
   const matches = [
     {
       homeTeam: "Manchester United",

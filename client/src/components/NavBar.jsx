@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import Sidebar from './SideBar';
 import * as FaIcons from "react-icons/fa";
@@ -7,6 +7,8 @@ import avatar from '../assets/avatar.svg'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useParams } from 'react-router-dom';
+
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
@@ -19,7 +21,7 @@ import { setActivePage } from '../features/pageSlice'
 const NavBar = () => {
     const activePage = useSelector((state) => state.page.value)
     const userType = useSelector((state) => state.user.value)
-    console.log(activePage, userType);
+    // console.log(activePage, userType);
     const dispatch = useDispatch()
 
     const [sideBar, setSideBar] = useState(false)
@@ -27,6 +29,18 @@ const NavBar = () => {
 
     const toggleSidebar = () => setSideBar(!sideBar);
     const toggleNavbar = () => setCollapse(!collapse);
+
+    // const param = useParams();
+
+        
+
+    // useEffect(() => {
+
+    // console.log(param);        
+    
+      
+    // }, [])
+    
 
 
 
@@ -80,24 +94,28 @@ const NavBar = () => {
 
                         </div>
                     </Nav>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" className={`${userType != "guest" && "d-none"}`} />
+                        {/* <FaIcons.FaBars className={`crsp  ${userType == "guest" && "d-none"}`} onClick={() => { setSideBar(!sideBar) }} /> */}
+
+                    {/* </NavBar.Toggle> */}
                     <Navbar.Collapse id="basic-navbar-nav" className={`navrightside`}>
-                        <Nav className={`${userType == "guest" && "d-none"} avatar`}>
-                           
-                            <li>Hello Ahmed</li>
-                            <img src={avatar} className={`avatar-image `} />
 
 
-                        </Nav>
-
-                        <Nav className={`${userType != "guest" && "d-none"}`}>
-                            <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="/login">Login</Nav.Link>
-                            <Nav.Link href="/signup">Signup</Nav.Link>
+                        <Nav className={`${userType != "guest" && "d-none"} d-flex gap-3`}>
+                            <Link to="/home" className={` navrightsideitem ${activePage == "home" && "activepagenavbar"}`} onClick={() => { dispatch(setActivePage("home")) }}>Home</Link>
+                            <Link to="/login" className={` navrightsideitem ${activePage == "login" && "activepagenavbar"}`} onClick={() => { dispatch(setActivePage("login")) }}>Login</Link>
+                            <Link to="/register" className={`navrightsideitem ${activePage == "register" && "activepagenavbar"}`} onClick={() => { dispatch(setActivePage("signup")) }}>Signup</Link>
 
 
                         </Nav>
                     </Navbar.Collapse>
+                    <nav className={`${userType == "guest" && "d-none"} avatar`}>
+
+                        <span>Hello Ahmed</span>
+                        <img src={avatar} className={`avatar-image `} />
+
+
+                    </nav>
 
                     {/* <Navbar.Collapse id="basic-navbar-nav" className={`navrightside ${userType != "guest" && "d-none"}`}>
                         

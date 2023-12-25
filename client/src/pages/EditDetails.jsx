@@ -1,7 +1,20 @@
-import React from "react";
+import React , {useEffect} from "react";
 import Header from "../components/Header";
-import Form from "../components/Form";
+import MyForm from '../components/MyForm'
+import { useSelector, useDispatch } from 'react-redux'
+import { setActivePage } from '../features/pageSlice'
 const EditDetails = () => {
+
+  const dispatch = useDispatch()
+
+    useEffect(() => {
+    
+    
+        dispatch(setActivePage("editdetails")) 
+      
+    }, [])
+
+
   const inputArr = [
     {
       type: "text",
@@ -90,7 +103,7 @@ const EditDetails = () => {
   return (
     <div>
       <Header />
-      <Form inputArr={inputArr} title="Edit Details" buttText="Confirm Edit" />
+      <MyForm inputArr={inputArr} title="Edit Details" buttText="Confirm Edit" />
     </div>
   );
 };

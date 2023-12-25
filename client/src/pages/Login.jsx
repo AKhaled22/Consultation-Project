@@ -1,13 +1,23 @@
-import React from 'react'
-import Form from '../components/Form'
+import React , {useEffect} from 'react'
+import MyForm from '../components/MyForm'
 import Header from '../components/Header'
 import { setUserType } from '../features/userSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { setActivePage } from '../features/pageSlice'
 
 
 
 const Login = () => {
     // type, label, placeholder, name, optionsArr, radioOne, radioTwo 
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+    
+    
+        dispatch(setActivePage("login")) 
+      
+    }, [])
+    
 
     const inputArr = [
         {
@@ -33,7 +43,7 @@ const Login = () => {
         <div>
             <Header />
 
-            <Form inputArr={inputArr} title="Login" buttText="Login" />
+            <MyForm type="login" inputArr={inputArr} title="Login" buttText="Login" />
 
 
 
