@@ -1,4 +1,4 @@
-import React, { useRef , useState , useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import footballcourt from '../assets/transpCourt.png'
 import MatchDetails from '../components/MatchDetails'
 import ManchesterUnitedLogo from '../assets/Manchester_United_FC_crest.svg.png'
@@ -6,13 +6,20 @@ import LiverpoolLogo from '../assets/Liverpool_FC.svg.png'
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
-import Button from 'react-bootstrap/Button';
+import Button from '../components/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
 
+
+
+
+// import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 
 
@@ -27,6 +34,52 @@ import { setActivePage } from '../features/pageSlice'
 
 
 function MyVerticallyCenteredModal(props) {
+
+    const billingInpArr = [
+        {
+            type: "text",
+            label: "CARDHOLDERS'S NAME",
+            placeholder: "Name on Card",
+            name: "cardHolderName"
+            // optionsArr:
+            // radioOne:
+            // radioTwo:
+
+        },
+        {
+            type: "number",
+            label: "CARD NUMBER",
+            placeholder: "--- --- --- ---",
+            name: "cardNumber"
+        },
+
+
+        {
+            type: "date",
+            label: "EXPIRY DATE",
+            // placeholder: "username@gmail.com",
+            name: "expiryDate"
+            // optionsArr:
+            // radioOne:
+            // radioTwo:
+
+        },
+
+
+        {
+            type: "number",
+            label: "CVV",
+            placeholder: "Code",
+            name: "code"
+            // optionsArr:
+            // radioOne:
+            // radioTwo:
+
+        },
+
+    ]
+
+
     return (
         <Modal
             {...props}
@@ -36,20 +89,40 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    Checkout Bill
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                <Form className='p-0'>
+               
+                    <Form.Group className="mb-3" controlId="formGridAddress1">
+                        <Form.Label>CARDHOLDERS'S NAME</Form.Label>
+                        <Form.Control name='cardHolderName' placeholder="Name on Card" />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formGridAddress2">
+                        <Form.Label>CARD NUMBER</Form.Label>
+                        <Form.Control name='cardNumber' type='number' placeholder="--- --- --- ---" />
+                    </Form.Group>
+                  
+                    <Row className="mb-3">
+                        <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Label>EXPIRY DATE</Form.Label>
+                            <Form.Control name='expiryDate' type="date" placeholder="Enter email" />
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Label>CVV</Form.Label>
+                            <Form.Control name='code' type="number" placeholder="Code" />
+                        </Form.Group>
+                    </Row>
+               
+
+                </Form>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
+                <button className='bg-success reservation-bill-butt' >Pay</button>
+            {/* <Modal.Footer> */}
+            {/* </Modal.Footer> */}
         </Modal>
     );
 }
@@ -63,7 +136,7 @@ function MyVerticallyCenteredModal(props) {
 //                 Launch vertically centered modal
 //             </Button>
 
-           
+
 //         </>
 //     );
 // }
@@ -105,10 +178,10 @@ const TicketReservation = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-    
-    
-        dispatch(setActivePage("ticketreservation")) 
-      
+
+
+        dispatch(setActivePage("ticketreservation"))
+
     }, [])
 
     const [modalShow, setModalShow] = useState(false);
@@ -169,7 +242,7 @@ const TicketReservation = () => {
             });
 
         }
-        if(selectedSeatsArr.length !=0){
+        if (selectedSeatsArr.length != 0) {
 
             setModalShow(true)
         }
@@ -287,7 +360,7 @@ const TicketReservation = () => {
 
 
             </div>
-             <MyVerticallyCenteredModal
+            <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />

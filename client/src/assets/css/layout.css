@@ -950,6 +950,19 @@ button {
   /* border: none; */
 }
 
+.reservation-bill-butt{
+  padding: 1em;
+  border: none;
+  color: white;
+
+}
+
+
+.reservation-bill-butt:hover{
+  filter: brightness(1.5);
+
+}
+
 
 
 .type1:hover::after {

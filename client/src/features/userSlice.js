@@ -26,6 +26,7 @@ export const userSlice = createSlice({
 
     setUserType: (state , action) => {
         state.value = action.payload
+        localStorage.setItem("userType" , action.payload)
     }
   },
 })
