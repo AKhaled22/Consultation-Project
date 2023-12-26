@@ -20,7 +20,6 @@ body {
 
 .App {
   padding-bottom: 1rem;
-
 }
 
 h1 {
@@ -84,36 +83,38 @@ form {
   padding: 4rem 20rem;
 }
 
-
-
 .homepage-container {
   background-image: url(../Ali\ Maaloul\ -\ FootyRenders.png);
   /* height: 100%; */
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  
+  /* display: flex;
+  flex-direction: row; */
   /* margin: 0; */
 }
 
 .meet-the-teams {
   background-color: white;
   /* height: 100vh; */
- /* height: 100%; */
+  /* height: 100%; */
   /* position: absolute; */
   /* right: 0; */
   padding: 1rem;
   overflow: hidden;
   width: 15%;
+
+  /* position: relative;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; */
 }
 
 .logos-sidebar {
   width: 50%;
   height: auto;
 }
-
-
-
 
 /* .slider-container {
   overflow: hidden;
@@ -131,8 +132,6 @@ form {
   animation: slideAnimation 6s linear infinite;
 }
 
-
-
 @keyframes slideAnimation {
   0% {
     transform: translateY(0);
@@ -140,23 +139,15 @@ form {
   100% {
     transform: translateY(-105%); /* Move the images up by their own height */
   }
-  
-
- 
 }
 
-
-
-.matchdetails-home{
+.matchdetails-home {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  width: 85%;
+  width: 100%;
 }
-
-
-
 
 ul {
   text-decoration: none;
@@ -171,8 +162,6 @@ ul {
   gap: 1rem;
   padding: 1rem 2rem;
 }
-
-
 
 .loginHeader {
   display: flex;
@@ -241,10 +230,10 @@ button {
   border-radius: 2rem;
   border: 1px solid var(--blue);
 
-  /* width: 50%; */
+  width: 50%;
   /* height: 10%; */
   /* mido */
-  width: 100%;
+  /* width: 100%; */
   margin: 20px auto;
   background-color: transparent;
   background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
@@ -270,7 +259,7 @@ button {
   border: 1px solid var(--blue);
 
   width: 50%;
-  height: 10%;
+  /* height: 10%; */
   margin: 20px auto;
   background-color: transparent;
   background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
@@ -313,8 +302,8 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  height: 60px;
-  width: 60px;
+  /* height: 60px; */
+  width: 70px;
   padding: 8px;
   background-color: #e0e0e0;
   display: inline-block;
@@ -553,7 +542,7 @@ button {
     border: 1px solid var(--blue);
 
     width: 90%;
-    height: 10%;
+    /* height: 10%; */
     margin: 20px auto;
     background-color: transparent;
     background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
@@ -568,7 +557,11 @@ button {
   }
 
   .time-container {
-    height: 20%;
+    /* height: 50px; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
     width: 30%;
     border-radius: 100px;
     padding: 1%;
@@ -577,6 +570,17 @@ button {
     margin-top: 5px;
     white-space: nowrap;
     font-weight: bolder;
+  }
+
+  .meet-the-teams {
+    display: none;
+    width: 0%;
+  }
+  .match-details-home {
+    width: 100%;
+  }
+  .homepage-container {
+    width: 100%;
   }
 }
 
@@ -608,7 +612,7 @@ button {
     border: 1px solid var(--blue);
 
     width: 90%;
-    height: 10%;
+    /* height: 10%; */
     margin: 20px auto;
     background-color: transparent;
     background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
@@ -620,7 +624,6 @@ button {
 }
 
 @media only screen and (max-width: 900px) {
-
   form {
     padding: 2rem;
   }
@@ -654,7 +657,7 @@ button {
     border: 1px solid var(--blue);
 
     width: 90%;
-    height: 10%;
+    /* height: 10%; */
     margin: 20px auto;
     background-color: transparent;
     background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
@@ -683,7 +686,6 @@ ul {
   .navrightside {
     justify-content: center;
   }
-
 }
 
 a {
@@ -829,7 +831,6 @@ button {
   100% {
     transform: scale(1);
   }
-
 }
 
 .seat {
@@ -849,11 +850,9 @@ button {
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.6);
-
 }
 
 .disabled-seat {
-
   width: auto;
   height: 3rem;
   background-color: var(--bs-danger);
@@ -864,8 +863,6 @@ button {
   box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.6);
-
-
 }
 
 .booking-page {
@@ -905,14 +902,11 @@ button {
   gap: 1rem 1%;
   /* text-overflow:; */
   font-size: 0.2em;
-
 }
 
-.booking-grid input[type=checkbox]:checked+.seat {
+.booking-grid input[type="checkbox"]:checked + .seat {
   background-color: var(--bs-success);
-
 }
-
 
 .index-seats-alpha {
   left: -20px;
@@ -948,11 +942,6 @@ button {
   height: 1.2rem;
   color: var(--bs-gray-500);
 }
-
-
-
-
-
 
 /* .booking-grid-row{
     display: flex;
@@ -1030,16 +1019,11 @@ button {
   padding: 1em;
   border: none;
   color: white;
-
 }
-
 
 .reservation-bill-butt:hover {
   filter: brightness(1.5);
-
 }
-
-
 
 .type1:hover::after {
   visibility: visible;
