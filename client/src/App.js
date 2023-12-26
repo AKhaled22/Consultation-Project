@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import EditDetails from "./pages/EditDetails";
 import MatchDetails from "./components/MatchDetails";
 import ViewMatches from "./pages/ViewMatches";
+import Home from "./pages/Home";
 // import  from 'react-redux'
 // import { setActivePage } from './features/pageSlice'
 
@@ -31,7 +32,10 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/login"   element={<Login />} />
+
+            <Route path="/home" element={<Home />} />
+
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgetpassword" element={<Login />} />
             <Route path="/admin" element={<Login />} />
@@ -43,6 +47,7 @@ function App() {
             <Route path="/editdetails" element={<EditDetails />} />
             <Route path="/matchdetails" element={<MatchDetails />} />
             <Route path="/viewmatches" element={<ViewMatches />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </Router>
       </div>
