@@ -5,9 +5,7 @@ import ManchesterUnitedLogo from "../assets/Manchester_United_FC_crest.svg.png";
 import LiverpoolLogo from "../assets/Liverpool_FC.svg.png";
 import ZamalekLogo from "../assets/ZamalekSC.png";
 import AlAhlyLogo from "../assets/AlAhly.png";
-import stadLogo from "../assets/stad.png";
-import whistle from "../assets/whistle.png";
-import sideRefLogo from "../assets/sideRefLogo.png";
+
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
 
@@ -48,6 +46,30 @@ const ViewMatches = () => {
       linesman1: "Ahmed Samir",
       linesman2: "Mohamed Ahmed",
     },
+    {
+      homeTeam: "Zamalek",
+      homeTeamLogo: ZamalekLogo,
+      awayTeam: "Al Ahly",
+      awayTeamLogo: AlAhlyLogo,
+      stadium: "Cairo Stadium",
+      date: "2021-10-24",
+      Time: "00:20",
+      mainReferee: "Mohamed Farouk",
+      linesman1: "Ahmed Samir",
+      linesman2: "Mohamed Ahmed",
+    },
+    {
+      homeTeam: "Zamalek",
+      homeTeamLogo: ZamalekLogo,
+      awayTeam: "Al Ahly",
+      awayTeamLogo: AlAhlyLogo,
+      stadium: "Cairo Stadium",
+      date: "2021-10-24",
+      Time: "00:20",
+      mainReferee: "Mohamed Farouk",
+      linesman1: "Ahmed Samir",
+      linesman2: "Mohamed Ahmed",
+    },
   ];
   return (
     <div>
@@ -66,9 +88,7 @@ const ViewMatches = () => {
             mainReferee={match.mainReferee}
             linesman1={match.linesman1}
             linesman2={match.linesman2}
-            stadLogo={stadLogo}
-            whistle={whistle}
-            sideRefLogo={sideRefLogo}
+            
           />
         );
       })}

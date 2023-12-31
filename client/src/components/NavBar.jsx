@@ -98,7 +98,7 @@ const NavBar = () => {
                         {/* <FaIcons.FaBars className={`crsp  ${userType == "guest" && "d-none"}`} onClick={() => { setSideBar(!sideBar) }} /> */}
 
                     {/* </NavBar.Toggle> */}
-                    <Navbar.Collapse id="basic-navbar-nav" className={`navrightside`}>
+                    <Navbar.Collapse id="basic-navbar-nav" className={`${userType != "guest" && "d-none"} navrightside`}>
 
 
                         <Nav className={`${userType != "guest" && "d-none"} d-flex gap-3`}>

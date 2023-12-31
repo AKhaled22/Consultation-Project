@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import footballcourt from '../assets/transpCourt.png'
+import footballcourt from '../assets/transpCourt.svg'
 import MatchDetails from '../components/MatchDetails'
 import ManchesterUnitedLogo from '../assets/Manchester_United_FC_crest.svg.png'
 import LiverpoolLogo from '../assets/Liverpool_FC.svg.png'
@@ -159,7 +159,9 @@ const Seat = ({ name, className, style, isBooked, colI }) => {
             >
                 {/* <Button variant="success"></Button> */}
 
-                <label htmlFor={name} className={!isBooked ? "seat" : "disabled-seat"}></label>
+                <label htmlFor={name} className={!isBooked ? "seat" : "disabled-seat"}>
+                    <div className='seat-content'></div>
+                </label>
             </OverlayTrigger>
 
 
@@ -190,8 +192,8 @@ const TicketReservation = () => {
     const seatsRef = useRef()
     let selectedSeatsArr = []
 
-    const seatsRows = 5
-    const seatsCols = 5
+    const seatsRows = 10
+    const seatsCols = 10
 
 
     const style = {

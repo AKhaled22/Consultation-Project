@@ -3,19 +3,13 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/layout.css";
 import NavBar from "./components/NavBar";
-import Login from "./pages/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Register from "./pages/Register";
-import CreateMatch from "./pages/CreateMatch";
-import AddStadium from "./pages/AddStadium";
-import Manager from "./pages/Manager";
-import TicketReservation from "./pages/TicketReservation";
+
 import { store } from "./store";
 import { Provider } from "react-redux";
-import EditDetails from "./pages/EditDetails";
 import MatchDetails from "./components/MatchDetails";
-import ViewMatches from "./pages/ViewMatches";
-import Home from "./pages/Home";
+import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register , SysAdministrator , TicketReservation , ViewMatches , YourTickets} from './pages'
+
 // import  from 'react-redux'
 // import { setActivePage } from './features/pageSlice'
 
@@ -47,6 +41,8 @@ function App() {
             <Route path="/editdetails" element={<EditDetails />} />
             <Route path="/matchdetails" element={<MatchDetails />} />
             <Route path="/viewmatches" element={<ViewMatches />} />
+            <Route path="/yourtickets" element={<YourTickets />} />
+
             <Route path="*" element={<Home />} />
           </Routes>
         </Router>

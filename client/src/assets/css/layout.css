@@ -18,9 +18,7 @@ body {
   font-family: "donuts";
 }
 
-.App {
-  padding-bottom: 1rem;
-}
+
 
 h1 {
   font-size: 4rem;
@@ -83,12 +81,22 @@ form {
   padding: 4rem 20rem;
 }
 
+.pagination{
+  margin: 20px;
+  
+    /* bottom: 0;
+    position: absolute; */
+}
+
+
+
 .homepage-container {
   background-image: url(../Ali\ Maaloul\ -\ FootyRenders.png);
   /* height: 100%; */
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  /* justify-content: space-between; */
   /* display: flex;
   flex-direction: row; */
   /* margin: 0; */
@@ -125,28 +133,38 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  height: 100%;
   /* justify-content: center; */
   align-items: center;
   display: flex;
-  animation: slideAnimation 6s linear infinite;
+  animation: slideAnimation 10s linear infinite;
 }
 
 @keyframes slideAnimation {
   0% {
-    transform: translateY(0);
+    transform: translateY(105%);
   }
   100% {
-    transform: translateY(-105%); /* Move the images up by their own height */
+    transform: translateY(-105%);
   }
 }
 
-.matchdetails-home {
+.matchdetailscards-home{
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   width: 100%;
+  min-height: 100vh;
+}
+
+.matchdetails-home{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  /* position: relative; */
 }
 
 ul {
@@ -245,14 +263,36 @@ button {
   -moz-box-shadow: 0px 1px 236px -1px rgba(0, 0, 0, 0.75); */
 }
 
+.page-link{
+  color: var(--blue);
+    background-color: white;
+    border-color: white;
+}
+
+.active>.page-link{
+  color: white;
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.page-item:first-child .page-link{
+  border-top-left-radius: 50% ;
+  border-bottom-left-radius: 50% ;
+}
+
+.page-item:last-child .page-link{
+  border-top-right-radius: 50% ;
+  border-bottom-right-radius: 50% ;
+}
+
 .match-details-container:hover {
-  flex-direction: column;
+  /* flex-direction: column;
   align-self: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* border: 1px solid #7b80ae; */
-  padding: 20px;
+  /* padding: 20px;
   margin-bottom: 20px;
   text-align: center;
   border-radius: 2rem;
@@ -260,9 +300,9 @@ button {
 
   width: 50%;
   /* height: 10%; */
-  margin: 20px auto;
+  /* margin: 20px auto;
   background-color: transparent;
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");  */
 
   box-shadow: 0px 1px 50px -10px var(--blue);
   -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
@@ -277,7 +317,7 @@ button {
   overflow: hidden;
   /* border-radius: 100%; */
   /* momkn lw 3aiz a5lih circular */
-  background-color: var(--grey);
+  background-color: transparent;
 }
 
 .home-logo {
@@ -337,7 +377,11 @@ button {
 .match-info {
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+
 
 .home-team-pack {
   color: var(--grey);
@@ -374,8 +418,8 @@ button {
   object-fit: contain;
   overflow: hidden;
   border-radius: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
-  background-color: var(--grey);
+  /* background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  background-color: var(--grey); */
 }
 
 .stadPack {
@@ -394,15 +438,15 @@ button {
 .refLogo {
   width: 70px;
   height: 40px;
-  background-color: var(--grey);
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  /* background-color: var(--grey);
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */
 }
 
 .sideRefLogo {
   width: 40px;
   height: 40px;
-  background-color: var(--grey);
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  /* background-color: var(--grey);
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */
   margin-right: 10px;
 }
 
@@ -525,7 +569,7 @@ button {
   }
 
   .match-details-container:hover {
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
     gap: 1em;
     align-items: center;
@@ -535,17 +579,17 @@ button {
     align-items: center;
     justify-content: space-between;
     /* border: 1px solid #7b80ae; */
-    padding: 20px;
+    /* padding: 20px;
     margin-bottom: 20px;
     text-align: center;
     border-radius: 2rem;
-    border: 1px solid var(--blue);
+    border: 1px solid var(--blue); */
 
-    width: 90%;
+    /* width: 90%; */
     /* height: 10%; */
-    margin: 20px auto;
+    /* margin: 20px auto;
     background-color: transparent;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */ 
 
     box-shadow: 0px 1px 50px -10px var(--blue);
     -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
@@ -574,7 +618,7 @@ button {
 
   .meet-the-teams {
     display: none;
-    width: 0%;
+    /* width: 0%; */
   }
   .match-details-home {
     width: 100%;
@@ -595,7 +639,7 @@ button {
   }
 
   .match-details-container:hover {
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
     gap: 1em;
     align-items: center;
@@ -605,7 +649,7 @@ button {
     align-items: center;
     justify-content: space-between;
     /* border: 1px solid #7b80ae; */
-    padding: 20px;
+    /* padding: 20px;
     margin-bottom: 20px;
     text-align: center;
     border-radius: 2rem;
@@ -613,9 +657,9 @@ button {
 
     width: 90%;
     /* height: 10%; */
-    margin: 20px auto;
+    /* margin: 20px auto;
     background-color: transparent;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");  */
 
     box-shadow: 0px 1px 50px -10px var(--blue);
     -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
@@ -640,7 +684,7 @@ button {
   }
 
   .match-details-container:hover {
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
     gap: 1em;
     align-items: center;
@@ -648,8 +692,8 @@ button {
     align-self: center;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    /* border: 1px solid #7b80ae; */
+    justify-content: space-between; */
+    /* border: 1px solid #7b80ae;
     padding: 20px;
     margin-bottom: 20px;
     text-align: center;
@@ -658,9 +702,9 @@ button {
 
     width: 90%;
     /* height: 10%; */
-    margin: 20px auto;
+    /* margin: 20px auto;
     background-color: transparent;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */ 
 
     box-shadow: 0px 1px 50px -10px var(--blue);
     -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
@@ -825,7 +869,7 @@ button {
   }
 
   50% {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   100% {
@@ -839,7 +883,9 @@ button {
   /* padding: 1%; */
 
   width: auto;
-  height: 3rem;
+  /* height: 3rem; */
+  height: 0;
+  padding-top: 100%;
   background-color: var(--bs-secondary);
   cursor: pointer;
   transition: transform 0.3s ease-out;
@@ -888,7 +934,8 @@ button {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  margin: 2rem;
+  margin: 2rem 0rem;
+  width: 85%;
 }
 
 .booking-grid {
@@ -1030,8 +1077,38 @@ button {
   transform: scale(100) translateX(2px);
 }
 
+
+
+.your-tickets{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 4%;
+  margin: 2rem 0;
+  font-size: 70%;
+}
+
+
+.danger-butt{
+  border: none;
+  background-color: var(--bs-danger);
+  color: white;
+  padding: 0.2rem 1rem;
+  /* border-radius: 5px; */
+}
+.danger-butt:hover {
+  filter: brightness(1.5);
+}
+.danger-butt:active{
+  animation: beat 0.3s ease-in-out;
+
+}
+
 :root {
   --blue: #012f98;
   --white: #f3f7f8;
   --grey: #e5e5ed;
+  --bs-link-hover-color : var(--blue)
 }

@@ -1,5 +1,8 @@
 import React from "react";
 import Button from "./Button";
+import stadLogo from "../assets/stad.png";
+import whistle from "../assets/whistle.png";
+import sideRefLogo from "../assets/sideRefLogo.png";
 
 const MatchDetails = ({
   homeTeamLogo,
@@ -12,9 +15,7 @@ const MatchDetails = ({
   mainReferee,
   linesman1,
   linesman2,
-  stadLogo,
-  whistle,
-  sideRefLogo,
+  
   hideButton,
 }) => {
   return (
