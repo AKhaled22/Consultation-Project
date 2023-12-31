@@ -140,6 +140,56 @@ button{
     align-items: center;
 }
 
+/******** Deletion Page **********/
+.delete-admin-page-text-div
+{
+display: flex;
+justify-content: center;
+text-align: center;
+padding-top: 2rem;
+}
+.main-text-class-text
+{
+    font-size: 2.5rem;
+    font-weight: 640;
+    text-decoration: none;
+}
+/**Division of searchbar and results **/
+.delete-admin-page-search-div-searchbar-table 
+{
+    width: 100%;
+    margin-top: 1rem;
+}
+.delete-admin-page-search-div-searchbar-table  th
+{
+    margin-bottom: 0.3rem;
+}
+.delete-admin-page-search-div-searchbar-table td
+{
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+
+}
+.delete-admin-page-search-div-searchbar-table td:first-child
+{
+    padding-left: 0.25rem;
+
+
+}
+.delete-admin-page-search-div-searchbar-table  tr:nth-child(even) 
+{
+    background-color: #fffdfd; 
+
+}
+.searchbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.searchbar-nafso{
+    width: 100%;
+    margin-right:0.5rem;
+}
 
 
 
