@@ -9,7 +9,8 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import MatchDetails from "./components/MatchDetails";
 import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register , SysAdministrator , TicketReservation , ViewMatches , YourTickets} from './pages'
-
+import AdminDelete from './pages/AdminDelete';
+import Admin from './pages/Admin';
 // import  from 'react-redux'
 // import { setActivePage } from './features/pageSlice'
 
