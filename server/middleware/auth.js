@@ -4,12 +4,13 @@ const User = require("../models/userModel");
 const key = "jndskjnwkjniefhwbnfvhbef";
 
 exports.isAuthenticatedUser = async (req, res, next) => {
-  const token = req.headers.authorization;
+  const {authorization} = req.headers;
+
   // const {token} = req.cookie
-  if (token) {
+  if (authorization!=undefined) {
     var decoded = jwt.verify(token, key);
 
-    const user = User.findById(decoded);
+    const user = User.findById(decoded.data);
     if (!user) {
       const err = new Error("Unauthorized User!");
       err.status = 401;

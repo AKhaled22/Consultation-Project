@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const userSlice = createSlice({
   name: 'userType',
   initialState: {
-    value: "manager",
+    value: localStorage.getItem("Role"),
   },
   reducers: {
     // increment: (state) => {
@@ -26,7 +26,7 @@ export const userSlice = createSlice({
 
     setUserType: (state , action) => {
         state.value = action.payload
-        localStorage.setItem("userType" , action.payload)
+        localStorage.setItem("Role" , action.payload)
     }
   },
 })

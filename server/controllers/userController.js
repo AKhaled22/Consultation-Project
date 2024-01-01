@@ -103,14 +103,15 @@ exports.getDetails = async (req, res) => {
 };
 
 exports.getRole = async (req, res) => {
-  const token = req.headers.authorization;
-  if (token) {
-    var decoded = jwt.verify(token, key);
+  const {authorization} = req.headers;
+  console.log("token1 " , authorization);
+  if (authorization != undefined) {
+    var decoded = jwt.verify(authorization, key);
     console.log("decoded \n");
-    // console.log(decoded);
-    // console.log(token);
+    console.log(decoded);
+  //   // console.log(token);
 
-    const user = await User.findById(decoded);
+    const user = await User.findById(decoded.data);
 
     if (!user) {
       res.status(401).json({
@@ -118,7 +119,7 @@ exports.getRole = async (req, res) => {
       });
     } else {
       console.log("\n\n");
-      // console.log(user.role);
+      console.log(user.role);
       // console.log(user);
       console.log("\n\n");
       res.status(200).json({

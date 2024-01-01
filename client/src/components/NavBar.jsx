@@ -33,7 +33,7 @@ const NavBar = () => {
             <div className="navleftside">
               <FaIcons.FaBars
                 className={`crsp  ${
-                  localStorage.getItem("Role") == "G" && "d-none"
+                  userType == "G" && "d-none"
                 }`}
                 onClick={() => {
                   setSideBar(!sideBar);
@@ -44,7 +44,7 @@ const NavBar = () => {
           </Nav>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            className={`${localStorage.getItem("Role") != "G" && "d-none"}`}
+            className={`${userType != "G" && "d-none"}`}
           />
           {/* <FaIcons.FaBars className={`crsp  ${userType == "guest" && "d-none"}`} onClick={() => { setSideBar(!sideBar) }} /> */}
 
@@ -52,12 +52,12 @@ const NavBar = () => {
           <Navbar.Collapse
             id="basic-navbar-nav"
             className={`${
-              localStorage.getItem("Role") != "G" && "d-none"
+              userType != "G" && "d-none"
             } navrightside`}
           >
             <Nav
               className={`${
-                localStorage.getItem("Role") != "G" && "d-none"
+                userType != "G" && "d-none"
               } d-flex gap-3`}
             >
               <Link
@@ -97,7 +97,7 @@ const NavBar = () => {
           </Navbar.Collapse>
           <nav
             className={`${
-              localStorage.getItem("Role") == "G" && "d-none"
+              userType == "G" && "d-none"
             } avatar`}
           >
             <span>Hello Ahmed</span>

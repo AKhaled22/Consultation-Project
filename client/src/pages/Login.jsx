@@ -43,7 +43,7 @@ const Login = () => {
       // console.log(res);
       if (res.status === 200) {
         localStorage.setItem("Token", res.data.Token);
-        localStorage.setItem("Role", res.data.Role);
+        // localStorage.setItem("Role", res.data.Role);
         navigate("/home");
       }
     } catch (err) {

@@ -11,6 +11,7 @@ import sideRefLogo from "../assets/sideRefLogo.png";
 import Pagination from "react-bootstrap/Pagination";
 import { useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
+import { setUserType } from "../features/userSlice";
 import axios from "axios";
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
     // dispatch(setActivePage("home")); //AAO
     const getRole = async () => {
       try {
+        console.log(localStorage.getItem("Token"));
         const res = await axios.get("http://localhost:3001/api/user/getRole", {
           headers: {
             Authorization: localStorage.getItem("Token"),
@@ -27,11 +29,14 @@ const Home = () => {
         });
         console.log(res);
         if (res.status === 200) {
-          localStorage.setItem("Role", res.data.Role);
+          dispatch(setUserType(res.data.Role))
+          // localStorage.setItem("Role", res.data.Role);
         }
       } catch (err) {
         console.log(err);
-        localStorage.setItem("Role", "G");
+        // localStorage.setItem("Role", "G");
+        dispatch(setUserType("G"))
+
       }
     };
     getRole();
