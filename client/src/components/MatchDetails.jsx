@@ -3,6 +3,7 @@ import Button from "./Button";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
+import { useDispatch , useSelector } from "react-redux";
 
 const MatchDetails = ({
   homeTeamLogo,
@@ -18,6 +19,9 @@ const MatchDetails = ({
 
   hideButton,
 }) => {
+
+  const userType = useSelector((state) => state.user.value);
+const dispatch = useDispatch()
   return (
     <div className="match-details-container">
       <div className="upper-match-div">
@@ -76,9 +80,9 @@ const MatchDetails = ({
         </div>
       </div>
       <Button
-        className={localStorage.getItem("Role") == "G" && "d-none"}
+        className={userType == "G" && "d-none"}
         buttText={
-          localStorage.getItem("Role") == "F"
+          userType == "F"
             ? "Get Ticket"
             : "View Reserved Seats"
         }

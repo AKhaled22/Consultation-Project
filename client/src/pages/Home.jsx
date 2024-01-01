@@ -9,13 +9,14 @@ import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
 import Pagination from "react-bootstrap/Pagination";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
 import { setUserType } from "../features/userSlice";
 import axios from "axios";
 
 const Home = () => {
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     // dispatch(setActivePage("home")); //AAO
