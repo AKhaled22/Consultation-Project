@@ -1,25 +1,37 @@
-import React , {useEffect} from "react";
+import React, { useEffect } from "react";
 import MatchDetails from "../components/MatchDetails";
 import Header from "../components/Header";
 import ManchesterUnitedLogo from "../assets/Manchester_United_FC_crest.svg.png";
 import LiverpoolLogo from "../assets/Liverpool_FC.svg.png";
 import ZamalekLogo from "../assets/ZamalekSC.png";
 import AlAhlyLogo from "../assets/AlAhly.png";
-
-import { useSelector, useDispatch } from 'react-redux'
-import { setActivePage } from '../features/pageSlice'
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { setActivePage } from "../features/pageSlice";
 
 const ViewMatches = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-  
-  
-      dispatch(setActivePage("viewmatches")) 
-    
-  }, [])
+    dispatch(setActivePage("viewmatches"));
+    const getMatches = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:3001/api/match/viewMatches"
+        );
 
+        if (res.status === 200) {
+          console.log(res.data);
+        }
+      } catch (err) {
+        console.log(err);
+        navigate("/home");
+      }
+    };
+    getMatches();
+  }, []);
 
   const matches = [
     {
@@ -88,7 +100,6 @@ const ViewMatches = () => {
             mainReferee={match.mainReferee}
             linesman1={match.linesman1}
             linesman2={match.linesman2}
-            
           />
         );
       })}

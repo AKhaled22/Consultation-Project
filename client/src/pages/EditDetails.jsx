@@ -1,19 +1,32 @@
-import React , {useEffect} from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
-import MyForm from '../components/MyForm'
-import { useSelector, useDispatch } from 'react-redux'
-import { setActivePage } from '../features/pageSlice'
+import MyForm from "../components/MyForm";
+import { useSelector, useDispatch } from "react-redux";
+import { setActivePage } from "../features/pageSlice";
+import axios from "axios";
 const EditDetails = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  useEffect(() => {
+    const getUserDetails = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:3001/api/user/getDetails",
+          {
+            headers: {
+              Authorization: localStorage.getItem("Token"),
+            },
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-    useEffect(() => {
-    
-    
-        dispatch(setActivePage("editdetails")) 
-      
-    }, [])
-
+    dispatch(setActivePage("editdetails"));
+    getUserDetails();
+  }, []);
 
   const inputArr = [
     {
@@ -80,9 +93,9 @@ const EditDetails = () => {
     },
     {
       type: "text",
-      label: "Adress",
+      label: "Address",
       placeholder: "8138 Mokattam",
-      name: "adress",
+      name: "address",
       disable: false,
     },
     {
@@ -100,10 +113,29 @@ const EditDetails = () => {
       disable: true,
     },
   ];
+  const handleOnSubmit = async (values, errors) => {
+    if (Object.keys(errors).length === 0) {
+      try {
+        const res = await axios.post(
+          "http://localhost:3001/api/user/editDetails",
+          values
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div>
       <Header />
-      <MyForm inputArr={inputArr} title="Edit Details" buttText="Confirm Edit" />
+      <MyForm
+        inputArr={inputArr}
+        type="editDetails"
+        title="Edit Details"
+        buttText="Confirm Edit"
+        handleSub={handleOnSubmit}
+      />
     </div>
   );
 };

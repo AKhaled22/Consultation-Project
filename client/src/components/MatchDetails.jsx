@@ -15,7 +15,7 @@ const MatchDetails = ({
   mainReferee,
   linesman1,
   linesman2,
-  
+
   hideButton,
 }) => {
   return (
@@ -75,7 +75,14 @@ const MatchDetails = ({
           </div>
         </div>
       </div>
-      <Button className={hideButton && "d-none"}  buttText={"Get Ticket"} />
+      <Button
+        className={localStorage.getItem("Role") == "G" && "d-none"}
+        buttText={
+          localStorage.getItem("Role") == "F"
+            ? "Get Ticket"
+            : "View Reserved Seats"
+        }
+      />
     </div>
   );
 };

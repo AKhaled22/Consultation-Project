@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import sponsors from "../assets/sponsors.png";
 import MatchDetails from "../components/MatchDetails";
 import ManchesterUnitedLogo from "../assets/Manchester_United_FC_crest.svg.png";
@@ -8,9 +8,35 @@ import AlAhlyLogo from "../assets/AlAhly.png";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
-import Pagination from 'react-bootstrap/Pagination'
+import Pagination from "react-bootstrap/Pagination";
+import { useDispatch } from "react-redux";
+import { setActivePage } from "../features/pageSlice";
+import axios from "axios";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(setActivePage("home")); //AAO
+    const getRole = async () => {
+      try {
+        const res = await axios.get("http://localhost:3001/api/user/getRole", {
+          headers: {
+            Authorization: localStorage.getItem("Token"),
+          },
+        });
+        console.log(res);
+        if (res.status === 200) {
+          localStorage.setItem("Role", res.data.Role);
+        }
+      } catch (err) {
+        console.log(err);
+        localStorage.setItem("Role", "G");
+      }
+    };
+    getRole();
+  }, []);
+
   const [activePage, setActivePage] = useState(2);
   const pageSize = 2;
   const matches = [
@@ -74,54 +100,56 @@ const Home = () => {
       linesman1: "Ahmed Samir",
       linesman2: "Mohamed Ahmed",
     },
-
   ];
 
   const handleOnClick = (i) => {
     if (i == 0) {
       if (activePage > 1) {
-        setActivePage(activePage - 1)
+        setActivePage(activePage - 1);
       }
     } else if (i == numOfPages + 1) {
-
       if (activePage < numOfPages) {
-        setActivePage(activePage + 1)
-
+        setActivePage(activePage + 1);
       }
-
     } else {
-      setActivePage(i)
-
+      setActivePage(i);
     }
     console.log(activePage);
-  }
+  };
   const numOfPages = Math.ceil(matches.length / pageSize);
-  let items = []
-  items.push(<Pagination.Prev onClick={() => { handleOnClick(0) }} />)
+  let items = [];
+  items.push(
+    <Pagination.Prev
+      onClick={() => {
+        handleOnClick(0);
+      }}
+    />
+  );
   for (let i = 1; i <= numOfPages; i++) {
     items.push(
-
-
-      <Pagination.Item key={i} active={activePage == i} onClick={() => { handleOnClick(i) }}>
+      <Pagination.Item
+        key={i}
+        active={activePage == i}
+        onClick={() => {
+          handleOnClick(i);
+        }}
+      >
         {i}
       </Pagination.Item>
     );
-
   }
-  items.push(<Pagination.Next onClick={() => { handleOnClick(numOfPages + 1) }} />)
+  items.push(
+    <Pagination.Next
+      onClick={() => {
+        handleOnClick(numOfPages + 1);
+      }}
+    />
+  );
 
-
-
-
-  const matchesToShow = matches.slice((activePage - 1) * pageSize, (activePage - 1) * pageSize + pageSize)
-
-
-
-
-
-
-
-
+  const matchesToShow = matches.slice(
+    (activePage - 1) * pageSize,
+    (activePage - 1) * pageSize + pageSize
+  );
 
   return (
     <>
@@ -155,8 +183,6 @@ const Home = () => {
                   />
                 );
               })}
-
-
           </div>
           <Pagination>{items}</Pagination>
         </div>
@@ -174,12 +200,9 @@ const Home = () => {
             <img className="logos-sidebar" src={LiverpoolLogo} />
             <img className="logos-sidebar" src={LiverpoolLogo} />
             <img className="logos-sidebar" src={LiverpoolLogo} />
-
           </div>
         </div>
       </div>
-
-
     </>
   );
 };

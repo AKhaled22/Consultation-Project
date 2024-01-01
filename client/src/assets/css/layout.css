@@ -18,8 +18,6 @@ body {
   font-family: "donuts";
 }
 
-
-
 h1 {
   font-size: 4rem;
 }
@@ -94,14 +92,12 @@ form {
   padding: 4rem 20rem;
 }
 
-.pagination{
+.pagination {
   margin: 20px;
-  
-    /* bottom: 0;
+
+  /* bottom: 0;
     position: absolute; */
 }
-
-
 
 .homepage-container {
   background-image: url(../Ali\ Maaloul\ -\ FootyRenders.png);
@@ -162,7 +158,7 @@ form {
   }
 }
 
-.matchdetailscards-home{
+.matchdetailscards-home {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -171,7 +167,7 @@ form {
   min-height: 100vh;
 }
 
-.matchdetails-home{
+.matchdetails-home {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -276,26 +272,26 @@ button {
   -moz-box-shadow: 0px 1px 236px -1px rgba(0, 0, 0, 0.75); */
 }
 
-.page-link{
+.page-link {
   color: var(--blue);
-    background-color: white;
-    border-color: white;
+  background-color: white;
+  border-color: white;
 }
 
-.active>.page-link{
+.active > .page-link {
   color: white;
-    background-color: var(--blue);
-    border-color: var(--blue);
+  background-color: var(--blue);
+  border-color: var(--blue);
 }
 
-.page-item:first-child .page-link{
-  border-top-left-radius: 50% ;
-  border-bottom-left-radius: 50% ;
+.page-item:first-child .page-link {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
 }
 
-.page-item:last-child .page-link{
-  border-top-right-radius: 50% ;
-  border-bottom-right-radius: 50% ;
+.page-item:last-child .page-link {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
 }
 
 .match-details-container:hover {
@@ -393,8 +389,6 @@ button {
   display: flex;
   flex-wrap: wrap;
 }
-
-
 
 .home-team-pack {
   color: var(--grey);
@@ -602,7 +596,7 @@ button {
     /* height: 10%; */
     /* margin: 20px auto;
     background-color: transparent;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */ 
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */
 
     box-shadow: 0px 1px 50px -10px var(--blue);
     -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
@@ -717,7 +711,7 @@ button {
     /* height: 10%; */
     /* margin: 20px auto;
     background-color: transparent;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */ 
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png"); */
 
     box-shadow: 0px 1px 50px -10px var(--blue);
     -webkit-box-shadow: 0px 1px 50px -10px var(--blue);
@@ -1091,58 +1085,46 @@ button {
 }
 
 /******** Deletion Page **********/
-.delete-admin-page-text-div
-{
-display: flex;
-justify-content: center;
-text-align: center;
-padding-top: 2rem;
+.delete-admin-page-text-div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 2rem;
 }
-.main-text-class-text
-{
-    font-size: 2.5rem;
-    font-weight: 640;
-    text-decoration: none;
+.main-text-class-text {
+  font-size: 2.5rem;
+  font-weight: 640;
+  text-decoration: none;
 }
 /**Division of searchbar and results **/
-.delete-admin-page-search-div-searchbar-table 
-{
-    width: 100%;
-    margin-top: 1rem;
+.delete-admin-page-search-div-searchbar-table {
+  width: 100%;
+  margin-top: 1rem;
 }
-.delete-admin-page-search-div-searchbar-table  th
-{
-    margin-bottom: 0.3rem;
+.delete-admin-page-search-div-searchbar-table th {
+  margin-bottom: 0.3rem;
 }
-.delete-admin-page-search-div-searchbar-table td
-{
-    padding-bottom: 0.25rem;
-    padding-top: 0.25rem;
-
+.delete-admin-page-search-div-searchbar-table td {
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
 }
-.delete-admin-page-search-div-searchbar-table td:first-child
-{
-    padding-left: 0.25rem;
-
-
+.delete-admin-page-search-div-searchbar-table td:first-child {
+  padding-left: 0.25rem;
 }
-.delete-admin-page-search-div-searchbar-table  tr:nth-child(even) 
-{
-    background-color: #fffdfd; 
-
+.delete-admin-page-search-div-searchbar-table tr:nth-child(even) {
+  background-color: #fffdfd;
 }
-.searchbar{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+.searchbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-.searchbar-nafso{
-    width: 100%;
-    margin-right:0.5rem;
+.searchbar-nafso {
+  width: 100%;
+  margin-right: 0.5rem;
 }
 
-
-.your-tickets{
+.your-tickets {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1153,8 +1135,7 @@ padding-top: 2rem;
   font-size: 70%;
 }
 
-
-.danger-butt{
+.danger-butt {
   border: none;
   background-color: var(--bs-danger);
   color: white;
@@ -1164,14 +1145,13 @@ padding-top: 2rem;
 .danger-butt:hover {
   filter: brightness(1.5);
 }
-.danger-butt:active{
+.danger-butt:active {
   animation: beat 0.3s ease-in-out;
-
 }
 
 :root {
   --blue: #012f98;
   --white: #f3f7f8;
   --grey: #e5e5ed;
-  --bs-link-hover-color : var(--blue)
+  --bs-link-hover-color: var(--blue);
 }
