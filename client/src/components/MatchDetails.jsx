@@ -3,7 +3,7 @@ import Button from "./Button";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const MatchDetails = ({
   homeTeamLogo,
@@ -19,9 +19,8 @@ const MatchDetails = ({
 
   hideButton,
 }) => {
-
   const userType = useSelector((state) => state.user.value);
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div className="match-details-container">
       <div className="upper-match-div">
@@ -38,15 +37,17 @@ const dispatch = useDispatch()
           <div className="home-club-name">{homeTeam} (H)</div>
         </div>
         <div className="time-container">
-          {(() => {
-            const [hours, minutes] = Time.split(":").map(Number);
-            const formattedHours =
-              hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
-            const amPm = hours >= 12 ? "PM" : "AM";
-            return `${formattedHours}:${minutes
-              .toString()
-              .padStart(2, "0")} ${amPm}`;
-          })()}
+          {Time &&
+            (() => {
+              const [hours, minutes] = Time.split(":").map(Number);
+              const formattedHours =
+                hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
+              const amPm = hours >= 12 ? "PM" : "AM";
+              return `${formattedHours}:${minutes
+                .toString()
+                .padStart(2, "0")} ${amPm}`;
+            })()}
+          {/* {Time} */}
         </div>
 
         <div className="away-team-pack">
@@ -81,11 +82,7 @@ const dispatch = useDispatch()
       </div>
       <Button
         className={userType == "G" && "d-none"}
-        buttText={
-          userType == "F"
-            ? "Get Ticket"
-            : "View Reserved Seats"
-        }
+        buttText={userType == "F" ? "Get Ticket" : "View Reserved Seats"}
       />
     </div>
   );

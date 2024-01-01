@@ -99,17 +99,37 @@ exports.editDetails = async (req, res) => {
   const a = req.body;
 };
 exports.getDetails = async (req, res) => {
-  const userID = req.body;
+  const { authorization } = req.headers; //AAO
+  if (authorization != undefined) {
+    var decoded = jwt.verify(authorization, key);
+    const user = await User.findById(decoded.data);
+    if (!user) {
+      res.status(401).json({
+        error: "User not found!",
+      });
+    } else {
+      console.log("ANA HENA USERRR");
+      // console.log(user);
+      res.status(200).json({
+        user: user,
+      });
+      console.log("ANA HENA USERRR");
+    }
+  } else {
+    res.status(401).json({
+      error: "User not found!",
+    });
+  }
 };
 
 exports.getRole = async (req, res) => {
-  const {authorization} = req.headers;
-  console.log("token1 " , authorization);
+  const { authorization } = req.headers;
+  console.log("token1 ", authorization);
   if (authorization != undefined) {
     var decoded = jwt.verify(authorization, key);
     console.log("decoded \n");
     console.log(decoded);
-  //   // console.log(token);
+    //   // console.log(token);
 
     const user = await User.findById(decoded.data);
 

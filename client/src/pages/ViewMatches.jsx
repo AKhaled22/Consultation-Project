@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MatchDetails from "../components/MatchDetails";
 import Header from "../components/Header";
 import ManchesterUnitedLogo from "../assets/Manchester_United_FC_crest.svg.png";
@@ -9,13 +9,19 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
-
+const teamLogoMapping = {
+  "../assets/Manchester_United_FC_crest.svg.png": ManchesterUnitedLogo,
+  "../assets/Liverpool_FC.svg.png": LiverpoolLogo,
+  "../assets/ZamalekSC.png": ZamalekLogo,
+  "../assets/AlAhly.png": AlAhlyLogo,
+};
 const ViewMatches = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    dispatch(setActivePage("viewmatches"));
+    dispatch(setActivePage("viewmatches")); //A
     const getMatches = async () => {
       try {
         const res = await axios.get(
@@ -23,7 +29,7 @@ const ViewMatches = () => {
         );
 
         if (res.status === 200) {
-          console.log(res.data);
+          setMatches(res.data.matches);
         }
       } catch (err) {
         console.log(err);
@@ -33,77 +39,49 @@ const ViewMatches = () => {
     getMatches();
   }, []);
 
-  const matches = [
-    {
-      homeTeam: "Manchester United",
-      homeTeamLogo: ManchesterUnitedLogo,
-      awayTeam: "Manchester City",
-      awayTeamLogo: LiverpoolLogo,
-      stadium: "Old Trafford",
-      date: "2021-10-24",
-      Time: "12:10",
-      mainReferee: "Michael Oliver",
-      linesman1: "Stuart Burt",
-      linesman2: "Simon Bennett",
-    },
-    {
-      homeTeam: "Zamalek",
-      homeTeamLogo: ZamalekLogo,
-      awayTeam: "Al Ahly",
-      awayTeamLogo: AlAhlyLogo,
-      stadium: "Cairo Stadium",
-      date: "2021-10-24",
-      Time: "00:20",
-      mainReferee: "Mohamed Farouk",
-      linesman1: "Ahmed Samir",
-      linesman2: "Mohamed Ahmed",
-    },
-    {
-      homeTeam: "Zamalek",
-      homeTeamLogo: ZamalekLogo,
-      awayTeam: "Al Ahly",
-      awayTeamLogo: AlAhlyLogo,
-      stadium: "Cairo Stadium",
-      date: "2021-10-24",
-      Time: "00:20",
-      mainReferee: "Mohamed Farouk",
-      linesman1: "Ahmed Samir",
-      linesman2: "Mohamed Ahmed",
-    },
-    {
-      homeTeam: "Zamalek",
-      homeTeamLogo: ZamalekLogo,
-      awayTeam: "Al Ahly",
-      awayTeamLogo: AlAhlyLogo,
-      stadium: "Cairo Stadium",
-      date: "2021-10-24",
-      Time: "00:20",
-      mainReferee: "Mohamed Farouk",
-      linesman1: "Ahmed Samir",
-      linesman2: "Mohamed Ahmed",
-    },
-  ];
   return (
     <div>
       <Header />
       <h2 className="match-details-title">Matches</h2>
-      {matches.map((match) => {
-        return (
-          <MatchDetails
-            homeTeamLogo={match.homeTeamLogo}
-            homeTeam={match.homeTeam}
-            awayTeamLogo={match.awayTeamLogo}
-            awayTeam={match.awayTeam}
-            stadium={match.stadium}
-            date={match.date}
-            Time={match.Time}
-            mainReferee={match.mainReferee}
-            linesman1={match.linesman1}
-            linesman2={match.linesman2}
-          />
-        );
-      })}
-      ;
+      {matches.length > 0 ? (
+        matches.map(
+          (match) => (
+            console.log("STARTsdnsabjsbjhdsbhjbshjfbjshdbfhdsbchj"),
+            (match.homeTeamLogo = teamLogoMapping[match.homeTeamLogo]),
+            console.log(match.homeTeamLogo),
+            console.log(match),
+            (console.log("STARTT"),
+            console.log("Match Object:", match),
+            console.log(match.homeTeamLogo),
+            console.log(match.homeTeam),
+            console.log(match.awayTeamLogo),
+            console.log(match.awayTeam),
+            console.log(match.stadium),
+            console.log(match.date),
+            console.log(match.time),
+            console.log(match.mainReferee),
+            console.log(match.linesman1),
+            console.log(match.linesman2),
+            console.log("END"),
+            (
+              <MatchDetails
+                homeTeamLogo={match.homeTeamLogo}
+                homeTeam={match.homeTeam}
+                awayTeamLogo={match.awayTeamLogo}
+                awayTeam={match.awayTeam}
+                stadium={match.stadium}
+                date={match.date}
+                Time={match.time}
+                mainReferee={match.mainReferee}
+                linesman1={match.linesman1}
+                linesman2={match.linesman2}
+              />
+            ))
+          )
+        )
+      ) : (
+        <p>No matches available</p>
+      )}
     </div>
   );
 };
