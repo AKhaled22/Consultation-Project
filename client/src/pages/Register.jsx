@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import MyForm from '../components/MyForm'
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
+import axios from 'axios'
 const Register = () => {
 
     const dispatch = useDispatch()
@@ -70,6 +71,7 @@ const Register = () => {
             // optionsArr:
             radioOne: "Male",
             radioTwo: "Female"
+            
 
         },
         {
@@ -115,11 +117,28 @@ const Register = () => {
     ]
 
 
+    const handleOnSubmit = async (values , errors) => {
+        
+        if(Object.keys(errors).length === 0){
+
+            try{
+                const res = await axios.post("http://localhost:3001/api/user/register",values)
+                console.log(res);
+            }catch(err){
+                console.log(err);
+            }
+            
+           
+    
+         
+        }
+    }
+
     return (
         <div>
             <Header />
 
-            <MyForm type="register" inputArr={inputArr} title="Register" buttText="Register" />
+            <MyForm type="register" inputArr={inputArr} title="Register" buttText="Register" handleSub={handleOnSubmit} />
 
 
 

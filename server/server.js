@@ -1,4 +1,4 @@
-// const app = require("./app");
+const app = require("./app");
 // const cloudinary = require("cloudinary");
 
 const ticket = require("./models/ticketModel");
@@ -10,31 +10,75 @@ const user = require("./models/userModel");
 
 const { connectDatabase, closeDatabase } = require("./config/database");
 
-connectDatabase()
-  .then(() => {
-    const hometeam = new team({
-      name: "manchester united",
-      logo: "logo",
-    });
-    const awayteam = new team({
-      name: "liverpool",
-      logo: "logo",
-    });
-    const saveTeam = async (team) => {
-      try {
-        await team.save();
-        console.log("team saved");
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    saveTeam(hometeam);
-    saveTeam(awayteam);
-  })
-  .then(async () => {
-    await closeDatabase();
-  });
-//await closeDatabase();
+
+
+
+app.listen( 3001,() => {
+  console.log("server is running")
+  connectDatabase()
+
+})
+
+// const saveTeam = async (team) => {
+//         try {
+//           await team.save();
+//           console.log("team saved");
+//         } catch (error) {
+//           console.log(error);
+//         }}
+
+
+// (async () => {
+//   // Connect to the database
+//   await connectDatabase();
+
+//   // Create team instances
+//   const hometeam = new team({
+//     name: 'Manchester United',
+//     logo: 'logo',
+//   });
+//   const awayteam = new team({
+//     name: 'Liverpool',
+//     logo: 'logo',
+//   });
+
+//   // Save teams
+//   await saveTeam(hometeam);
+//   await saveTeam(awayteam);
+
+//   // Close the database connection
+//   await closeDatabase();
+// })();
+
+
+
+
+// connectDatabase()
+//   // .then(() => {
+//     const hometeam = new team({
+//       name: "manchester united",
+//       logo: "logo",
+//     });
+//     const awayteam = new team({
+//       name: "liverpool",
+//       logo: "logo",
+//     });
+//     const saveTeam = async (team) => {
+//       try {
+//         await team.save();
+//         console.log("team saved");
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     };
+//     saveTeam(hometeam);
+//     saveTeam(awayteam);
+//   // })
+//   // .then( () => {
+//   // closeDatabase();
+//   // })
+  
+// closeDatabase();
 // const saveUser = async (ahmed) => {
 //   try {
 //     // await ahmed.save();
