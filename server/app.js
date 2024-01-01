@@ -15,10 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(errorMiddleware)
 
 const user = require("./routes/userRoute");
+const stadium = require("./routes/stadiumRoute");
 
 
 
 app.use("/api/user", user);
+app.use("/api/stadium", stadium);
 
 
 // app.use(express.static(path.join(__dirname, "../frontend/build")));

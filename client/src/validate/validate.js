@@ -39,16 +39,8 @@ const Validation = (type) => {
     // }
 
     addstadium: {
-      StadName: validateSchema['StadName'],
-      StadRows: validateSchema['StadRows'],
-      StadCity: validateSchema['StadCity'],
-      StadSeats: validateSchema['StadSeats']
-    },
-    
-    addstadium: {
     StadName: validateSchema['StadName'],
     StadRows: validateSchema['StadRows'],
-    StadCity: validateSchema['StadCity'],
     StadSeats: validateSchema['StadSeats']
     },
 
