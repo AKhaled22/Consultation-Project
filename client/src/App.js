@@ -8,9 +8,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import MatchDetails from "./components/MatchDetails";
-import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register , SysAdministrator , TicketReservation , ViewMatches , YourTickets} from './pages'
-import AdminDelete from './pages/AdminDelete';
-import Admin from './pages/Admin';
+import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register , Admin , AdminDelete , TicketReservation , ViewMatches , YourTickets} from './pages'
+
 // import  from 'react-redux'
 // import { setActivePage } from './features/pageSlice'
 
@@ -33,7 +32,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgetpassword" element={<Login />} />
-            <Route path="/admin" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/matches" element={<Login />} />
             <Route path="/creatematch" element={<CreateMatch />} />
             <Route path="/addstadium" element={<AddStadium />} />
@@ -43,6 +42,7 @@ function App() {
             <Route path="/matchdetails" element={<MatchDetails />} />
             <Route path="/viewmatches" element={<ViewMatches />} />
             <Route path="/yourtickets" element={<YourTickets />} />
+            <Route path="/admindelete" element={<AdminDelete />} />
 
             <Route path="*" element={<Home />} />
           </Routes>

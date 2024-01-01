@@ -11,7 +11,7 @@ import sideRefLogo from "../assets/sideRefLogo.png";
 import Pagination from 'react-bootstrap/Pagination'
 
 const Home = () => {
-  const [activePage, setActivePage] = useState(2);
+  const [activePage, setActivePage] = useState(1);
   const pageSize = 2;
   const matches = [
     {
