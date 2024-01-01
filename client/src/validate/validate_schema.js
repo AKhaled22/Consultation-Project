@@ -21,5 +21,16 @@ export const validateSchema = {
   terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
   gender: yup.string().required('Please select an option'),
   type: yup.string().required('Please select an option'),
-
+  StadName:yup.string().required("Stadium name is required"),
+  StadRows:yup.number().positive().integer().required('Number of seats is required'),
+  StadCity:yup.string().required('Please select a city'),
+  StadSeats:yup.number().positive().integer().required('Number of seats is required'),
+  HomeTeam:yup.string().required('Please select an option'),
+  AwayTeam:yup.string().required('Please select an option'),
+  MatchVenue:yup.string().required('Please select an option'),
+  date:yup.date().required("Match date is required"),
+  time: yup.string().required('Match time is required'),
+  MainReferee:yup.string().required('Please select an option'),
+  Linesman1:yup.string().required('Please select an option'),
+  Linesman2:yup.string().required('Please select an option'),
 };

@@ -183,7 +183,7 @@ const CreateMatch = () => {
         <div>
             <Sidebar SidebarData={SidebarData}/>
             <Header />
-            <MyForm inputArr={inputArr} title="Create Match" buttText="Create Match" />
+            <MyForm inputArr={inputArr} type="creatematch" title="Create Match" buttText="Create Match" />
         </div>
     )
 }

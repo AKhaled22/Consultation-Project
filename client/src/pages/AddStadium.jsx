@@ -99,7 +99,7 @@ const AddStadium = () => {
         <div>
             <Sidebar SidebarData={SidebarData}/>
             <Header />
-            <MyForm inputArr={inputArr} title="Add Stadium" buttText="Add Stadium" />
+            <MyForm inputArr={inputArr} type="addstadium" title="Add Stadium" buttText="Add Stadium" />
         </div>
     )
 }
