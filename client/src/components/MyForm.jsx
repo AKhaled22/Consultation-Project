@@ -2,91 +2,49 @@ import React from "react";
 import Input from "./Input.jsx";
 import { Link } from "react-router-dom";
 import Button from "./Button.jsx";
+import axios from 'axios'
 
 
 // import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import * as formik from 'formik';
-import * as yup from 'yup';
+// import * as formik from 'formik';
+// import * as yup from 'yup';
 
 import Validation from "../validate/validate.js";
 
 
-const myForm = ({ title, inputArr, buttText, type }) => {
 
-  const { Formik } = formik;
-  console.log(Validation(type));
+// import React from "react";
+// import Input from "./Input.jsx";
+// import Button from "./Button.jsx";
+import { Formik, Form } from "formik";
+// import * as yup from 'yup';
+// import axios from 'axios';
+// import Validation from "../validate/validate.js";
 
-  // const schema = yup.object().shape({
-  //   firstName: yup.string().required("First Name is required"),
-  //   lastName: yup.string().required("Last Name is required"),
-  //   // username: yup.string().required(),
-  //   email: yup.string().required("Email is required"),
+const MyForm = ({ title, inputArr, buttText, type, handleSub }) => {
+  const validationSchema = Validation(type);
 
-  //   city: yup.string().required("City is required"),
-  //   address: yup.string().required("Address is required"),
-  //   password: yup.string().required("Password is required"),
-  //   dob: yup.date().required("Date of Birth is required"),
-  //   terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
-  // });
-
-  const handleSubmit = (values) => {
-
-    console.log(values);
-
-  }
+    // const handleSubmit = async (values, { setSubmitting }) => {
+    //   console.log("hii");
+    // };
 
   return (
     <div className="myForm">
-      {/* <form>
-
-        {inputArr.map((inp) => {
-          return (
-            <Input
-              label={inp.label}
-              name={inp.name}
-              optionsArr={inp.optionsArr}
-              placeholder={inp.placeholder}
-              radioOne={inp.radioOne}
-              radioTwo={inp.radioTwo}
-              type={inp.type}
-              isDisabled={inp.disable}
-            />
-          );
-        })}
-
-        {title == "Login" ? (
-          <Link to="/forgetpassword">Forget Password? </Link>
-        ) : null}
-
-        <Button buttText={buttText} />
-      </form> */}
-
-
-
-      {/* <h1>{title}</h1> */}
-
-
-
       <Formik
-        validationSchema={Validation(type)}
-        onSubmit={console.log}
-        initialValues={{
-
-        }}
+        validationSchema={validationSchema}
+        // onSubmit={console.log}
+        initialValues={{}}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
-          <Form noValidate onSubmit={handleSubmit}>
-
-
+          <Form noValidate>
             {inputArr && inputArr.map((inp, i) =>
-            
               <Input
+                key={i}
                 onChange={handleChange}
-                // isInvalid={!!errors.city}
                 value={values[inp.name]}
                 error={errors[inp.name]}
                 label={inp.label}
@@ -97,36 +55,19 @@ const myForm = ({ title, inputArr, buttText, type }) => {
                 radioTwo={inp.radioTwo}
                 type={inp.type}
                 isDisabled={inp.disable}
-              />)}
-
-
-            <Form.Group className="mb-3 d-none">
-              <Form.Check
-                required
-                name="terms"
-                label="Agree to terms and conditions"
-                onChange={handleChange}
-                isInvalid={!!errors.terms}
-                feedback={errors.terms}
-                feedbackType="invalid"
-
               />
-            </Form.Group>
+            )}
 
-
-
-            <Button type="submit" buttText={buttText} />
+            <Button type="button" buttText={buttText} onClick={() => {handleSub(values,errors)}} />
           </Form>
         )}
       </Formik>
-
-
-
     </div>
   );
 };
 
-export default myForm;
+export default MyForm;
+
 
 
 

@@ -10,6 +10,9 @@ const Validation = (type) => {
       address: validateSchema['address'],
       dob: validateSchema['dob'],
       city: validateSchema['city'],
+      gender: validateSchema['gender'],
+      type: validateSchema['type'],
+
 
 
       email: validateSchema['email'],
