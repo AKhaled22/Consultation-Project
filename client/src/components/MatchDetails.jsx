@@ -84,6 +84,11 @@ const MatchDetails = ({
         className={userType == "G" && "d-none"}
         buttText={userType == "F" ? "Get Ticket" : "View Reserved Seats"}
       />
+      <br />
+      <Button
+        className={(userType == "F" || userType == "G") && "d-none"}
+        buttText={"Edit Match"}
+      />
     </div>
   );
 };
