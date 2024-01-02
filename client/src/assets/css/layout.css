@@ -1126,15 +1126,13 @@ button {
 
 
 
-@media (min-width: 768px) and (max-width: 959px) {
-  .col_1{
-      display:none;
-      width:0;
-      height:0;
-      opacity:0;
-      visibility: collapse;       
+@media (max-width: 768px) {
+  .mohy {
+    display: none;
+    /*background-color: red;*/
   } 
 }
+
 
 /** admin page khelset **/
 .your-tickets {

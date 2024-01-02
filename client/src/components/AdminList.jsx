@@ -9,8 +9,8 @@ const AdminList = ({ usersArray, onDelete, onInsert }) => {
           <tr>
             <th>Username</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th className='mohy'>Email</th>
+            <th className='mohy'>Role</th>
             <th>Insert</th>
             <th>Delete</th>
           </tr>

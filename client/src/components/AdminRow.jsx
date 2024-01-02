@@ -8,8 +8,8 @@ const AdminRow = ({ userArr, onInsert, onDelete }) => {
     <tr>
       <td>{userArr.username}</td>
       <td>{userArr.firstname} {userArr.lastname}</td>
-      <td>{userArr.email}</td>
-      <td>{userArr.role}</td>
+      <td className='mohy'>{userArr.email}</td>
+      <td className='mohy'>{userArr.role}</td>
       <td>
         <Button onClick={() => onInsert(userArr.username)} buttText={'Insert'} />
       </td>
