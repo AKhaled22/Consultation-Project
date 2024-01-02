@@ -17,6 +17,9 @@ app.use("/api/user", user);
 const match = require("./routes/matchRoute");
 app.use("/api/match", match);
 
+const admin = require("./routes/adminRoute");
+app.use("/api/admin", admin);
+console.log(admin);
 // app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // app.get("*", (req, res) => {
