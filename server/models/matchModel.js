@@ -19,6 +19,7 @@ const matchSchema = mongoose.Schema({
   date: {
     type: Date,
     required: [true, "Please Enter Match Date"],
+    get: (date) => date.toLocaleDateString("en-US"),
   },
   time: {
     type: String,

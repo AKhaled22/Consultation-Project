@@ -17,7 +17,7 @@ exports.loginUser = async (req, res) => {
         data: userData._id,
       },
       key,
-      { expiresIn: "1h" }
+      { expiresIn: "1d" }
     );
 
     res.status(200).json({
@@ -69,7 +69,7 @@ exports.registerUser = async (req, res) => {
         data: userData._id,
       },
       key,
-      { expiresIn: "1h" }
+      { expiresIn: "1d" }
     );
 
     res.status(200).json({
@@ -96,24 +96,100 @@ exports.registerUser = async (req, res) => {
 //   const userID = jwt.verify(token, key);
 // };
 exports.editDetails = async (req, res) => {
-  const a = req.body;
-};
-exports.getDetails = async (req, res) => {
-  const { authorization } = req.headers; //AAO
-  if (authorization != undefined) {
-    var decoded = jwt.verify(authorization, key);
-    const user = await User.findById(decoded.data);
-    if (!user) {
+  try {
+    const { authorization } = req.headers;
+
+    if (authorization != undefined) {
+      try {
+        console.log("USERNAME ", req.body.username);
+        var decoded = jwt.verify(authorization, key);
+        console.log("decoded \n");
+        console.log(decoded);
+
+        const {
+          username,
+          password,
+          firstname,
+          lastname,
+          city,
+          address,
+          email,
+        } = req.body;
+        const user = await User.findById(decoded.data);
+
+        if (!user) {
+          res.status(401).json({
+            error: "User not found!",
+          });
+        } else {
+          user.username = username;
+          user.password = password;
+          user.firstname = firstname;
+          user.lastname = lastname;
+          user.city = city;
+          user.address = address;
+          user.email = email;
+
+          try {
+            await user.save();
+            res.status(200).json({
+              message: "User Updated Successfully!",
+            });
+          } catch (err) {
+            console.log(err);
+            if (err.code === 11000) {
+              res.status(405).json({
+                error: `${Object.keys(err.keyValue)[0]} already used!`,
+              });
+            } else {
+              res.status(404).json({
+                err,
+              });
+            }
+          }
+        }
+      } catch (err) {
+        console.log(err);
+        res.status(401).json({
+          error: "User not found!",
+        });
+      }
+    } else {
       res.status(401).json({
         error: "User not found!",
       });
-    } else {
-      console.log("ANA HENA USERRR");
-      // console.log(user);
-      res.status(200).json({
-        user: user,
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+};
+
+exports.getDetails = async (req, res) => {
+  const { authorization } = req.headers; //AAO
+  if (authorization != undefined) {
+    try {
+      var decoded = jwt.verify(authorization, key);
+      const user = await User.findById(decoded.data);
+      if (!user) {
+        res.status(401).json({
+          error: "User not found!",
+        });
+      } else {
+        console.log("ANA HENA USERRR");
+        // console.log(user);
+        res.status(200).json({
+          user: user,
+        });
+        console.log("ANA HENA USERRR");
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(401).json({
+        error: "User not found!",
       });
-      console.log("ANA HENA USERRR");
     }
   } else {
     res.status(401).json({

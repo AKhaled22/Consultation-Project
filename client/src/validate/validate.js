@@ -34,7 +34,7 @@ const Validation = (type) => {
       lastname: validateSchema["lastName"],
 
       city: validateSchema["city"],
-      address: validateSchema["address"],
+      // address: validateSchema["address"],
       email: validateSchema["email"],
     },
     // 'forgot password': {

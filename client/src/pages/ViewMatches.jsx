@@ -48,7 +48,8 @@ const ViewMatches = () => {
           (match) => (
             console.log("STARTsdnsabjsbjhdsbhjbshjfbjshdbfhdsbchj"),
             (match.homeTeamLogo = teamLogoMapping[match.homeTeamLogo]),
-            console.log(match.homeTeamLogo),
+            (
+              /* console.log(match.homeTeamLogo),
             console.log(match),
             (console.log("STARTT"),
             console.log("Match Object:", match),
@@ -62,8 +63,7 @@ const ViewMatches = () => {
             console.log(match.mainReferee),
             console.log(match.linesman1),
             console.log(match.linesman2),
-            console.log("END"),
-            (
+            console.log("END"), */
               <MatchDetails
                 homeTeamLogo={match.homeTeamLogo}
                 homeTeam={match.homeTeam}
@@ -76,7 +76,7 @@ const ViewMatches = () => {
                 linesman1={match.linesman1}
                 linesman2={match.linesman2}
               />
-            ))
+            )
           )
         )
       ) : (
