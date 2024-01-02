@@ -45,6 +45,7 @@ const ViewMatches = () => {
       mainReferee: "Michael Oliver",
       linesman1: "Stuart Burt",
       linesman2: "Simon Bennett",
+      id: "6593271a632e6ccdabde2b69"
     },
     {
       homeTeam: "Zamalek",
@@ -57,6 +58,8 @@ const ViewMatches = () => {
       mainReferee: "Mohamed Farouk",
       linesman1: "Ahmed Samir",
       linesman2: "Mohamed Ahmed",
+      id:3
+
     },
     {
       homeTeam: "Zamalek",
@@ -69,6 +72,8 @@ const ViewMatches = () => {
       mainReferee: "Mohamed Farouk",
       linesman1: "Ahmed Samir",
       linesman2: "Mohamed Ahmed",
+      id:2
+
     },
     {
       homeTeam: "Zamalek",
@@ -81,6 +86,7 @@ const ViewMatches = () => {
       mainReferee: "Mohamed Farouk",
       linesman1: "Ahmed Samir",
       linesman2: "Mohamed Ahmed",
+      id:1
     },
   ];
   return (
@@ -100,6 +106,7 @@ const ViewMatches = () => {
             mainReferee={match.mainReferee}
             linesman1={match.linesman1}
             linesman2={match.linesman2}
+            handleButt={() => {navigate(`/ticketreservation/${match.id}`)}}
           />
         );
       })}

@@ -16,7 +16,7 @@ const MatchDetails = ({
   mainReferee,
   linesman1,
   linesman2,
-
+  handleButt,
   hideButton,
 }) => {
 
@@ -80,12 +80,13 @@ const dispatch = useDispatch()
         </div>
       </div>
       <Button
-        className={userType == "G" && "d-none"}
+        className={(userType == "G" || hideButton) && "d-none"}
         buttText={
           userType == "F"
             ? "Get Ticket"
             : "View Reserved Seats"
         }
+        onClick={handleButt}
       />
     </div>
   );

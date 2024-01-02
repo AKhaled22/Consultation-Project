@@ -20,7 +20,7 @@ import Validation from "../validate/validate.js";
 // import React from "react";
 // import Input from "./Input.jsx";
 // import Button from "./Button.jsx";
-import { Formik, Form } from "formik";
+import { Formik , Form } from "formik";
 // import * as yup from 'yup';
 // import axios from 'axios';
 // import Validation from "../validate/validate.js";

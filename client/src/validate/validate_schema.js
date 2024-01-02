@@ -25,4 +25,11 @@ export const validateSchema = {
     .string()
     .required("Confirm Password is required")
     .oneOf([yup.ref("password"), null], "Passwords must match"),
+    cardHolderName: yup.string().required("Name is required"),
+    cardNumber: yup.number().required("Card number is required"),
+    expiryDate: yup.date().required("Expiry date is required"),
+    code: yup
+    .string()
+    .required('CCV is required')
+    .matches(/^\d{3,4}$/, 'CCV must be a string of 3 or 4 numbers'),
 };

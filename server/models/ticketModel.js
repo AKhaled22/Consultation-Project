@@ -6,12 +6,12 @@ const ticketSchema = new mongoose.Schema({
     ref: "Match",
     required: [true, "Please Enter Match"],
   },
-  seats: [
-    {
-      type: String,
-      required: [true, "Please Enter Seat"],
-    },
-  ],
+  seat: {
+
+    type: String,
+    required: [true, "Please Enter Seat"],
+
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

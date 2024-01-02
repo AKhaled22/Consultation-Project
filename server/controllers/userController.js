@@ -106,9 +106,11 @@ exports.getRole = async (req, res) => {
   const {authorization} = req.headers;
   console.log("token1 " , authorization);
   if (authorization != undefined) {
+    try{
     var decoded = jwt.verify(authorization, key);
     console.log("decoded \n");
     console.log(decoded);
+    
   //   // console.log(token);
 
     const user = await User.findById(decoded.data);
@@ -126,6 +128,14 @@ exports.getRole = async (req, res) => {
         Role: user.role,
       });
     }
+
+  }catch(errr){
+    res.status(401).json({
+      Role: "G",
+    });
+
+  }
+
   } else {
     res.status(401).json({
       Role: "G",

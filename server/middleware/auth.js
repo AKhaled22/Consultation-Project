@@ -5,6 +5,7 @@ const key = "jndskjnwkjniefhwbnfvhbef";
 
 exports.isAuthenticatedUser = async (req, res, next) => {
   const {authorization} = req.headers;
+  console.log(authorization , "authhhh");
 
   // const {token} = req.cookie
   if (authorization!=undefined) {
