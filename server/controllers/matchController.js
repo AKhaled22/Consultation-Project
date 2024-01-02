@@ -106,4 +106,33 @@ exports.creatematch = async (req, res) => {
 
 exports.editMatch = async (req, res) => {};
 
-exports.getMatch = async (req, res) => {};
+exports.getMatch = async (req, res) => {
+  //const { authorization } = req.headers; //AAO
+  //if (authorization != undefined) {
+    try {
+      //var decoded = jwt.verify(authorization, key);
+      const match = await Match.findById(req.data);
+      if (!match) {
+        res.status(401).json({
+          error: "match not found!",
+        });
+      } else {
+        console.log("ANA HENA match");
+        console.log(match);
+        res.status(200).json({
+          match: match,
+        });
+        console.log("ANA HENA match");
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(401).json({
+        error: "Match not found!",
+      });
+    }
+  // } else {
+  //   res.status(401).json({
+  //     error: "User not found!",
+  //   });
+  //}
+};

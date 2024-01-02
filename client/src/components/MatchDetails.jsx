@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import Button from "./Button";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
@@ -179,9 +180,12 @@ const MatchDetails = ({
       />
       <br />
       <Button
-        className={(userType == "F" || userType == "G") && "d-none"}
-        buttText={"Edit Match"}
-      />
+        className={(userType === "F" || userType === "G") && "d-none"}
+      >
+        <Link to="/edit-match" style={{ textDecoration: 'none', color: 'inherit' }}>
+          Edit Match
+        </Link>
+      </Button>
     </div>
   );
 };
