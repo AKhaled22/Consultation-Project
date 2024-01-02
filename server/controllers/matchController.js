@@ -329,7 +329,7 @@ exports.getMatch = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(401).json({
-      error: "Match not found!",
+      error: "Error:Match not found!",
     });
   }
   // } else {

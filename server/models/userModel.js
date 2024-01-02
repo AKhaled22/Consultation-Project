@@ -7,43 +7,43 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    required: [true, "Please Enter Your Name"],
-    maxLength: [30, "Name cannot exceed 30 characters"],
-    minLength: [3, "Name should have more than 3 characters"],
+    required: [true, "Error:Please Enter Your Name"],
+    maxLength: [30, "Error:Name cannot exceed 30 characters"],
+    minLength: [3, "Error:Name should have more than 3 characters"],
   },
   password: {
     type: String,
-    required: [true, "Please Enter Your Password"],
-    minLength: [8, "Password should be greater than 8 characters"],
+    required: [true, "Error:Please Enter Your Password"],
+    minLength: [8, "Error:Password should be greater than 8 characters"],
     // select: false, AAO
   },
   firstname: {
     type: String,
-    required: [true, "Please Enter Your First Name"],
-    maxLength: [30, "First Name cannot exceed 30 characters"],
-    minLength: [3, "First Name should have more than 3 characters"],
+    required: [true, "Error:Please Enter Your First Name"],
+    maxLength: [30, "Error:First Name cannot exceed 30 characters"],
+    minLength: [3, "Error:First Name should have more than 3 characters"],
   },
   lastname: {
     type: String,
-    required: [true, "Please Enter Your Last Name"],
-    maxLength: [30, "Last Name cannot exceed 30 characters"],
-    minLength: [3, "Last Name should have more than 3 characters"],
+    required: [true, "Error:Please Enter Your Last Name"],
+    maxLength: [30, "Error:Last Name cannot exceed 30 characters"],
+    minLength: [3, "Error:Last Name should have more than 3 characters"],
   },
   birthdate: {
     type: Date,
-    required: [true, "Please Enter Your Birthdate"],
+    required: [true, "Error:Please Enter Your Birthdate"],
     get: (date) => date.toLocaleDateString("en-US"), //AAO
   },
   gender: {
     type: String,
-    required: [true, "Please Enter Your Gender"],
+    required: [true, "Error:Please Enter Your Gender"],
     enum: ["M", "F"],
   },
   city: {
     type: String,
-    required: [true, "Please Enter Your City"],
-    maxLength: [30, "City cannot exceed 30 characters"],
-    minLength: [3, "City should have more than 3 characters"],
+    required: [true, "Error:Please Enter Your City"],
+    maxLength: [30, "Error:City cannot exceed 30 characters"],
+    minLength: [3, "Error:City should have more than 3 characters"],
   },
   address: {
     type: String,
@@ -51,13 +51,13 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: [true, "Please Enter Your Email"],
+    required: [true, "Error:Please Enter Your Email"],
     unique: true,
-    validate: [validator.isEmail, "Please Enter a valid Email"],
+    validate: [validator.isEmail, "Error:Please Enter a valid Email"],
   },
   role: {
     type: String,
-    required: [true, "Please Enter Your Role"],
+    required: [true, "Error:Please Enter Your Role"],
     enum: ["M", "F", "A"],
   },
   approved: {

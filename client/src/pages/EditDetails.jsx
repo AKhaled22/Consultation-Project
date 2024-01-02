@@ -10,6 +10,7 @@ const EditDetails = () => {
   const dispatch = useDispatch();
   // const [user, setUser] = useState({});
   const [values, setValues] = useState({});
+  const [message, setMessage] = useState(null);
   let user = {};
   // let values = {};
   useEffect(() => {
@@ -163,10 +164,16 @@ const EditDetails = () => {
             },
           }
         );
+        setMessage("User updated successfully");
         console.log(res);
       } catch (err) {
-        console.log(err);
+        setMessage(err.response.data.error);
+        if (!message.includes("Error"))
+          setMessage("Error: " + err.response.data.error);
+        console.log(message);
       }
+    } else {
+      setMessage("Error Updating User");
     }
   };
   return (
@@ -184,6 +191,11 @@ const EditDetails = () => {
             handleSub={handleOnSubmit}
             edit="true"
           />
+          {message && (
+            <div style={{ color: message.includes("Error") ? "red" : "green" }}>
+              {message}
+            </div>
+          )}
         </>
       ) : (
         <h2 className="match-details-title">Edit Details</h2>

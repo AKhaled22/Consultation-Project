@@ -119,7 +119,7 @@ exports.editDetails = async (req, res) => {
 
         if (!user) {
           res.status(401).json({
-            error: "User not found!",
+            error: "Error:User not found!",
           });
         } else {
           user.username = username;
@@ -149,7 +149,8 @@ exports.editDetails = async (req, res) => {
               });
             } else {
               res.status(404).json({
-                err,
+                error:
+                  "Error:User was not added successfully, username and email must be unique!",
               });
             }
           }
@@ -157,18 +158,18 @@ exports.editDetails = async (req, res) => {
       } catch (err) {
         console.log(err);
         res.status(401).json({
-          error: "User not found!",
+          error: "Error:User not found!",
         });
       }
     } else {
       res.status(401).json({
-        error: "User not found!",
+        error: "Error:User not found!",
       });
     }
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      error: "Internal Server Error",
+      error: "Error:Internal Server Error",
     });
   }
 };
