@@ -182,13 +182,19 @@ const MatchDetails = ({
       <Button
         // className={userType == "G" && "d-none"}
         // buttText={userType == "F" ? "Get Ticket" : "View Reserved Seats"}
-        className={(userType == "G" || hideButton) && "d-none"}
+        className={
+          (userType == "G" || userType == "A" || hideButton) && "d-none"
+        }
         buttText={userType == "F" ? "Get Ticket" : "View Reserved Seats"}
-        onClick={handleButt}
+        onClick={() => {
+          navigate(`/ticketreservation/${matchID}`);
+        }}
       />
       <br />
       <Button
-        className={(userType === "F" || userType === "G") && "d-none"}
+        className={
+          (userType === "F" || userType === "G" || userType === "A") && "d-none"
+        }
         buttText="Edit Match"
         onClick={() => navigate(`/editmatch/${matchID}`)} //AAO
       >
