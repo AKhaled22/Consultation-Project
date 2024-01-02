@@ -174,6 +174,7 @@ exports.editMatch = async (req, res) => {
       });
     } else {
       console.log("hello");
+      const prev_avenue=match.MatchVenue;
       const {
         HomeTeam,
         AwayTeam,
@@ -249,6 +250,8 @@ exports.editMatch = async (req, res) => {
         date: date,
         time: time,
       });
+      if(prev_avenue!=avenue)
+        match.reservedseats=null;
       if (
         !findmatch &&
         !findmatch1 &&
