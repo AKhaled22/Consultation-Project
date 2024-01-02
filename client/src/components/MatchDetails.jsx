@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
 import { useDispatch, useSelector } from "react-redux";
+import ZamalekLogo from "../assets/ZamalekSC.png";
+import AlAhlyLogo from "../assets/AlAhly.png";
+import PyramidsLogo from "../assets/Pyramids_FC.png";
+import Ceramica from "../assets/CCFC.png";
+import Future from "../assets/FutureFc.png";
+import Masry from "../assets/Al_Masry_SC.png";
+import Bank from "../assets/NBA.png";
 
+import Mok from "../assets/Mok.png";
+import TalGeesh from "../assets/TalGeesh.png";
+import Alex from "../assets/Alex.png";
+import Phar from "../assets/Phar.png";
+import Smouha from "../assets/Smo.png";
+import Enp from "../assets/Enp.png";
+import Zed from "../assets/ZED.png";
+import Ismaily from "../assets/Ism.png";
+import Mahla from "../assets/Bald.png";
+import Dakh from "../assets/Dakh.png";
+import Gouna from "../assets/Go.png";
 const MatchDetails = ({
   homeTeamLogo,
   homeTeam,
@@ -16,7 +34,6 @@ const MatchDetails = ({
   mainReferee,
   linesman1,
   linesman2,
-
   hideButton,
 }) => {
   const userType = useSelector((state) => state.user.value);
@@ -30,7 +47,45 @@ const MatchDetails = ({
       <div className="main-match-div">
         <div className="home-team-pack">
           <img
-            src={homeTeamLogo}
+            src={
+              homeTeamLogo == 0
+                ? ZamalekLogo
+                : homeTeamLogo == 1
+                ? AlAhlyLogo
+                : homeTeamLogo == 2
+                ? PyramidsLogo
+                : homeTeamLogo == 3
+                ? Ceramica
+                : homeTeamLogo == 4
+                ? Future
+                : homeTeamLogo == 5
+                ? Masry
+                : homeTeamLogo == 6
+                ? Bank
+                : homeTeamLogo == 7
+                ? Mok
+                : homeTeamLogo == 8
+                ? TalGeesh
+                : homeTeamLogo == 9
+                ? Alex
+                : homeTeamLogo == 10
+                ? Phar
+                : homeTeamLogo == 11
+                ? Smouha
+                : homeTeamLogo == 12
+                ? Enp
+                : homeTeamLogo == 13
+                ? Zed
+                : homeTeamLogo == 14
+                ? Ismaily
+                : homeTeamLogo == 15
+                ? Mahla
+                : homeTeamLogo == 16
+                ? Dakh
+                : homeTeamLogo == 17
+                ? Gouna
+                : ""
+            } //AAO
             alt={homeTeam}
             className="team-logo home-logo"
           />
@@ -52,7 +107,45 @@ const MatchDetails = ({
 
         <div className="away-team-pack">
           <img
-            src={awayTeamLogo}
+            src={
+              awayTeamLogo == 0
+                ? ZamalekLogo
+                : awayTeamLogo == 1
+                ? AlAhlyLogo
+                : awayTeamLogo == 2
+                ? PyramidsLogo
+                : awayTeamLogo == 3
+                ? Ceramica
+                : awayTeamLogo == 4
+                ? Future
+                : awayTeamLogo == 5
+                ? Masry
+                : awayTeamLogo == 6
+                ? Bank
+                : awayTeamLogo == 7
+                ? Mok
+                : awayTeamLogo == 8
+                ? TalGeesh
+                : awayTeamLogo == 9
+                ? Alex
+                : awayTeamLogo == 10
+                ? Phar
+                : awayTeamLogo == 11
+                ? Smouha
+                : awayTeamLogo == 12
+                ? Enp
+                : awayTeamLogo == 13
+                ? Zed
+                : awayTeamLogo == 14
+                ? Ismaily
+                : awayTeamLogo == 15
+                ? Mahla
+                : awayTeamLogo == 16
+                ? Dakh
+                : awayTeamLogo == 17
+                ? Gouna
+                : ""
+            }
             alt={awayTeam}
             className="team-logo away-logo"
           />

@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
-const teamLogoMapping = {
-  "../assets/Manchester_United_FC_crest.svg.png": ManchesterUnitedLogo,
-  "../assets/Liverpool_FC.svg.png": LiverpoolLogo,
-  "../assets/ZamalekSC.png": ZamalekLogo,
-  "../assets/AlAhly.png": AlAhlyLogo,
-};
+// const teamLogoMapping = [
+//   ManchesterUnitedLogo,
+//   LiverpoolLogo,
+//   ZamalekLogo,
+//   AlAhlyLogo,
+// ];
 const ViewMatches = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,6 +30,8 @@ const ViewMatches = () => {
 
         if (res.status === 200) {
           setMatches(res.data.matches);
+          // console.log("MATCHES", matches);
+          // console.log(res.data.matches);
         }
       } catch (err) {
         console.log(err);
@@ -44,12 +46,10 @@ const ViewMatches = () => {
       <Header />
       <h2 className="match-details-title">Matches</h2>
       {matches.length > 0 ? (
-        matches.map(
-          (match) => (
-            console.log("STARTsdnsabjsbjhdsbhjbshjfbjshdbfhdsbchj"),
-            (match.homeTeamLogo = teamLogoMapping[match.homeTeamLogo]),
-            (
-              /* console.log(match.homeTeamLogo),
+        matches.map((match) => (
+          /* console.log("TEAM MAP", teamLogoMapping[match.homeTeamLogo]),
+            (match.homeTeamLogo = teamLogoMapping[match.homeTeamLogo]), */
+          /* console.log(match.homeTeamLogo),
             console.log(match),
             (console.log("STARTT"),
             console.log("Match Object:", match),
@@ -64,21 +64,19 @@ const ViewMatches = () => {
             console.log(match.linesman1),
             console.log(match.linesman2),
             console.log("END"), */
-              <MatchDetails
-                homeTeamLogo={match.homeTeamLogo}
-                homeTeam={match.homeTeam}
-                awayTeamLogo={match.awayTeamLogo}
-                awayTeam={match.awayTeam}
-                stadium={match.stadium}
-                date={match.date}
-                Time={match.time}
-                mainReferee={match.mainReferee}
-                linesman1={match.linesman1}
-                linesman2={match.linesman2}
-              />
-            )
-          )
-        )
+          <MatchDetails
+            homeTeamLogo={match.homeTeamLogo}
+            homeTeam={match.homeTeam}
+            awayTeamLogo={match.awayTeamLogo}
+            awayTeam={match.awayTeam}
+            stadium={match.stadium}
+            date={match.date}
+            Time={match.time}
+            mainReferee={match.mainReferee}
+            linesman1={match.linesman1}
+            linesman2={match.linesman2}
+          />
+        ))
       ) : (
         <p>No matches available</p>
       )}

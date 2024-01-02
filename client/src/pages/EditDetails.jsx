@@ -174,9 +174,7 @@ const EditDetails = () => {
       <Header />
       {values.username !== undefined ? (
         <>
-          <h2 className="match-details-title">
-            Edit Details for {values.username}
-          </h2>
+          <h2 className="match-details-title">Edit Your Details</h2>
           <MyForm
             inputArr={inputArr}
             type="editDetails"

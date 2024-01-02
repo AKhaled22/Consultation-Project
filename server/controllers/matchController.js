@@ -8,6 +8,7 @@ exports.viewMatches = async (req, res) => {
   //await?
   const mappedMatches = await Promise.all(
     matches.map(async (match) => ({
+      matchID: match._id,
       homeTeam: (await Team.findOne({ _id: match.hometeam })).name,
       homeTeamLogo: (await Team.findOne({ _id: match.hometeam })).logo,
       awayTeam: (await Team.findOne({ _id: match.awayteam })).name,

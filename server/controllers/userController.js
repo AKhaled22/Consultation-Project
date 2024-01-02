@@ -132,6 +132,12 @@ exports.editDetails = async (req, res) => {
 
           try {
             await user.save();
+            // const newUser = await User.findById(user._id);
+            // console.log("NEW ADD");
+            // console.log(newUser.address);
+            // const allUsers = await User.find({ approved: false });
+            // console.log("ALL USERS");
+            // console.log(allUsers);
             res.status(200).json({
               message: "User Updated Successfully!",
             });
