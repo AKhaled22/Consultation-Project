@@ -49,6 +49,24 @@ const Validation = (type) => {
     //   password: validateSchema['password'],
     //   'confirm password': validateSchema['confirmPassword']
     // }
+
+    addstadium: {
+      StadName: validateSchema["StadName"],
+      StadRows: validateSchema["StadRows"],
+      StadSeats: validateSchema["StadSeats"],
+    },
+
+    creatematch: {
+      HomeTeam: validateSchema["HomeTeam"],
+      AwayTeam: validateSchema["AwayTeam"],
+      MatchVenue: validateSchema["MatchVenue"],
+      date: validateSchema["date"],
+      time: validateSchema["time"],
+      MainReferee: validateSchema["MainReferee"],
+      Linesman1: validateSchema["Linesman1"],
+      Linesman2: validateSchema["Linesman2"],
+      Ticketprice: validateSchema["Ticketprice"],
+    },
   };
 
   const schema = yup.object().shape(formSchema[type]);

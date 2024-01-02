@@ -17,6 +17,8 @@ app.use("/api/user", user);
 const match = require("./routes/matchRoute");
 app.use("/api/match", match);
 
+const stadium = require("./routes/stadiumRoute");
+app.use("/api/stadium", stadium);
 // app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // app.get("*", (req, res) => {

@@ -25,4 +25,68 @@ export const validateSchema = {
     .string()
     .required("Confirm Password is required")
     .oneOf([yup.ref("password"), null], "Passwords must match"),
+
+  StadName: yup.string().required("Stadium name is required"),
+  StadRows: yup
+    .number()
+    .positive()
+    .integer()
+    .required("Number of seats is required"),
+  StadCity: yup.string().required("Please select a city"),
+  StadSeats: yup
+    .number()
+    .positive()
+    .integer()
+    .required("Number of seats is required"),
+  HomeTeam: yup.string().required("Please select an option"),
+  AwayTeam: yup
+    .string()
+    .required("Please select an option")
+    .test(
+      "not-equal",
+      "AwayTeam must be different from HomeTeam",
+      function (value) {
+        const field1Value = this.parent.HomeTeam;
+        return field1Value !== value;
+      }
+    ),
+  MatchVenue: yup.string().required("Please select an option"),
+  date: yup.date().required("Match date is required"),
+  time: yup.string().required("Match time is required"),
+  MainReferee: yup.string().required("Please select an option"),
+  Linesman1: yup
+    .string()
+    .required("Please select an option")
+    .test(
+      "not-equal",
+      "Linesman1 must be different from MainReferee",
+      function (value) {
+        const field1Value = this.parent.MainReferee;
+        return field1Value !== value;
+      }
+    ),
+  Linesman2: yup
+    .string()
+    .required("Please select an option")
+    .test(
+      "not-equal",
+      "Linesman2 must be different from MainReferee",
+      function (value) {
+        const field1Value = this.parent.MainReferee;
+        return field1Value !== value;
+      }
+    )
+    .test(
+      "not-equal",
+      "Linesman2 must be different from Linesman1",
+      function (value) {
+        const field2Value = this.parent.Linesman1;
+        return field2Value !== value;
+      }
+    ),
+  Ticketprice: yup
+    .number()
+    .positive()
+    .integer()
+    .required("Ticket price is required"),
 };

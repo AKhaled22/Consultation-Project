@@ -46,12 +46,13 @@ const ViewMatches = () => {
       <Header />
       <h2 className="match-details-title">Matches</h2>
       {matches.length > 0 ? (
-        matches.map((match) => (
-          /* console.log("TEAM MAP", teamLogoMapping[match.homeTeamLogo]),
+        matches.map(
+          (match) => (
+            /* console.log("TEAM MAP", teamLogoMapping[match.homeTeamLogo]),
             (match.homeTeamLogo = teamLogoMapping[match.homeTeamLogo]), */
-          /* console.log(match.homeTeamLogo),
+            console.log(match.homeTeamLogo),
             console.log(match),
-            (console.log("STARTT"),
+            console.log("STARTT"),
             console.log("Match Object:", match),
             console.log(match.homeTeamLogo),
             console.log(match.homeTeam),
@@ -63,20 +64,23 @@ const ViewMatches = () => {
             console.log(match.mainReferee),
             console.log(match.linesman1),
             console.log(match.linesman2),
-            console.log("END"), */
-          <MatchDetails
-            homeTeamLogo={match.homeTeamLogo}
-            homeTeam={match.homeTeam}
-            awayTeamLogo={match.awayTeamLogo}
-            awayTeam={match.awayTeam}
-            stadium={match.stadium}
-            date={match.date}
-            Time={match.time}
-            mainReferee={match.mainReferee}
-            linesman1={match.linesman1}
-            linesman2={match.linesman2}
-          />
-        ))
+            console.log("END"),
+            (
+              <MatchDetails
+                homeTeamLogo={match.homeTeamLogo}
+                homeTeam={match.homeTeam}
+                awayTeamLogo={match.awayTeamLogo}
+                awayTeam={match.awayTeam}
+                stadium={match.stadium}
+                date={match.date}
+                Time={match.time}
+                mainReferee={match.mainReferee}
+                linesman1={match.linesman1}
+                linesman2={match.linesman2}
+              />
+            )
+          )
+        )
       ) : (
         <p>No matches available</p>
       )}
