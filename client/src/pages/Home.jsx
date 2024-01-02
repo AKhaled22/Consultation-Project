@@ -8,11 +8,12 @@ import AlAhlyLogo from "../assets/AlAhly.png";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
-import Pagination from "react-bootstrap/Pagination";
+// import Pagination from "react-bootstrap/Pagination";
 import { useDispatch , useSelector } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
 import { setUserType } from "../features/userSlice";
 import axios from "axios";
+import Paginationn from "../components/Paginationn";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const Home = () => {
     getRole();
   }, []);
 
-  const [activePage, setActivePage] = useState(2);
+  const [activePage, setActivePage] = useState(1);
   const pageSize = 2;
   const matches = [
     {
@@ -108,49 +109,49 @@ const Home = () => {
     },
   ];
 
-  const handleOnClick = (i) => {
-    if (i == 0) {
-      if (activePage > 1) {
-        setActivePage(activePage - 1);
-      }
-    } else if (i == numOfPages + 1) {
-      if (activePage < numOfPages) {
-        setActivePage(activePage + 1);
-      }
-    } else {
-      setActivePage(i);
-    }
-    console.log(activePage);
-  };
-  const numOfPages = Math.ceil(matches.length / pageSize);
-  let items = [];
-  items.push(
-    <Pagination.Prev
-      onClick={() => {
-        handleOnClick(0);
-      }}
-    />
-  );
-  for (let i = 1; i <= numOfPages; i++) {
-    items.push(
-      <Pagination.Item
-        key={i}
-        active={activePage == i}
-        onClick={() => {
-          handleOnClick(i);
-        }}
-      >
-        {i}
-      </Pagination.Item>
-    );
-  }
-  items.push(
-    <Pagination.Next
-      onClick={() => {
-        handleOnClick(numOfPages + 1);
-      }}
-    />
-  );
+  // const handleOnClick = (i) => {
+  //   if (i == 0) {
+  //     if (activePage > 1) {
+  //       setActivePage(activePage - 1);
+  //     }
+  //   } else if (i == numOfPages + 1) {
+  //     if (activePage < numOfPages) {
+  //       setActivePage(activePage + 1);
+  //     }
+  //   } else {
+  //     setActivePage(i);
+  //   }
+  //   console.log(activePage);
+  // };
+  // const numOfPages = Math.ceil(matches.length / pageSize);
+  // let items = [];
+  // items.push(
+  //   <Pagination.Prev
+  //     onClick={() => {
+  //       handleOnClick(0);
+  //     }}
+  //   />
+  // );
+  // for (let i = 1; i <= numOfPages; i++) {
+  //   items.push(
+  //     <Pagination.Item
+  //       key={i}
+  //       active={activePage == i}
+  //       onClick={() => {
+  //         handleOnClick(i);
+  //       }}
+  //     >
+  //       {i}
+  //     </Pagination.Item>
+  //   );
+  // }
+  // items.push(
+  //   <Pagination.Next
+  //     onClick={() => {
+  //       handleOnClick(numOfPages + 1);
+  //     }}
+  //   />
+  // );
 
   const matchesToShow = matches.slice(
     (activePage - 1) * pageSize,
@@ -190,7 +191,7 @@ const Home = () => {
                 );
               })}
           </div>
-          <Pagination>{items}</Pagination>
+          <Paginationn Arr={matches} activePage={activePage}  setActivePage={setActivePage} pageSize={pageSize} />
         </div>
 
         <div className="meet-the-teams">

@@ -1173,6 +1173,11 @@ color: var(--bs-gray);
   flex-wrap: wrap;
 }
 
+.ticketid{
+  font-size: 10px;
+  font-weight: bold;
+}
+
 :root {
   --blue: #012f98;
   --white: #f3f7f8;

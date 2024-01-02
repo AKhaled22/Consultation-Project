@@ -18,7 +18,7 @@ export const validateSchema = {
   address: yup.string().required("Address is required"),
   // password: yup.string().required("Password is required"),
   dob: yup.date().required("Date of Birth is required"),
-  terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
+  // terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
   gender: yup.string().required("Please select an option"),
   type: yup.string().required("Please select an option"),
   confirmPassword: yup

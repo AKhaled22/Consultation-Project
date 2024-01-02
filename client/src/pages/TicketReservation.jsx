@@ -59,7 +59,14 @@ function MyVerticallyCenteredModal(props) {
             {/* <Modal.Body> */}
             <Formik
                 validationSchema={validationSchema}
-                // onSubmit={console.log}
+                onSubmit={(values, { setSubmitting }) => {
+                    // Your submit logic can go here
+                    // For now, let's just log the form values
+                    props.handlePay()
+                    
+                    console.log(values);
+                    setSubmitting(false);
+                }}
                 initialValues={{
                     cardHolderName:"",
                     cardNumber:"",
@@ -69,7 +76,7 @@ function MyVerticallyCenteredModal(props) {
             >
                 {({ handleSubmit, handleChange, values, touched, errors }) => (
 
-                    <Form className='p-1'>
+                    <Form onSubmit={handleSubmit} className='p-1'>
 
                         <Form.Group className="mb-3" controlId="formGridAddress1">
                             <Form.Label>CARDHOLDERS'S NAME</Form.Label>
@@ -107,7 +114,7 @@ function MyVerticallyCenteredModal(props) {
 
                     <div className='bill-paying'>
                         <span className='bill-span'>You are buying {props.selectedSeatsLength} tickets with total price: EGP {props.selectedSeatsLength * props.price}</span>
-                        <button type="button" onClick={() => { props.handlePay(errors) }} className='bg-success reservation-bill-butt' >Pay</button>
+                        <button type="submit"  className='bg-success reservation-bill-butt' >Pay</button>
                         </div>
                     </Form>
                 )}
@@ -254,10 +261,10 @@ const TicketReservation = () => {
 
     }
 
-    const handlePay = async (errors) => {
-        console.log(errors)
+    const handlePay = async () => {
+        // console.log(errors)
 
-        if (Object.keys(errors).length === 0) {
+        // if (Object.keys(errors).length === 0) {
             console.log(selectedSeats)
 
             try {
@@ -277,7 +284,7 @@ const TicketReservation = () => {
             } catch (err) {
                 console.log(err);
             }
-        }
+        // }
     }
 
     return (

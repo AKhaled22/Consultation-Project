@@ -21,7 +21,7 @@ const Validation = (type) => {
     login: {
       email: validateSchema["email"],
       password: validateSchema["password"],
-      terms: validateSchema["terms"],
+      // terms: validateSchema["terms"],
     },
 
     editDetails: {

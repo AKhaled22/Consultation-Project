@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import seat from '../assets/seat.png'
 // import Button from '../components/Button'
 import Ticket from '../components/Ticket'
@@ -11,87 +11,71 @@ import AlAhlyLogo from "../assets/AlAhly.png";
 
 import { useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
+import axios from 'axios'
 const YourTickets = () => {
 
 
     const dispatch = useDispatch()
+    const [tickets , setTickets] = useState([])
 
     useEffect(() => {
 
 
         dispatch(setActivePage("yourtickets"))
+        const fetchTickets = async () => {
+
+            try{
+            const res = await axios.get( "http://localhost:3001/api/ticket/gettickets" , {
+                headers:{
+                    Authorization: localStorage.getItem("Token")
+                }
+            })
+            console.log(res)
+            setTickets(res.data.output)
+            
+        }catch(err){
+
+            console.log(err)
+            
+        }
+    }
+
+    fetchTickets()
+
 
     }, [])
 
 
-    const tickets = [
-        {
-            homeTeam: "Manchester United",
-            homeTeamLogo: ManchesterUnitedLogo,
-            awayTeam: "Manchester City",
-            awayTeamLogo: LiverpoolLogo,
-            stadium: "Old Trafford",
-            date: "2021-10-24",
-            Time: "12:10",
-            mainReferee: "Michael Oliver",
-            linesman1: "Stuart Burt",
-            linesman2: "Simon Bennett",
-        },
-        {
-            homeTeam: "Zamalek",
-            homeTeamLogo: ZamalekLogo,
-            awayTeam: "Al Ahly",
-            awayTeamLogo: AlAhlyLogo,
-            stadium: "Cairo Stadium",
-            date: "2021-10-24",
-            Time: "00:20",
-            mainReferee: "Mohamed Farouk",
-            linesman1: "Ahmed Samir",
-            linesman2: "Mohamed Ahmed",
-        },
-        {
-            homeTeam: "Zamalek",
-            homeTeamLogo: ZamalekLogo,
-            awayTeam: "Al Ahly",
-            awayTeamLogo: AlAhlyLogo,
-            stadium: "Cairo Stadium",
-            date: "2021-10-24",
-            Time: "00:20",
-            mainReferee: "Mohamed Farouk",
-            linesman1: "Ahmed Samir",
-            linesman2: "Mohamed Ahmed",
-        },
-        {
-            homeTeam: "Zamalek",
-            homeTeamLogo: ZamalekLogo,
-            awayTeam: "Al Ahly",
-            awayTeamLogo: AlAhlyLogo,
-            stadium: "Cairo Stadium",
-            date: "2021-10-24",
-            Time: "00:20",
-            mainReferee: "Mohamed Farouk",
-            linesman1: "Ahmed Samir",
-            linesman2: "Mohamed Ahmed",
-        },
-    ];
+   
+
+
+    // const tickets = 
     return (
         <div>
             <Header />
             <h2 className="match-details-title">Tickets</h2>
-            {tickets.map((match) => {
+            {tickets && tickets.map((ticket) => {
+
+                const date = new Date(ticket.match.date)
+                const targetDate = new Date(date.getTime() + 3 * 24 * 60 * 60 * 1000); //
+               console.log(targetDate > Date.now())
+                
                 return (
                     <Ticket
-                        homeTeamLogo={match.homeTeamLogo}
-                        homeTeam={match.homeTeam}
-                        awayTeamLogo={match.awayTeamLogo}
-                        awayTeam={match.awayTeam}
-                        stadium={match.stadium}
-                        date={match.date}
-                        Time={match.Time}
-                        mainReferee={match.mainReferee}
-                        linesman1={match.linesman1}
-                        linesman2={match.linesman2}
-
+                        homeTeamLogo={ticket.match.homeTeamLogo}
+                        homeTeam={ticket.match.homeTeam}
+                        awayTeamLogo={ticket.match.awayTeamLogo}
+                        awayTeam={ticket.match.awayTeam}
+                        stadium={ticket.match.stadium}
+                        date={ticket.match.date}
+                        Time={ticket.match.Time}
+                        mainReferee={ticket.match.mainReferee}
+                        linesman1={ticket.match.linesman1}
+                        linesman2={ticket.match.linesman2}
+                        seatt = {ticket.seat}
+                        ticketId = {ticket.ticketId}
+                        ticketPrice = {ticket.match.ticketPrice}
+                        disableButt = {targetDate > Date.now()}
                     />
                 );
             })}

@@ -89,11 +89,11 @@ exports.reserveTickets = async (req , res) => {
         const updatingSeats = await Match.updateOne({_id:matchId} , {reservedseats: [...match.reservedseats, ...selectedSeatsArr]})
   
         console.log(updatingSeats)
-        res.status(200).json({
-          reservedSeats:  [...match.reservedseats, ...selectedSeatsArr]
-        })
         
       }
+      res.status(200).json({
+        reservedSeats:  [...match.reservedseats, ...selectedSeatsArr]
+      })
 
 
 

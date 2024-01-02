@@ -7,7 +7,7 @@ import axios from 'axios'
 
 // import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-// import Form from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 // import * as formik from 'formik';
@@ -20,7 +20,7 @@ import Validation from "../validate/validate.js";
 // import React from "react";
 // import Input from "./Input.jsx";
 // import Button from "./Button.jsx";
-import { Formik , Form } from "formik";
+import { Formik } from "formik";
 // import * as yup from 'yup';
 // import axios from 'axios';
 // import Validation from "../validate/validate.js";
@@ -28,19 +28,27 @@ import { Formik , Form } from "formik";
 const MyForm = ({ title, inputArr, buttText, type, handleSub }) => {
   const validationSchema = Validation(type);
 
-    // const handleSubmit = async (values, { setSubmitting }) => {
-    //   console.log("hii");
-    // };
+  // const handleSubmit = async (values, { setSubmitting }) => {
+  //   console.log("hii");
+  // };
 
   return (
     <div className="myForm">
       <Formik
         validationSchema={validationSchema}
-        // onSubmit={console.log}
+        onSubmit={(values, { setSubmitting }) => {
+          // Your submit logic can go here
+          // For now, let's just log the form values
+          // props.handlePay()
+          handleSub(values)
+          console.log(values);
+          setSubmitting(false);
+      }}
         initialValues={{}}
+
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
-          <Form noValidate>
+          <Form  onSubmit={handleSubmit}>
             {inputArr && inputArr.map((inp, i) =>
               <Input
                 key={i}
@@ -58,7 +66,7 @@ const MyForm = ({ title, inputArr, buttText, type, handleSub }) => {
               />
             )}
 
-            <Button type="button" buttText={buttText} onClick={() => {handleSub(values,errors)}} />
+            <Button type="submit"  buttText={buttText} />
           </Form>
         )}
       </Formik>
