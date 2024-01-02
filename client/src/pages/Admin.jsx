@@ -1,8 +1,5 @@
 import { useState } from 'react';
-<<<<<<< Updated upstream
 import React, { useEffect } from "react";
-=======
->>>>>>> Stashed changes
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import MyPagination from '../components/MyPagination';  
@@ -12,138 +9,9 @@ import AdminList from '../components/AdminList';
 
 const Admin = () => {
 
-<<<<<<< Updated upstream
-   const inputArr = [
-  {
-    name: "Ahmed",
-    id: "ahmedtoeima",
-    email: "username@gmail.com",
-    role:"Manger"
-=======
-  
-  // Fetch unapproved users when the component mounts
-  useEffect(() => {
-    fetchUnapprovedUsers();
-  }, []);
-
-  const fetchUnapprovedUsers = async () => {
-    try {
-      const res = await axios.get('http://localhost:3001/api/user/admin/getUnapprovedUsers');
-      setSearchResults(res.data.unapprovedUsers);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  //Handle insert
-  const handleInsert = async (values) => {
-    try {
-      const res = await axios.post(
-        "http://localhost:3001/api/user/admin",
-        values
-      );
-  
-      if (res.status === 200) {
-        console.log("User inserted successfully!");
-        fetchUnapprovedUsers();
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  // Handle Delete 
-  const handleDelete = async (username) => {
-    try {
-      const res = await axios.delete(
-        `http://localhost:3001/api/user/delete/${username}`
-      );
-  
-      if (res.status === 200) {
-        // Handle success, if needed
-        console.log("User deleted successfully!");
-        fetchUnapprovedUsers();
-      }
-    } catch (err) {
-      console.error(err);
-      // Handle error, if needed
-    }
-  };
-
-
-  
-  //const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState(inputArr);
-
-
-  // const handleDelete = (nameToDelete) => {
-  //   setSearchResults((prevResults) =>
-  //     prevResults.filter((user) => user.name !== nameToDelete)
-  //   );
-  // };
-
-
-
-
-  const inputArr = [
-    {
-      name: "Ahmed",
-      id: "ahmedtoeima",
-      email: "username@gmail.com",
-      role:"Manger"
->>>>>>> Stashed changes
-
-
-  },
-  {
-    name: "Abdullah",
-    id: "abdullahouda",
-    email: "username2@gmail.com",
-    role:"Manger"
-  },
-  {
-    name: "Rawan",
-    id: "rawanadel",
-    email: "username3@gmail.com",
-    role:"Manger"
-  },
-  {
-    name: "Mohy",
-    id: "mostafamohy",
-    email: "username99@gmail.com",
-    role:"Fan"
-  },
-  {
-    name: "Fouda",
-    id: "mostafafouda",
-    email: "username121@gmail.com",
-    role:"Manger"
-
-
-  },
-  {
-    name: "Kabab",
-    id: "Ali Kabab",
-    email: "username2@gmail.com",
-    role:"Manger"
-  },
-  {
-    name: "Omar Yahya",
-    id: "omaryaya",
-    email: "username3@gmail.com",
-    role:"Manger"
-  },
-  {
-    name: "Samehizar",
-    id: "Sameh Nizar",
-    email: "username99@gmail.com",
-    role:"Fan"
-  }
-  
-]
-
   const [searchResults, setSearchResults] = useState([]);
 
-  //Fetch unapproved users
+  // Fetch unapproved users 
   useEffect(() => {
     fetchUnapprovedUsers();
   }, []);
@@ -151,42 +19,40 @@ const Admin = () => {
   const fetchUnapprovedUsers = async () => {
     try {
       const res = await axios.get('http://localhost:3001/api/admin/getUnapprovedUsers');
-      console.log(res.data.unapprovedUsers);
       setSearchResults(res.data.unapprovedUsers);
     } catch (err) {
       console.error(err);
     }
-<<<<<<< Updated upstream
   };
 
   //Handle insert
-  const handleInsert = async (values) => {
+  const handleInsert = async (username) => {
     try {
       const res = await axios.post(
         "http://localhost:3001/api/admin/insertUsers",
-        values
+        { username: username }
       );
   
       if (res.status === 200) {
         console.log("User inserted successfully!");
-        //fetchUnapprovedUsers();
+        fetchUnapprovedUsers();
       }
     } catch (err) {
       console.error(err);
     }
   };
-
-
+  
   // Handle Delete 
   const handleDelete = async (username) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:3001/api/admin/delete/${username}`
+      const res = await axios.post(
+        "http://localhost:3001/api/admin/deleteUser",
+        { username: username }
       );
   
       if (res.status === 200) {
         console.log("User deleted successfully!");
-      //  fetchUnapprovedUsers();
+        fetchUnapprovedUsers();
       }
     } catch (err) {
       console.error(err);
@@ -194,11 +60,7 @@ const Admin = () => {
   };
 
 
-=======
-    
-  ]
  
->>>>>>> Stashed changes
   return (
     <div className="container">
       <div>

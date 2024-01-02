@@ -6,15 +6,15 @@ const AdminRow = ({ userArr, onInsert, onDelete }) => {
   return (
 
     <tr>
-      <td>{userArr.id}</td>
-      <td>{userArr.name}</td>
+      <td>{userArr.username}</td>
+      <td>{userArr.firstname} {userArr.lastname}</td>
       <td>{userArr.email}</td>
       <td>{userArr.role}</td>
       <td>
-        <Button onClick={() => onInsert(userArr.id)} buttText={'Insert'} />
+        <Button onClick={() => onInsert(userArr.username)} buttText={'Insert'} />
       </td>
       <td>
-        <Button onClick={() => onDelete(userArr.id)} buttText={'Delete'} />
+        <Button onClick={() => onDelete(userArr.username)} buttText={'Delete'} />
       </td>
     </tr>
 

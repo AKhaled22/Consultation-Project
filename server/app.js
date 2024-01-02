@@ -19,11 +19,8 @@ app.use("/api/match", match);
 
 const admin = require("./routes/adminRoute");
 app.use("/api/admin", admin);
-<<<<<<< Updated upstream
 console.log(admin);
-=======
 
->>>>>>> Stashed changes
 // app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // app.get("*", (req, res) => {

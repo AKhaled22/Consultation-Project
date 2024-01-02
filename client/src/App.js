@@ -43,12 +43,7 @@ function App() {
             <Route path="/viewmatches" element={<ViewMatches />} />
             <Route path="/yourtickets" element={<YourTickets />} />
             <Route path="/admin" element={<Admin />} />
-<<<<<<< Updated upstream
             <Route path="/admindelete" element={<AdminDelete />} />
-=======
-            <Route path="/adminDelete" element={<AdminDelete />} />
->>>>>>> Stashed changes
-
 
             <Route path="*" element={<Home />} />
           </Routes>

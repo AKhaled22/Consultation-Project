@@ -1,27 +1,14 @@
 const User = require("../models/userModel");
-<<<<<<< Updated upstream
 
 
-
-=======
-const jwt = require("jsonwebtoken");
-
-const key = "jndskjnwkjniefhwbnfvhbef";
->>>>>>> Stashed changes
 
 // Getting all pending requests 
 exports.getUnapprovedUsers = async (req, res) => {
     try {
-<<<<<<< Updated upstream
-      console.log('Hi');
-      const { username, firstname, lastname, email, role } = req.body;
-      const unapprovedUsers = await User.find({username:username, firstname:firstname, 
-        lastname:lastname, email:email, role:role, approved: false });
-        console.log(unapprovedUsers);
-=======
-      const unapprovedUsers = await User.find({username:username, firstname:firstname, 
-        lastname:lastname, email:email, role:role, approved: false });
->>>>>>> Stashed changes
+     // console.log('Hi');
+      //const { username, firstname, lastname, email, role } = req.body;
+      const unapprovedUsers = await User.find({approved:false});
+       // console.log(unapprovedUsers);
       res.status(200).json({ unapprovedUsers });
     } 
     catch (error)
@@ -34,31 +21,31 @@ exports.getUnapprovedUsers = async (req, res) => {
   //Inserting users into the database
   exports.insertUsers = async (req, res) => {
     try {
-    
-      const { userid, firstname, lastname, email, role } = req.body;
+      const { username } = req.body;
+  
       const insertUsers = await User.findOneAndUpdate
       (
-      { username: userid },
-      { firstname, lastname, email, role, approved: true },
-        );
-<<<<<<< Updated upstream
-        console.log({message:'User inserted'})
-=======
->>>>>>> Stashed changes
-      res.status(200).json({ insertUsers });
-    } 
-    catch (error)
-    {
+        { username: username },
+        { $set: { approved: true } },
+        { new: true } 
+      );
+      console.log('Done ya regoola:', insertUsers.username);
+      res.status(200).json({ message: 'User approved successfully', user: insertUsers });
+    } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   };
+  
 
   //Deleting users from the database
   exports.deleteUser = async (req, res) => {
     try {
-      const userid = req.params.username;
-      await User.findByIdAndDelete(userid);
+      console.log('Hi');
+
+      const { username } = req.body;
+      const deleteUser = await User.findOneAndDelete({ username: username });
+      console.log('Salam ya sahby:', deleteUser.username);
       res.status(200).json({ message: 'User deleted successfully' });
     } catch (error) {
       console.error(error);
@@ -66,7 +53,22 @@ exports.getUnapprovedUsers = async (req, res) => {
     }
   };
 
-
+// Getting all users 
+exports.getAllUsers = async (req, res) => {
+  try {
+    console.log('Hi');
+    //const { username, firstname, lastname, email, role } = req.body;
+    const getAllUsers = await User.find();
+    //console.log(getAllUsers);
+    console.log(getAllUsers);
+    res.status(200).json({ getAllUsers });
+  } 
+  catch (error)
+  {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 // exports.registerUser = async (req, res) => {
 //   const {

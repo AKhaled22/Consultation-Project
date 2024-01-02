@@ -6,12 +6,12 @@ const SearchBarCompRow = ({ userArr, onDelete }) => {
   return (
 
     <tr>
-      <td>{userArr.id}</td>
-      <td>{userArr.name}</td>
-      <td>{userArr.email}</td>
-      <td>{userArr.role}</td>
+      <td>{userArr.username}</td>
+      <td>{userArr.firstname} {userArr.lastname}</td>
+      <td className='col_1'>{userArr.email}</td>
+      <td className='col_1'>{userArr.role}</td>
       <td>
-        <Button onClick={() => onDelete(userArr.id)} buttText={'Delete'} />
+        <Button onClick={() => onDelete(userArr.username)} buttText={'Delete'} />
       </td>
     </tr>
 
