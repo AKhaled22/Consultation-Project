@@ -1,21 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "./Input.jsx";
 import { Link } from "react-router-dom";
 import Button from "./Button.jsx";
-import axios from 'axios'
-
+import axios from "axios";
 
 // import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
+import Col from "react-bootstrap/Col";
 // import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
+import InputGroup from "react-bootstrap/InputGroup";
+import Row from "react-bootstrap/Row";
 // import * as formik from 'formik';
 // import * as yup from 'yup';
 
 import Validation from "../validate/validate.js";
-
-
 
 // import React from "react";
 // import Input from "./Input.jsx";
@@ -25,40 +22,58 @@ import { Formik, Form } from "formik";
 // import axios from 'axios';
 // import Validation from "../validate/validate.js";
 
-const MyForm = ({ title, inputArr, buttText, type, handleSub }) => {
+const MyForm = ({
+  title,
+  inputArr,
+  buttText,
+  type,
+  handleSub,
+  initVal,
+  edit,
+}) => {
   const validationSchema = Validation(type);
-
-    // const handleSubmit = async (values, { setSubmitting }) => {
-    //   console.log("hii");
-    // };
-
+  console.log("initVal", initVal);
+  // const handleSubmit = async (values, { setSubmitting }) => {
+  //   console.log("hii");
+  // };
   return (
     <div className="myForm">
       <Formik
         validationSchema={validationSchema}
         // onSubmit={console.log}
-        initialValues={{}}
+        initialValues={edit === "true" ? initVal : {}}
+        // initialValues={initVal}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
           <Form noValidate>
-            {inputArr && inputArr.map((inp, i) =>
-              <Input
-                key={i}
-                onChange={handleChange}
-                value={values[inp.name]}
-                error={errors[inp.name]}
-                label={inp.label}
-                name={inp.name}
-                optionsArr={inp.optionsArr}
-                placeholder={inp.placeholder}
-                radioOne={inp.radioOne}
-                radioTwo={inp.radioTwo}
-                type={inp.type}
-                isDisabled={inp.disable}
-              />
-            )}
+            {inputArr &&
+              inputArr.map((inp, i) => (
+                <Input
+                  key={i}
+                  onChange={handleChange}
+                  value={values[inp.name]}
+                  error={errors[inp.name]}
+                  label={inp.label}
+                  name={inp.name}
+                  optionsArr={inp.optionsArr}
+                  placeholder={inp.placeholder}
+                  radioOne={inp.radioOne}
+                  radioTwo={inp.radioTwo}
+                  type={inp.type}
+                  isDisabled={inp.disable}
+                  radioOneChecked={inp.radioOneChecked}
+                  radioTwoChecked={inp.radioTwoChecked}
+                  selected={inp.selected}
+                />
+              ))}
 
-            <Button type="button" buttText={buttText} onClick={() => {handleSub(values,errors)}} />
+            <Button
+              type="button"
+              buttText={buttText}
+              onClick={() => {
+                handleSub(values, errors);
+              }}
+            />
           </Form>
         )}
       </Formik>
@@ -67,14 +82,6 @@ const MyForm = ({ title, inputArr, buttText, type, handleSub }) => {
 };
 
 export default MyForm;
-
-
-
-
-
-
-
-
 
 // function FormExample() {
 //   const { Formik } = formik;

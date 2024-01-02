@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter Your Password"],
     minLength: [8, "Password should be greater than 8 characters"],
-    select: false,
+    // select: false, AAO
   },
   firstname: {
     type: String,
@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
   birthdate: {
     type: Date,
     required: [true, "Please Enter Your Birthdate"],
+    get: (date) => date.toLocaleDateString("en-US"), //AAO
   },
   gender: {
     type: String,

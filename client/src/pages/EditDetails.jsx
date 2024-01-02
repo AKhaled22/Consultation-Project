@@ -1,25 +1,71 @@
-import React , {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import MyForm from '../components/MyForm'
-import { useSelector, useDispatch } from 'react-redux'
-import { setActivePage } from '../features/pageSlice'
+import MyForm from "../components/MyForm";
+import { useSelector, useDispatch } from "react-redux";
+import { setActivePage } from "../features/pageSlice";
+import axios from "axios";
+import moment from "moment";
+import Feedback from "react-bootstrap/esm/Feedback";
 const EditDetails = () => {
+  const dispatch = useDispatch();
+  // const [user, setUser] = useState({});
+  const [values, setValues] = useState({});
+  let user = {};
+  // let values = {};
+  useEffect(() => {
+    const getUserDetails = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:3001/api/user/getDetails",
+          {
+            headers: {
+              Authorization: localStorage.getItem("Token"),
+            },
+          }
+        );
+        console.log(res.data.user);
+        user = res.data.user;
 
-  const dispatch = useDispatch()
+        const birthdate = new Date(user.birthdate);
+        const formattedDate = moment(birthdate).format("YYYY-MM-DD");
+        // const gender = user.gender == "M" ? true : false;
+        // const role = user.role == "F" ? true : false;
+        // console.log(formattedDate);
+        // console.log(role);
+        // console.log(gender);
+        setValues({
+          username: user.username,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          password: user.password,
+          confirmPassword: user.password,
+          dob: formattedDate,
+          gender: user.gender,
+          city: user.city,
+          address: user.address,
+          email: user.email,
+          role: user.role,
+        });
+        // console.log("INPCITY", user.city);
+        console.log(values);
+        console.log(user);
+        // user = res.data.user;
+        // console.log("HAAHAHHAHAHAHAHAHAHAHAHA");
+        // console.log(user.username);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-    useEffect(() => {
-    
-    
-        dispatch(setActivePage("editdetails")) 
-      
-    }, [])
-
+    dispatch(setActivePage("editdetails"));
+    getUserDetails();
+  }, []);
 
   const inputArr = [
     {
       type: "text",
       label: "Username",
-      placeholder: "username",
+      placeholder: "Username",
       name: "username",
       disable: false,
     },
@@ -40,14 +86,14 @@ const EditDetails = () => {
     {
       type: "text",
       label: "First Name",
-      placeholder: "Ahmed",
+      placeholder: "First Name",
       name: "firstname",
       disable: false,
     },
     {
       type: "text",
       label: "Last Name",
-      placeholder: "Toaima",
+      placeholder: "Last Name",
       name: "lastname",
       disable: false,
     },
@@ -63,6 +109,8 @@ const EditDetails = () => {
       radioOne: "Male",
       radioTwo: "Female",
       disable: true,
+      radioOneChecked: values.gender == "M" ? true : false,
+      radioTwoChecked: values.gender == "F" ? true : false,
     },
     {
       type: "dropdown",
@@ -77,12 +125,13 @@ const EditDetails = () => {
         "Hurghada",
       ],
       disable: false,
+      selected: values.city,
     },
     {
       type: "text",
-      label: "Adress",
-      placeholder: "8138 Mokattam",
-      name: "adress",
+      label: "Address",
+      placeholder: "Address",
+      name: "address",
       disable: false,
     },
     {
@@ -94,16 +143,51 @@ const EditDetails = () => {
     },
     {
       type: "radio",
-      name: "gender",
+      name: "role",
       radioOne: "Fan",
       radioTwo: "Manager",
       disable: true,
+      radioOneChecked: values.role == "F" ? true : false,
+      radioTwoChecked: values.role == "M" ? true : false,
     },
   ];
+  const handleOnSubmit = async (values, errors) => {
+    if (Object.keys(errors).length === 0) {
+      try {
+        const res = await axios.post(
+          "http://localhost:3001/api/user/editDetails",
+          values,
+          {
+            headers: {
+              Authorization: localStorage.getItem("Token"),
+            },
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div>
       <Header />
-      <MyForm inputArr={inputArr} title="Edit Details" buttText="Confirm Edit" />
+      {values.username !== undefined ? (
+        <>
+          <h2 className="match-details-title">Edit Your Details</h2>
+          <MyForm
+            inputArr={inputArr}
+            type="editDetails"
+            title="Edit Details"
+            buttText="Confirm Edit"
+            initVal={values}
+            handleSub={handleOnSubmit}
+            edit="true"
+          />
+        </>
+      ) : (
+        <h2 className="match-details-title">Edit Details</h2>
+      )}
     </div>
   );
 };

@@ -1,31 +1,28 @@
-
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-const key =  "jndskjnwkjniefhwbnfvhbef"
-
+const key = "jndskjnwkjniefhwbnfvhbef";
 
 exports.isAuthenticatedUser = async (req, res, next) => {
-  const {token} = req.cookie
- 
-  var decoded = jwt.verify(token, key);
+  const {authorization} = req.headers;
 
-  const user = User.findById(decoded)
+  // const {token} = req.cookie
+  if (authorization!=undefined) {
+    var decoded = jwt.verify(token, key);
 
-  if(!user){
-    const err = new Error("Unauthorized User!")
-    err.status = 401
-    next(err)
-  }else{
-    
-    next()
-
+    const user = User.findById(decoded.data);
+    if (!user) {
+      const err = new Error("Unauthorized User!");
+      err.status = 401;
+      next(err);
+    } else {
+      next();
+    }
+  } else {
+    const err = new Error("Unauthorized User!");
+    err.status = 401;
+    next(err);
   }
 
-
   // console.log(decoded.foo) // bar
-
 };
-
-
-

@@ -1,7 +1,6 @@
 import React from "react";
-import Row from 'react-bootstrap/Row';
-import Form from 'react-bootstrap/Form';
-
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
 
 const Input = ({
   type,
@@ -15,7 +14,10 @@ const Input = ({
   onChange,
   // isInvalid={!!errors.city}
   error,
-  value
+  value,
+  radioOneChecked,
+  radioTwoChecked,
+  selected,
 }) => {
   // console.log(error);
   return (
@@ -31,22 +33,25 @@ const Input = ({
               name={name}
               aria-label="Default select example"
               onChange={onChange}
-              >
-
-
-
-              <option selected>Please Select a {label}</option>
+            >
+              <option>Please Select a {label}</option>
               {optionsArr.map((options) => {
-                return <option value={options}>{options}</option>;
+                return (
+                  <option selected={options === selected} value={options}>
+                    {options}
+                  </option>
+                );
               })}
             </Form.Select>
-            <Form.Control.Feedback className={`${error ? "d-block" : ""}`} type="invalid">
+            <Form.Control.Feedback
+              className={`${error ? "d-block" : ""}`}
+              type="invalid"
+            >
               {error}
             </Form.Control.Feedback>
           </Form.Group>
         </Row>
       ) : type == "radio" ? (
-
         // <Row className="mb-3">
         //   <Form.Group md="4">
         //     {/* <Form></Form> */}
@@ -76,6 +81,7 @@ const Input = ({
               value={radioOne[0]}
               disabled={isDisabled}
               onChange={onChange}
+              checked={radioOneChecked}
             />
             <label for={radioOne}>{radioOne}</label>
           </div>
@@ -87,11 +93,12 @@ const Input = ({
               value={radioTwo[0]}
               disabled={isDisabled}
               onChange={onChange}
+              checked={radioTwoChecked}
               // checked={value === 'option1'}
             />
             <label for={radioTwo}>{radioTwo}</label>
-          </div >
-        </div >
+          </div>
+        </div>
       ) : (
         // <input
         //   type={type}
@@ -100,7 +107,7 @@ const Input = ({
         //   disabled={isDisabled}
         // />
         <Row className="mb-3">
-          <Form.Group md="4" >
+          <Form.Group md="4">
             <Form.Label>{label}</Form.Label>
             {/* <InputGroup hasValidation>
             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
