@@ -24,7 +24,7 @@ const SearchBar = ({ UsersArr }) => {
     setSearchTerm(value);
     
     if (value === '') {
-      setSearchResults(UsersArr); // Reset to the original list when the search term is empty
+      setSearchResults(UsersArr); 
     } else {
       handleSearch();
     }

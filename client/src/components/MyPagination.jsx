@@ -10,7 +10,8 @@ function MyPagination({ total, current, onChangePage }) {
     );
   }
 
-  for (let page = 1; page <= total; page++)  {
+  for (let page = 1; page <= total; page++)  
+  {
     paginationItems.push(
       <Pagination.Item
         key={page}

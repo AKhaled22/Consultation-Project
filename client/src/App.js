@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import MatchDetails from "./components/MatchDetails";
-import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register , SysAdministrator , TicketReservation , ViewMatches , YourTickets} from './pages'
+import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register, TicketReservation , ViewMatches , YourTickets} from './pages'
 import AdminDelete from './pages/AdminDelete';
 import Admin from './pages/Admin';
 // import  from 'react-redux'
@@ -43,7 +43,11 @@ function App() {
             <Route path="/viewmatches" element={<ViewMatches />} />
             <Route path="/yourtickets" element={<YourTickets />} />
             <Route path="/admin" element={<Admin />} />
+<<<<<<< Updated upstream
             <Route path="/admindelete" element={<AdminDelete />} />
+=======
+            <Route path="/adminDelete" element={<AdminDelete />} />
+>>>>>>> Stashed changes
 
 
             <Route path="*" element={<Home />} />

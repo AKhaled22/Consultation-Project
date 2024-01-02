@@ -1,16 +1,27 @@
 const User = require("../models/userModel");
+<<<<<<< Updated upstream
 
 
 
+=======
+const jwt = require("jsonwebtoken");
+
+const key = "jndskjnwkjniefhwbnfvhbef";
+>>>>>>> Stashed changes
 
 // Getting all pending requests 
 exports.getUnapprovedUsers = async (req, res) => {
     try {
+<<<<<<< Updated upstream
       console.log('Hi');
       const { username, firstname, lastname, email, role } = req.body;
       const unapprovedUsers = await User.find({username:username, firstname:firstname, 
         lastname:lastname, email:email, role:role, approved: false });
         console.log(unapprovedUsers);
+=======
+      const unapprovedUsers = await User.find({username:username, firstname:firstname, 
+        lastname:lastname, email:email, role:role, approved: false });
+>>>>>>> Stashed changes
       res.status(200).json({ unapprovedUsers });
     } 
     catch (error)
@@ -30,7 +41,10 @@ exports.getUnapprovedUsers = async (req, res) => {
       { username: userid },
       { firstname, lastname, email, role, approved: true },
         );
+<<<<<<< Updated upstream
         console.log({message:'User inserted'})
+=======
+>>>>>>> Stashed changes
       res.status(200).json({ insertUsers });
     } 
     catch (error)
