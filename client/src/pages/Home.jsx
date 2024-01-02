@@ -140,6 +140,7 @@ const Home = () => {
               matchesToShow.map((match) => {
                 return (
                   <MatchDetails
+                    matchID={match.matchID}
                     homeTeamLogo={match.homeTeamLogo}
                     homeTeam={match.homeTeam}
                     awayTeamLogo={match.awayTeamLogo}

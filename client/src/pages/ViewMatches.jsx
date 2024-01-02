@@ -30,7 +30,8 @@ const ViewMatches = () => {
 
         if (res.status === 200) {
           setMatches(res.data.matches);
-          // console.log("MATCHES", matches);
+
+          console.log("MATCHES", matches);
           // console.log(res.data.matches);
         }
       } catch (err) {
@@ -67,6 +68,7 @@ const ViewMatches = () => {
             console.log("END"),
             (
               <MatchDetails
+                matchID={match.matchID}
                 homeTeamLogo={match.homeTeamLogo}
                 homeTeam={match.homeTeam}
                 awayTeamLogo={match.awayTeamLogo}

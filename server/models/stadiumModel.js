@@ -6,6 +6,7 @@ const stadiumSchema = new mongoose.Schema({
     required: [true, "Please Enter Stadium Name"],
     maxLength: [30, "Stadium Name cannot exceed 30 characters"],
     minLength: [3, "Stadium Name should have more than 3 characters"],
+    unique: true, //AAO
   },
   seatsrowcapcity: {
     type: Number,

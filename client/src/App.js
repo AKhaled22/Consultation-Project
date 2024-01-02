@@ -8,15 +8,26 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import MatchDetails from "./components/MatchDetails";
-import EditMatch from "./pages/EditMatch"
-import { AddStadium , CreateMatch , EditDetails , Home , Login , Manager , Register , SysAdministrator , TicketReservation , ViewMatches , YourTickets} from './pages'
-import AdminDelete from './pages/AdminDelete';
-import Admin from './pages/Admin';
+import EditMatch from "./pages/EditMatch";
+import {
+  AddStadium,
+  CreateMatch,
+  EditDetails,
+  Home,
+  Login,
+  Manager,
+  Register,
+  SysAdministrator,
+  TicketReservation,
+  ViewMatches,
+  YourTickets,
+} from "./pages";
+import AdminDelete from "./pages/AdminDelete";
+import Admin from "./pages/Admin";
 // import  from 'react-redux'
 // import { setActivePage } from './features/pageSlice'
 
 function App() {
-
   // const activePage = useSelector((state) => state.page.value)
   // const dispatch = useDispatch()
 
@@ -28,7 +39,6 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-
             <Route path="/home" element={<Home />} />
 
             <Route path="/login" element={<Login />} />
@@ -44,7 +54,7 @@ function App() {
             <Route path="/matchdetails" element={<MatchDetails />} />
             <Route path="/viewmatches" element={<ViewMatches />} />
             <Route path="/yourtickets" element={<YourTickets />} />
-            <Route path="/editmatch" element={<EditMatch />} />
+            <Route path="/editmatch/:matchID" element={<EditMatch />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </Router>

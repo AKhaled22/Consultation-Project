@@ -17,6 +17,6 @@ router.route("/viewReferee").get(viewReferee);
 router.route("/viewTeam").get(viewTeam);
 router.route("/viewStadium").get(viewStadium);
 router.route("/creatematch").post(creatematch);
-router.route("/editMatch").post(editMatch);
-router.route("/getMatch").get(getMatch);
+router.route("/editMatch/:matchID").post(editMatch);
+router.route("/getMatch/:matchID").get(getMatch);
 module.exports = router;

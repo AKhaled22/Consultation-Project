@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
@@ -25,6 +25,7 @@ import Mahla from "../assets/Bald.png";
 import Dakh from "../assets/Dakh.png";
 import Gouna from "../assets/Go.png";
 const MatchDetails = ({
+  matchID,
   homeTeamLogo,
   homeTeam,
   awayTeamLogo,
@@ -37,8 +38,11 @@ const MatchDetails = ({
   linesman2,
   hideButton,
 }) => {
+  console.log("ANA FE MATCH DETAILS ", matchID);
   const userType = useSelector((state) => state.user.value);
+  // const [activePage, setActivePage] = useState("viewmatches");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="match-details-container">
       <div className="upper-match-div">
@@ -181,10 +185,12 @@ const MatchDetails = ({
       <br />
       <Button
         className={(userType === "F" || userType === "G") && "d-none"}
+        buttText="Edit Match"
+        onClick={() => navigate(`/editmatch/${matchID}`)} //AAO
       >
-        <Link to="/edit-match" style={{ textDecoration: 'none', color: 'inherit' }}>
+        {/* <Link to="/edit-match" style={{ textDecoration: 'none', color: 'inherit' }}>
           Edit Match
-        </Link>
+        </Link> */}
       </Button>
     </div>
   );

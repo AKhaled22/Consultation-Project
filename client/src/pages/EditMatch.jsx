@@ -6,11 +6,13 @@ import SidebarData from "../assets/Data/ManagerSideBarData";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
-import moment from 'moment';
+import moment from "moment";
 
-
-const CreateMatch = () => {
+const EditMatch = () => {
   const dispatch = useDispatch();
+  const matchID = window.location.pathname.split("/")[2];
+  // console.log(matchID);
+  // console.log("AANA FE MATCH EDIT");
 
   const [message, setMessage] = useState(null);
 
@@ -21,36 +23,36 @@ const CreateMatch = () => {
   useEffect(() => {
     const getmatchdetails = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:3001/api/match/getMatch"
-        //   {
-        //     headers: {
-        //       Authorization: localStorage.getItem("Token"),
-        //     },
-        //   }
-        );
-        console.log(res.data.match);
-        match = res.data.match;
+        if (matchID) {
+          const res = await axios.get(
+            `http://localhost:3001/api/match/getMatch/${matchID}`
+          );
+          console.log(res.data.match);
+          console.log("EDIT  MATCH AFTER GETTING MATCH");
+          match = res.data.match;
 
-        const date = new Date(match.date);
-        const formattedDate = moment(date).format("YYYY-MM-DD");
-        setValues({
+          const date = new Date(match.date);
+          const formattedDate = moment(date).format("YYYY-MM-DD");
+          setValues({
+            matchID: match.matchID,
             HomeTeam: match.hometeam,
             AwayTeam: match.awayteam,
             MatchVenue: match.stadium,
             date: formattedDate,
             time: match.time,
             MainReferee: match.referee,
-            Linesman1: match.linesmen[0],
-            Linesman2: match.linesmen[1],
+            Linesman1: match.linesman1,
+            Linesman2: match.linesman2,
             Ticketprice: match.ticketprice,
-        });
-        // console.log("INPCITY", match.city);
-        console.log(values);
-        console.log(match);
-        // match = res.data.match;
-        // console.log("HAAHAHHAHAHAHAHAHAHAHAHA");
-        // console.log(match.username);
+          });
+          // console.log("INPCITY", match.city);
+          console.log(values);
+          console.log("VALUES");
+          console.log(match);
+          // match = res.data.match;
+          // console.log("HAAHAHHAHAHAHAHAHAHAHAHA");
+          // console.log(match.username);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -59,7 +61,6 @@ const CreateMatch = () => {
     dispatch(setActivePage("editmatch"));
     getmatchdetails();
   }, []);
-
 
   useEffect(() => {
     const getreferees = async () => {
@@ -79,7 +80,7 @@ const CreateMatch = () => {
     getreferees();
     console.log(referee);
   }, []);
- 
+
   const [team, setteam] = useState([]);
 
   useEffect(() => {
@@ -128,6 +129,7 @@ const CreateMatch = () => {
       name: "HomeTeam",
       optionsArr: team,
       disable: false,
+      selected: values.HomeTeam,
     },
     {
       type: "dropdown",
@@ -136,6 +138,7 @@ const CreateMatch = () => {
       name: "AwayTeam",
       optionsArr: team,
       disable: false,
+      selected: values.AwayTeam,
     },
     {
       type: "dropdown",
@@ -144,6 +147,7 @@ const CreateMatch = () => {
       name: "MatchVenue",
       optionsArr: stadium,
       disable: false,
+      selected: values.MatchVenue,
     },
     {
       type: "date",
@@ -166,6 +170,7 @@ const CreateMatch = () => {
       name: "MainReferee",
       optionsArr: referee,
       disable: false,
+      selected: values.MainReferee,
     },
     {
       type: "dropdown",
@@ -174,6 +179,7 @@ const CreateMatch = () => {
       name: "Linesman1",
       optionsArr: referee,
       disable: false,
+      selected: values.Linesman1,
     },
     {
       type: "dropdown",
@@ -182,6 +188,7 @@ const CreateMatch = () => {
       name: "Linesman2",
       optionsArr: referee,
       disable: false,
+      selected: values.Linesman2,
     },
     {
       type: "number",
@@ -192,22 +199,24 @@ const CreateMatch = () => {
     },
   ];
 
-  useEffect(() => {
-    dispatch(setActivePage("creatematch"));
-  }, []);
-  const handleAddMatch = async (values, errors) => {
+  const handleEditMatch = async (values, errors) => {
+    console.log("In edit match");
     if (Object.keys(errors).length === 0) {
       try {
+        console.log("In edit match");
         const res = await axios.post(
-          "http://localhost:3001/api/match/creatematch",
+          `http://localhost:3001/api/match/editMatch/${matchID}`,
           values
         );
+        console.log("res");
         setMessage("Match updated successfully");
         console.log(res);
       } catch (err) {
-        setMessage("Error adding Match");
+        setMessage(err.response.data.error);
         console.log(err);
       }
+    } else {
+      setMessage("Error adding Match");
     }
   };
 
@@ -219,19 +228,24 @@ const CreateMatch = () => {
           <h2 className="match-details-title">Edit Match Details</h2>
           <MyForm
             inputArr={inputArr}
-            type="editDetails"
+            type="editmatch"
             title="Edit Match"
             buttText="Confirm Edit"
             initVal={values}
-            //handleSub={handleOnSubmit}
+            handleSub={handleEditMatch}
             edit="true"
           />
+          {message && (
+            <div style={{ color: message.includes("Error") ? "red" : "green" }}>
+              {message}
+            </div>
+          )}
         </>
       ) : (
-        <h2 className="match-details-title">Edit Details</h2>
+        <h2 className="match-details-title">Edit Match Details</h2>
       )}
     </div>
   );
 };
 
-export default CreateMatch;
+export default EditMatch;

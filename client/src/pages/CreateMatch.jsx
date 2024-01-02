@@ -149,9 +149,11 @@ const CreateMatch = () => {
         setMessage("Match added successfully");
         console.log(res);
       } catch (err) {
-        setMessage("Error adding Match");
+        setMessage(err.response.data.error);
         console.log(err);
       }
+    } else {
+      setMessage("Error adding Match");
     }
   };
 

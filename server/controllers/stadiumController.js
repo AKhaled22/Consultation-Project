@@ -9,22 +9,30 @@ exports.addstadium = async (req, res) => {
     seatsrowcapcity: StadRows,
     seatscolcapcity: StadSeats,
   });
-
-  try {
-    const stadiumdata = await newStadium.save();
-    res.status(200).json({
-      message: "Stadium Saved Successfully!",
-    });
-  } catch (err) {
-    console.log(err);
-    if (err.code === 11000) {
-      res.status(405).json({
-        error: `${Object.keys(err.keyValue)[0]} already used!`,
+  const findstad = await Stadium.findOne({
+    name: StadName,
+  });
+  if (!findstad) {
+    try {
+      const stadiumdata = await newStadium.save();
+      res.status(200).json({
+        message: "Stadium Saved Successfully!",
       });
-    } else {
-      res.status(404).json({
-        err,
-      });
+    } catch (err) {
+      console.log(err);
+      if (err.code === 11000) {
+        res.status(405).json({
+          error: `${Object.keys(err.keyValue)[0]} already used!`,
+        });
+      } else {
+        res.status(404).json({
+          err,
+        });
+      }
     }
+  } else {
+    res.status(405).json({
+      error: `Error:Stadium with the same name already exists!`,
+    });
   }
 };
