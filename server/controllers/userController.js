@@ -31,9 +31,9 @@ exports.loginUser = async (req, res) => {
 
     })
   } else {
-    res.status(400).json({
+    res.status(404).json({
 
-      isValid: false
+      error: "User not found!"
 
     })
   }
@@ -84,7 +84,7 @@ exports.registerUser = async (req, res) => {
     }else{
       res.status(404).json({
 
-        err
+        error: "Unknown error has occured!"
 
       })
     }

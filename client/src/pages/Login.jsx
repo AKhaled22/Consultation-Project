@@ -46,6 +46,7 @@ const Login = () => {
                     if(res.status === 200){
                         localStorage.setItem("Token" , res.data.Token)
                         localStorage.setItem("Role" , res.data.Role)
+                        document.cookie = "hi"
                         navigate("/home")
 
                     }
