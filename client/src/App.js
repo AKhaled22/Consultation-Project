@@ -17,7 +17,6 @@ import {
   Login,
   Manager,
   Register,
-  SysAdministrator,
   TicketReservation,
   ViewMatches,
   YourTickets,
@@ -44,7 +43,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgetpassword" element={<Login />} />
-            <Route path="/admin" element={<Admin />} />
             <Route path="/matches" element={<Login />} />
             <Route path="/creatematch" element={<CreateMatch />} />
             <Route path="/addstadium" element={<AddStadium />} />
@@ -56,6 +54,9 @@ function App() {
             <Route path="/yourtickets" element={<YourTickets />} />
             <Route path="/admindelete" element={<AdminDelete />} />
             <Route path="/editmatch/:matchID" element={<EditMatch />} />
+            <Route path="/admin" element={<Admin />} />
+
+
             <Route path="*" element={<Home />} />
           </Routes>
         </Router>

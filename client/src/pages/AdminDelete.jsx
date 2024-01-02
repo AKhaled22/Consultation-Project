@@ -1,66 +1,51 @@
-import React from 'react';
 import { useState } from 'react';
+import React, { useEffect } from "react";
+import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import MyPagination from '../components/MyPagination';  
+import AdminList from '../components/AdminList';
 
 
 const AdminDelete = () => {
 
-  const inputArr = [
-    {
-      name: "Ahmed",
-      id: "ahmedtoeima",
-      email: "username@gmail.com",
-      role:"Manger"
+  const [searchResults, setSearchResults] = useState([]);
+  
+  useEffect(() => {
+    fetchAllUsers();
+  }, []);
 
-
-    },
-    {
-      name: "Abdullah",
-      id: "abdullahouda",
-      email: "username2@gmail.com",
-      role:"Manger"
-    },
-    {
-      name: "Rawan",
-      id: "rawanadel",
-      email: "username3@gmail.com",
-      role:"Manger"
-    },
-    {
-      name: "Mohy",
-      id: "mostafamohy",
-      email: "username99@gmail.com",
-      role:"Fan"
-    },
-    {
-      name: "Fouda",
-      id: "mostafafouda",
-      email: "username121@gmail.com",
-      role:"Manger"
-
-
-    },
-    {
-      name: "Kabab",
-      id: "Ali Kabab",
-      email: "username2@gmail.com",
-      role:"Manger"
-    },
-    {
-      name: "Omar Yahya",
-      id: "omaryaya",
-      email: "username3@gmail.com",
-      role:"Manger"
-    },
-    {
-      name: "Samehizar",
-      id: "Sameh Nizar",
-      email: "username99@gmail.com",
-      role:"Fan"
+  const fetchAllUsers = async () => {
+    try {
+      //console.log('Mido Khaled')
+      const res = await axios.get('http://localhost:3001/api/admin/getAllUsers');
+      
+      setSearchResults(res.data.getAllUsers);
+      
+      // console.log(res.data.getAllUsers);
+    } catch (err) {
+      console.error(err);
     }
-    
-  ]
+  };
+
+  const handleDelete = async (username) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/admin/deleteUser",
+        { username: username }
+      );
+  
+      if (res.status === 200) {
+        console.log("USER DELETED");
+        fetchAllUsers();
+
+          window.location.reload();
+        
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
   return (
     <div className='container'>
@@ -71,7 +56,7 @@ const AdminDelete = () => {
         </div>
 
         <div className='container'>
-          <SearchBar UsersArr={inputArr} className='delete-admin-page-search-div-searchbar'/>
+          <SearchBar UserArr={searchResults} onDelete={handleDelete} className='delete-admin-page-search-div-searchbar'/>
         </div>
 
       </div>

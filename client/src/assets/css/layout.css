@@ -1124,6 +1124,19 @@ button {
   margin-right: 0.5rem;
 }
 
+
+
+@media (min-width: 768px) and (max-width: 959px) {
+  .col_1{
+      display:none;
+      width:0;
+      height:0;
+      opacity:0;
+      visibility: collapse;       
+  } 
+}
+
+/** admin page khelset **/
 .your-tickets {
   display: flex;
   justify-content: space-between;
