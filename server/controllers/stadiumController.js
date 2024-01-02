@@ -32,9 +32,6 @@ exports.addstadium = async (req, res) => {
       })
     }
   }
-
-
-
-}
+};
 
 

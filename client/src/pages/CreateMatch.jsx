@@ -1,9 +1,9 @@
-import React , {useEffect} from 'react'
+import React , {useEffect,useState} from 'react'
 import MyForm from '../components/MyForm'
 import Header from '../components/Header'
 import Sidebar from "../components/SideBar";
 import SidebarData from '../assets/Data/ManagerSideBarData';
-
+import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
 
@@ -11,64 +11,83 @@ const CreateMatch = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
     
-    
-        dispatch(setActivePage("creatematch")) 
-      
-    }, [])
+    const [message, setMessage] = useState(null);
 
-    const inputArr = [
-        {
+    const [referee, setreferee] = useState([]);
+
+    useEffect(() => {const getreferees = async () => {
+    try {
+        const res = await axios.get(
+        "http://localhost:3001/api/match/viewReferee"
+        );
+        
+        if (res.status === 200) {
+        setreferee(res.data.refreesname);
+        console.log(res.data.refreesname);
+    }
+} catch (err) {
+    console.log(err);
+}
+};
+getreferees();
+console.log(referee);
+}, []);
+
+const [team, setteam] = useState([]);
+
+useEffect(() => {const getteam = async () => {
+    try {
+        const res = await axios.get(
+        "http://localhost:3001/api/match/viewTeam"
+        );
+        
+    if (res.status === 200) {
+        setteam(res.data.teamsname);
+        console.log(res.data.teamsname);
+    }
+} catch (err) {
+        console.log(err);
+    }
+};
+    getteam();
+    console.log(team);
+}, []);
+
+const [stadium, setstadium] = useState([]);
+
+useEffect(() => {const getstadium = async () => {
+    try {
+        const res = await axios.get(
+            "http://localhost:3001/api/match/viewStadium"
+        );
+
+    if (res.status === 200) {
+        setstadium(res.data.stadiumname);
+        console.log(res.data.stadiumname);
+    }
+    } catch (err) {
+        console.log(err);
+    }
+    };
+    getstadium();
+    console.log(stadium);
+}, []);
+
+const inputArr = [
+    {
             type: "dropdown",
             label: "Home Team",
             placeholder: "Al Ahly",
             name: "HomeTeam",
-            optionsArr: [
-                "Al Ahly",
-                "Al-Ittihad",
-                "Al Masry",
-                "Al Mokawloon",
-                "Ceramica Cleopatra",
-                "El Gouna",
-                "El-Sharkeyah+",
-                "ENPPI",
-                "Future FC+",
-                "Ghazl El Mahalla",
-                "Ismaily",
-                "Misr El Makkasa",
-                "National Bank",
-                "Pharco FC+",
-                "Pyramids FC",
-                "Smouha",
-                "El Geish",
-                "Zamalek" 
-            ]
+            optionsArr: team
         },
         {
             type: "dropdown",
             label: "Away Team",
             placeholder: "Zamalek",
             name: "AwayTeam",
-            optionsArr: [
-                 "Al Ahly",
-                "Al-Ittihad",
-                "Al Masry",
-                "Al Mokawloon",
-                "Ceramica Cleopatra",
-                "El Gouna",
-                "El-Sharkeyah+",
-                "ENPPI",
-                "Future FC+",
-                "Ghazl El Mahalla",
-                "Ismaily",
-                "Misr El Makkasa",
-                "National Bank",
-                "Pharco FC+",
-                "Pyramids FC",
-                "Smouha",
-                "El Geish",
-                "Zamalek" ]
+            optionsArr: team
             
         },
         {
@@ -76,37 +95,7 @@ const CreateMatch = () => {
             label: "Match Venue",
             placeholder: "Egyptian Army Stadium",
             name: "MatchVenue",
-            optionsArr: [
-                "New Administrative Capital Stadium",
-                "Borg el-Arab Stadium",
-                "Cairo International Stadium",
-                "Egyptian Army Stadium",
-                "Arab Contractors Stadium",
-                "30 June Stadium",
-                "Al-Salam Stadium",
-                "Beni Ebeid Stadium",
-                "Ghazl el-Mahalla Stadium",
-                "Cairo Military Academy Stadium",
-                "Suez Stadium",
-                "El-Sekka el-Hadid Stadium",
-                "Mokhtar el-Tetsh Stadium",
-                "Petro Sport Stadium",
-                "Ismailia Stadium",
-                "Haras el-Hodoud Stadium",
-                "Port Said Stadium",
-                "Suez Canal Stadium",
-                "Alexandria Stadium",
-                "Fayoum Stadium",
-                "Sohag Stadium",
-                "El Mansoura Stadium",
-                "Aluminium Stadium",
-                "Izz al-Din Yacoub Stadium",
-                "Asiut University Stadium",
-                "Aswan Stadium",
-                "Bani Sweif Stadium",
-                "Desouk Stadium",
-                "El-Gouna Stadium",
-                "Arbaeen Sporting Stadium"]
+            optionsArr: stadium
             
         },
         {
@@ -126,64 +115,52 @@ const CreateMatch = () => {
             label: "Main Referee",
             placeholder: "Mohamed Adel",
             name: "MainReferee",
-            optionsArr: [
-                "Mohamed Adel",
-                "Mahmoud El Banna",
-                "Mohamed El Hanafy",
-                "Mohamed Maarouf",
-                "Amin Omar",
-                "Mahmoud Ashour",
-                "Nader Qamar",
-                "Ibrahim Nour El Din",
-                "Ahmed Ghandour",
-                "Mohamed El Sabahi",
-                "Abdelaziz El Sayed"
-            ]
+            optionsArr: referee
         },
         {
             type: "dropdown",
             label: "Linesman 1",
             placeholder: "",
             name: "Linesman1",
-            optionsArr: [
-                "Mohamed Adel",
-                "Mahmoud El Banna",
-                "Mohamed El Hanafy",
-                "Mohamed Maarouf",
-                "Amin Omar",
-                "Mahmoud Ashour",
-                "Nader Qamar",
-                "Ibrahim Nour El Din",
-                "Ahmed Ghandour",
-                "Mohamed El Sabahi",
-                "Abdelaziz El Sayed"
-            ]
+            optionsArr:referee
         },
         {
             type: "dropdown",
             label: "Linesman 2",
             placeholder: "",
             name: "Linesman2",
-            optionsArr: [
-                "Mohamed Adel",
-                "Mahmoud El Banna",
-                "Mohamed El Hanafy",
-                "Mohamed Maarouf",
-                "Amin Omar",
-                "Mahmoud Ashour",
-                "Nader Qamar",
-                "Ibrahim Nour El Din",
-                "Ahmed Ghandour",
-                "Mohamed El Sabahi",
-                "Abdelaziz El Sayed"
-            ]
+            optionsArr:referee
+        },
+        {
+            type: "number",
+            label: "Ticket Price",
+            placeholder: "Ex: 100",
+            name: "Ticketprice"
         }
     ]
+    
+    useEffect(() => {
+        dispatch(setActivePage("creatematch")) 
+    }, [])
+    const handleAddMatch = async (values , errors) => {    
+        if(Object.keys(errors).length === 0){
+            try {
+                const res = await axios.post( 'http://localhost:3001/api/match/creatematch', values);
+                setMessage('Match added successfully');
+                console.log(res);
+              } catch (err) {
+                setMessage('Error adding Match');
+                console.log(err);
+              }
+            }
+    }
+
     return (
         <div>
-            <Sidebar SidebarData={SidebarData}/>
+            {/* <Sidebar SidebarData={SidebarData}/> */}
             <Header />
-            <MyForm inputArr={inputArr} type="creatematch" title="Create Match" buttText="Create Match" />
+            <MyForm inputArr={inputArr} type="creatematch" title="Create Match" buttText="Create Match" handleSub={handleAddMatch}/>
+            {message && <div style={{ color: message.includes('Error') ? 'red' : 'green' }}>{message}</div>}
         </div>
     )
 }

@@ -16,11 +16,12 @@ app.use(errorMiddleware)
 
 const user = require("./routes/userRoute");
 const stadium = require("./routes/stadiumRoute");
-
+const match = require("./routes/matchRoute");
 
 
 app.use("/api/user", user);
 app.use("/api/stadium", stadium);
+app.use("/api/match", match);
 
 
 // app.use(express.static(path.join(__dirname, "../frontend/build")));

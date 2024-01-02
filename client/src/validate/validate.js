@@ -52,7 +52,8 @@ const Validation = (type) => {
     time: validateSchema['time'],
     MainReferee:validateSchema['MainReferee'],
     Linesman1:validateSchema['Linesman1'],
-    Linesman2:validateSchema['Linesman2']
+    Linesman2:validateSchema['Linesman2'],
+    Ticketprice:validateSchema['Ticketprice']
     },
    
   };
