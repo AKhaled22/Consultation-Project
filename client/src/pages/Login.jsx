@@ -32,6 +32,7 @@ const Login = () => {
     // });
 
     // fetchData()
+    console.log("login");
   }, []);
 
   // const handleLoginSubmit = async (values) => {
@@ -55,7 +56,7 @@ const Login = () => {
 
   const handleLoginSubmit = async (values) => {
     try {
-      console.log(values)
+      console.log(values);
       const res = await axios.post(
         "http://localhost:3001/api/user/login",
         values
@@ -69,39 +70,39 @@ const Login = () => {
     } catch (err) {
       console.log(err);
     }
-
-    const inputArr = [
-      {
-        type: "email",
-        label: "Email",
-        placeholder: "username@gmail.com",
-        name: "email",
-        // optionsArr:
-        // radioOne:
-        // radioTwo:
-      },
-      {
-        type: "password",
-        label: "Password",
-        placeholder: "********",
-        name: "password",
-      },
-    ];
-
-    return (
-      <div>
-        <Header />
-
-        <MyForm
-          handleSub={handleLoginSubmit}
-          type="login"
-          inputArr={inputArr}
-          title="Login"
-          buttText="Login"
-        />
-      </div>
-    );
   };
+
+  const inputArr = [
+    {
+      type: "email",
+      label: "Email",
+      placeholder: "username@gmail.com",
+      name: "email",
+      // optionsArr:
+      // radioOne:
+      // radioTwo:
+    },
+    {
+      type: "password",
+      label: "Password",
+      placeholder: "********",
+      name: "password",
+    },
+  ];
+
+  return (
+    <div>
+      <Header />
+
+      <MyForm
+        handleSub={handleLoginSubmit}
+        type="login"
+        inputArr={inputArr}
+        title="Login"
+        buttText="Login"
+      />
+    </div>
+  );
 };
 
 export default Login;

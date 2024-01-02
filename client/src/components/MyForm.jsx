@@ -38,6 +38,7 @@ const MyForm = ({
   // const handleSubmit = async (values, { setSubmitting }) => {
   //   console.log("hii");
   // };
+  console.log(inputArr);
   return (
     <div className="myForm">
       <Formik
@@ -51,6 +52,7 @@ const MyForm = ({
           setSubmitting(false);
         }}
         initialValues={edit === "true" ? initVal : {}}
+        // initialValues={{}}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
           <Form onSubmit={handleSubmit}>

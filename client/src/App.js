@@ -42,12 +42,15 @@ function App() {
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/forgetpassword" element={<Login />} />
-            <Route path="/matches" element={<Login />} />
+            {/* <Route path="/forgetpassword" element={<Login />} /> */}
+            {/* <Route path="/matches" element={<Login />} /> */}
             <Route path="/creatematch" element={<CreateMatch />} />
             <Route path="/addstadium" element={<AddStadium />} />
             <Route path="/manager" element={<Manager />} />
-            <Route path="/ticketreservation/:matchId" element={<TicketReservation />} />
+            <Route
+              path="/ticketreservation/:matchId"
+              element={<TicketReservation />}
+            />
             <Route path="/editdetails" element={<EditDetails />} />
             <Route path="/matchdetails" element={<MatchDetails />} />
             <Route path="/viewmatches" element={<ViewMatches />} />
@@ -55,7 +58,6 @@ function App() {
             <Route path="/admindelete" element={<AdminDelete />} />
             <Route path="/editmatch/:matchID" element={<EditMatch />} />
             <Route path="/admin" element={<Admin />} />
-
 
             <Route path="*" element={<Home />} />
           </Routes>

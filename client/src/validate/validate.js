@@ -7,7 +7,7 @@ const Validation = (type) => {
       firstName: validateSchema["firstName"],
       lastName: validateSchema["lastName"],
       username: validateSchema["username"],
-      address: validateSchema["address"],
+      //address: validateSchema["address"],
       dob: validateSchema["dob"],
       city: validateSchema["city"],
       gender: validateSchema["gender"],
@@ -36,28 +36,13 @@ const Validation = (type) => {
       city: validateSchema["city"],
       // address: validateSchema["address"],
       email: validateSchema["email"],
-
-
     },
     bill: {
       cardHolderName: validateSchema["cardHolderName"],
       cardNumber: validateSchema["cardNumber"],
       expiryDate: validateSchema["expiryDate"],
-      code: validateSchema["code"]
-    }
-    // 'forgot password': {
-    //   email: validateSchema['email']
-    // },
-    // 'reset password': {
-    //   password: validateSchema['password'],
-    //   'confirm password': validateSchema['confirmPassword']
-    // },
-    // 'change password': {
-    //   'old password': validateSchema['oldPassword'],
-    //   password: validateSchema['password'],
-    //   'confirm password': validateSchema['confirmPassword']
-    // }
-
+      code: validateSchema["code"],
+    },
     addstadium: {
       StadName: validateSchema["StadName"],
       StadRows: validateSchema["StadRows"],

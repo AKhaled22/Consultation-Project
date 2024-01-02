@@ -31,7 +31,7 @@ export const validateSchema = {
     .required("City is required")
     .min(3, "City should have more than 3 characters")
     .max(30, "City cannot exceed 30 characters"),
-  address: yup.string().required("Address is required"),
+  //address: yup.string().required("Address is required"),
   // password: yup.string().required("Password is required"),
   dob: yup.date().required("Date of Birth is required"),
   gender: yup.string().required("Please select an option"),

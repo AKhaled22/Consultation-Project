@@ -348,7 +348,7 @@ exports.getMatch = async (req, res) => {
 
 exports.getMatch = async (req, res) => {
   const matchId = req.params.matchId;
-  console.log("matchid", matchId);
+  console.log("matchidddddddddddddddddddddddddd", matchId);
   try {
     const match = await Match.findById(matchId);
     const mainRef = await Ref.findById(match.referee);
@@ -357,13 +357,14 @@ exports.getMatch = async (req, res) => {
     const stad = await Stadium.findById(match.stadium);
     const homeTeam = await Team.findById(match.hometeam);
     const awayTeam = await Team.findById(match.awayteam);
-    console.log(match);
+
+    // console.log(match);
     res.status(200).json({
       match: {
         homeTeam: homeTeam.name,
-        homeTeamLogo: "ManchesterUnitedLogo",
+        homeTeamLogo: homeTeam.logo,
         awayTeam: awayTeam.name,
-        awayTeamLogo: "LiverpoolLogo",
+        awayTeamLogo: awayTeam.logo,
         stadium: stad.name,
         date: match.date,
         Time: match.time,
@@ -376,6 +377,7 @@ exports.getMatch = async (req, res) => {
         cols: stad.seatscolcapcity,
       },
     });
+    // console.log("ROWS,match.rows", stad);
   } catch (err) {
     res.status(404).json({ error: "Error in retrieving match!" });
   }

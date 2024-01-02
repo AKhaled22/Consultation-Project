@@ -41,7 +41,7 @@ const ViewMatches = () => {
     };
     getMatches();
   }, []);
-  bn;
+  // bn;
   return (
     <div>
       <Header />
