@@ -3,6 +3,7 @@ import seat from '../assets/seat.png'
 import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
+import axios from "axios"
 // import Button from './Button'
 
 const Ticket = (
@@ -17,10 +18,37 @@ const Ticket = (
         mainReferee,
         linesman1,
         linesman2,
+        seatt,
+        ticketId,
+        ticketPrice,
+        handleCancelTicket,
        
-        hideButton,
+        disableButt,
     }
 ) => {
+    //data{ticketid , seatt , matchid}
+
+    const handleCancelTicket = async (ticketId) => {
+
+        try{
+            const res = await axios.post("http://localhost:3001/api/ticket/cancelticket" ,{ticketId:ticketId} , {
+                headers:{
+                    Authorization: localStorage.getItem("Token")
+                }
+            })
+            console.log(res)
+            // if(res.status==200){
+                
+            // }
+        }catch(err){
+            console.log(err)
+
+        }
+
+
+}
+
+
     return (
         <>
             <div className="match-details-container">
@@ -79,14 +107,14 @@ const Ticket = (
                 </div>
                 <div className="your-tickets">
                     <div className="d-flex justify-content-center align-items-center gap-1">
-                        <label>Name:</label>
-                        <div className="stadName">hi</div>
+                        <label>Ticket ID:</label>
+                        <div className="ticketid">{ticketId}</div>
                     </div>
                     <div className="d-flex justify-content-center align-items-center gap-1">
                         <img src={seat} alt='chair' width="25px" height="auto" />
-                        <div className="refName">hi</div>
+                        <div className="refName">{seatt}</div>
                     </div>
-                    <button className='danger-butt'>Cancel</button>
+                    <button disabled={false} onClick={() => {handleCancelTicket(ticketId)}} className='danger-butt'>Cancel</button>
                 </div>
 
                 {/* <Button className={hideButton && "d-none"} buttText={"Get Ticket"} /> */}

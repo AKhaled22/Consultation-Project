@@ -209,24 +209,28 @@ exports.getRole = async (req, res) => {
   const { authorization } = req.headers;
   console.log("token1 ", authorization);
   if (authorization != undefined) {
-    var decoded = jwt.verify(authorization, key);
-    console.log("decoded \n");
-    console.log(decoded);
-    //   // console.log(token);
+    try {
+      var decoded = jwt.verify(authorization, key);
+      console.log("decoded \n");
+      console.log(decoded);
+      const user = await User.findById(decoded.data);
 
-    const user = await User.findById(decoded.data);
-
-    if (!user) {
+      if (!user) {
+        res.status(401).json({
+          Role: "G",
+        });
+      } else {
+        console.log("\n\n");
+        console.log(user.role);
+        // console.log(user);
+        console.log("\n\n");
+        res.status(200).json({
+          Role: user.role,
+        });
+      }
+    } catch (errr) {
       res.status(401).json({
         Role: "G",
-      });
-    } else {
-      console.log("\n\n");
-      console.log(user.role);
-      // console.log(user);
-      console.log("\n\n");
-      res.status(200).json({
-        Role: user.role,
       });
     }
   } else {

@@ -34,7 +34,6 @@ export const validateSchema = {
   address: yup.string().required("Address is required"),
   // password: yup.string().required("Password is required"),
   dob: yup.date().required("Date of Birth is required"),
-  //terms: yup.bool().required().oneOf([true], "Terms must be accepted"),
   gender: yup.string().required("Please select an option"),
   type: yup.string().required("Please select an option"),
   confirmPassword: yup
@@ -105,4 +104,11 @@ export const validateSchema = {
     .positive()
     .integer()
     .required("Ticket price is required"),
+  cardHolderName: yup.string().required("Name is required"),
+  cardNumber: yup.number().required("Card number is required"),
+  expiryDate: yup.date().required("Expiry date is required"),
+  code: yup
+    .string()
+    .required("CCV is required")
+    .matches(/^\d{3,4}$/, "CCV must be a string of 3 or 4 numbers"),
 };

@@ -21,7 +21,7 @@ const Validation = (type) => {
     login: {
       email: validateSchema["email"],
       password: validateSchema["password"],
-      terms: validateSchema["terms"],
+      // terms: validateSchema["terms"],
     },
 
     editDetails: {
@@ -36,7 +36,15 @@ const Validation = (type) => {
       city: validateSchema["city"],
       // address: validateSchema["address"],
       email: validateSchema["email"],
+
+
     },
+    bill: {
+      cardHolderName: validateSchema["cardHolderName"],
+      cardNumber: validateSchema["cardNumber"],
+      expiryDate: validateSchema["expiryDate"],
+      code: validateSchema["code"]
+    }
     // 'forgot password': {
     //   email: validateSchema['email']
     // },
@@ -82,7 +90,7 @@ const Validation = (type) => {
   };
 
   const schema = yup.object().shape(formSchema[type]);
-  console.log(formSchema["login"], type);
+  // console.log(formSchema["login"], type);
 
   return schema;
 };

@@ -16,10 +16,10 @@ const Login = () => {
     dispatch(setActivePage("login"));
 
     // Example data to send in the request body
-    const requestData = {
-      email: "ahmedkhaled1029@gmail.com",
-      password: "1234",
-    };
+    // const requestData = {
+    //   email: "ahmedkhaled1029@gmail.com",
+    //   password: "1234",
+    // };
 
     // Using fetch to make a POST request
     // .then((data) => {
@@ -55,6 +55,7 @@ const Login = () => {
 
   const handleLoginSubmit = async (values) => {
     try {
+      console.log(values)
       const res = await axios.post(
         "http://localhost:3001/api/user/login",
         values

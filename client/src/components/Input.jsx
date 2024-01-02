@@ -19,7 +19,7 @@ const Input = ({
   radioTwoChecked,
   selected,
 }) => {
-  // console.log(error);
+  // console.log(error , value , type,name);
   return (
     // <div className="myInput">
     <>
@@ -114,7 +114,7 @@ const Input = ({
             <Form.Control
               type={type}
               placeholder={placeholder}
-              aria-describedby="inputGroupPrepend"
+              // aria-describedby="inputGroupPrepend"
               name={name}
               value={value}
               onChange={onChange}

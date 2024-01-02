@@ -36,6 +36,7 @@ const MatchDetails = ({
   mainReferee,
   linesman1,
   linesman2,
+  handleButt,
   hideButton,
 }) => {
   console.log("ANA FE MATCH DETAILS ", matchID);
@@ -179,8 +180,11 @@ const MatchDetails = ({
         </div>
       </div>
       <Button
-        className={userType == "G" && "d-none"}
+        // className={userType == "G" && "d-none"}
+        // buttText={userType == "F" ? "Get Ticket" : "View Reserved Seats"}
+        className={(userType == "G" || hideButton) && "d-none"}
         buttText={userType == "F" ? "Get Ticket" : "View Reserved Seats"}
+        onClick={handleButt}
       />
       <br />
       <Button

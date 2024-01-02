@@ -47,7 +47,7 @@ function App() {
             <Route path="/creatematch" element={<CreateMatch />} />
             <Route path="/addstadium" element={<AddStadium />} />
             <Route path="/manager" element={<Manager />} />
-            <Route path="/ticketreservation" element={<TicketReservation />} />
+            <Route path="/ticketreservation/:matchId" element={<TicketReservation />} />
             <Route path="/editdetails" element={<EditDetails />} />
             <Route path="/matchdetails" element={<MatchDetails />} />
             <Route path="/viewmatches" element={<ViewMatches />} />

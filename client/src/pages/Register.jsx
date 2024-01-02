@@ -4,9 +4,11 @@ import MyForm from '../components/MyForm'
 import { useSelector, useDispatch } from 'react-redux'
 import { setActivePage } from '../features/pageSlice'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Register = () => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
     
@@ -124,6 +126,11 @@ const Register = () => {
             try{
                 const res = await axios.post("http://localhost:3001/api/user/register",values)
                 console.log(res);
+                if (res.status === 200) {
+                    localStorage.setItem("Token", res.data.Token);
+                    // localStorage.setItem("Role", res.data.Role);
+                    navigate("/home");
+                }
             }catch(err){
                 console.log(err);
             }
