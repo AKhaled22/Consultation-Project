@@ -26,8 +26,8 @@ exports.loginUser = async (req, res) => {
       Role: userData.role,
     });
   } else {
-    res.status(400).json({
-      isValid: false,
+    res.status(404).json({
+      error: "User not found!",
     });
   }
 
@@ -85,7 +85,7 @@ exports.registerUser = async (req, res) => {
       });
     } else {
       res.status(404).json({
-        err,
+        error: "Unknown error has occured!",
       });
     }
   }
