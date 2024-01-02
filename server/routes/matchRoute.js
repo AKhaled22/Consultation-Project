@@ -5,6 +5,8 @@ const {
   viewStadium,
   creatematch,
   viewTeam,
+  editMatch,
+  getMatch,
 } = require("../controllers/matchController");
 const router = express.Router();
 const { isAuthenticatedUser } = require("../middleware/auth");
@@ -15,5 +17,6 @@ router.route("/viewReferee").get(viewReferee);
 router.route("/viewTeam").get(viewTeam);
 router.route("/viewStadium").get(viewStadium);
 router.route("/creatematch").post(creatematch);
-
+router.route("/editMatch").post(editMatch);
+router.route("/getMatch").get(getMatch);
 module.exports = router;

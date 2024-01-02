@@ -103,3 +103,7 @@ exports.creatematch = async (req, res) => {
     }
   }
 };
+
+exports.editMatch = async (req, res) => {};
+
+exports.getMatch = async (req, res) => {};
