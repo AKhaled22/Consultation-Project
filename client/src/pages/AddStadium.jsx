@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/SideBar";
 import SidebarData from "../assets/Data/ManagerSideBarData";
 import { useSelector, useDispatch } from "react-redux";
+import { setPopup } from "../features/ErrorPopupSlice";
 import { setActivePage } from "../features/pageSlice";
 import axios from "axios";
 import AlertDismissible from "../components/Error";
@@ -47,14 +48,39 @@ const AddStadium = () => {
           "http://localhost:3001/api/stadium/addstadium",
           values
         );
-        setMessage("Stadium added successfully");
+        // setMessage("Stadium added successfully");
+        // dispatch(setPopup({data:"Stadium added successfully",type:"success",show:true}));
+        // dispatch(setPopup({data:"Stadium added successfully",type:"success",show:false}));
+        dispatch(setPopup({data:"Stadium added successfully",type:"success",show:true}));
+
+// introduce a delay of, for example, 2000 milliseconds (2 seconds)
+setTimeout(() => {
+  dispatch(setPopup({data:"Stadium added successfully",type:"success",show:false}));
+}, 2000);
+
         console.log(res);
       } catch (err) {
-        setMessage(err.response.data.error);
+        //setMessage(err.response.data.error);
+        // dispatch(setPopup({data:err.response.data.error,type:"danger",show:true}));
+        // dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
+        dispatch(setPopup({data:err.response.data.error,type:"danger",show:true}));
+
+// introduce a delay of, for example, 2000 milliseconds (2 seconds)
+setTimeout(() => {
+  dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
+}, 2000);
+
         console.log(err);
       }
     } else {
-      setMessage("Error adding Stadium");
+      //setMessage("Error adding Stadium");
+      dispatch(setPopup({data:"Error adding Stadium",type:"danger",show:true}));
+
+// introduce a delay of, for example, 2000 milliseconds (2 seconds)
+      setTimeout(() => {
+        dispatch(setPopup({data:"Error adding Stadium",type:"danger",show:false}));
+      }, 2000);
+
     }
   };
 
@@ -69,16 +95,7 @@ const AddStadium = () => {
         buttText="Add Stadium"
         handleSub={handleAddStadium}
       />
-      {message && (
-        <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
-        >
-          {message.includes("Error") ? (
-            <AlertDismissible message={message} variant="danger" />
-          ) : (
-            <AlertDismissible message={message} variant="success" />
-          )}
-        </div>
-      )}
+      
     </div>
   );
 };

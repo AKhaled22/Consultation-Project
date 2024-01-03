@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/layout.css";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import AlertDismissible from "./components/Error";
+import { useSelector } from "react-redux";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import MatchDetails from "./components/MatchDetails";
@@ -30,9 +31,10 @@ import Admin from "./pages/Admin";
 function App() {
   // const activePage = useSelector((state) => state.page.value)
   // const dispatch = useDispatch()
-
+  const errorpopup = useSelector((state) => state.errorpopup.data);
+  console.log(errorpopup);
   return (
-    <Provider store={store}>
+
       <div className="App">
         {/* <Login /> */}
 
@@ -59,8 +61,10 @@ function App() {
             <Route path="*" element={<Home />} />
           </Routes>
         </Router>
+            <AlertDismissible message={errorpopup.data} variant={errorpopup.type} trigger={errorpopup.show}/>
       </div>
-    </Provider>
+
+    // </Provider>
   );
 }
 

@@ -2,7 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const ErrorPopupSlice = createSlice({
   name: 'errorpopup',
-  initialState: { data: '' },
+  initialState: { data: '' ,
+  type: '',
+  show: false
+},
   reducers: {
     setPopup: (state, action) => {
       state.data = action.payload;
@@ -10,6 +13,6 @@ export const ErrorPopupSlice = createSlice({
   }
 });
 
-export const { setPopup } = errorpopup.actions;
+export const { setPopup } = ErrorPopupSlice.actions;
 
-export default errorpopup.reducer;
+export default ErrorPopupSlice.reducer;
