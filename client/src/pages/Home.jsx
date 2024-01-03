@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import sponsors from "../assets/sponsors.png";
+import Pal from "../assets/Pal.svg.png";
 import MatchDetails from "../components/MatchDetails";
 import ZamalekLogo from "../assets/ZamalekSC.png";
 import AlAhlyLogo from "../assets/AlAhly.png";
@@ -79,7 +80,7 @@ const Home = () => {
   }, []);
 
   const [activePage, setActivePage] = useState(1); //kont 3amlha 2 leh ya mido AAO
-  const pageSize = 2;
+  const pageSize = 3;
   const matchesToShow = matches.slice(
     (activePage - 1) * pageSize,
     (activePage - 1) * pageSize + pageSize
@@ -88,7 +89,7 @@ const Home = () => {
   return (
     <>
       <div className="loginHeader">
-        <img src={sponsors} width="100%" height="auto" />
+        <img src={Pal} width="100%" height="200px" />
       </div>
       {/* <div className='homepage-container'> */}
       <div className="homepage-container">

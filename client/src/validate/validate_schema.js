@@ -111,7 +111,40 @@ export const validateSchema = {
     .integer()
     .required("Ticket price is required"),
   cardHolderName: yup.string().required("Name is required"),
-  cardNumber: yup.number().required("Card number is required"),
+  cardNumber: yup
+    .string()
+    .required("Credit card number is required")
+    .test(
+      "luhn-algorithm",
+      "Invalid credit card number",
+      function isValidCreditCardNumber(cardNumber) {
+        const cleanedCardNumber = cardNumber.replace(/\D/g, "");
+
+        if (!/^\d+$/.test(cleanedCardNumber)) {
+          return false;
+        }
+
+        let sum = 0;
+        let double = false;
+
+        for (let i = cleanedCardNumber.length - 1; i >= 0; i--) {
+          let digit = parseInt(cleanedCardNumber.charAt(i), 10);
+
+          if (double) {
+            digit *= 2;
+            if (digit > 9) {
+              digit -= 9;
+            }
+          }
+
+          sum += digit;
+          double = !double;
+        }
+
+        return sum % 10 === 0;
+      }
+    ),
+
   expiryDate: yup
     .date()
     .required("Expiry date is required")

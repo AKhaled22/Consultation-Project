@@ -8,7 +8,7 @@ import moment from "moment";
 import Feedback from "react-bootstrap/esm/Feedback";
 import AlertDismissible from "../components/Error";
 import { setPopup } from "../features/ErrorPopupSlice";
-
+import { setFirstName } from "../features/nameSlice";
 const EditDetails = () => {
   const dispatch = useDispatch();
   // const [user, setUser] = useState({});
@@ -27,9 +27,9 @@ const EditDetails = () => {
             },
           }
         );
+
         console.log(res.data.user);
         user = res.data.user;
-
         const birthdate = new Date(user.birthdate);
         const formattedDate = moment(birthdate).format("YYYY-MM-DD");
         // const gender = user.gender == "M" ? true : false;
@@ -183,6 +183,7 @@ const EditDetails = () => {
         );
       }, 2000);
       console.log(res);
+      dispatch(setFirstName(values.firstname));
     } catch (err) {
       dispatch(
         setPopup({ data: err.response.data.error, type: "danger", show: true })

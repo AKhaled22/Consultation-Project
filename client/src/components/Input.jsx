@@ -73,31 +73,39 @@ const Input = ({
         //   </Form.Group>
         // </Row>
         <div className="radioButtons mb-3">
-          <div className="radiobutt">
-            <input
-              type="radio"
-              id={radioOne}
-              name={name}
-              value={radioOne[0]}
-              disabled={isDisabled}
-              onChange={onChange}
-              checked={radioOneChecked}
-            />
-            <label for={radioOne}>{radioOne}</label>
+          <div>
+            <div className="radiobutt">
+              <input
+                type="radio"
+                id={radioOne}
+                name={name}
+                value={radioOne[0]}
+                disabled={isDisabled}
+                onChange={onChange}
+                checked={radioOneChecked}
+              />
+              <label for={radioOne}>{radioOne}</label>
+            </div>
+            <div className="radiobutt">
+              <input
+                type="radio"
+                id={radioTwo}
+                name={name}
+                value={radioTwo[0]}
+                disabled={isDisabled}
+                onChange={onChange}
+                checked={radioTwoChecked}
+                // checked={value === 'option1'}
+              />
+              <label for={radioTwo}>{radioTwo}</label>
+            </div>
           </div>
-          <div className="radiobutt">
-            <input
-              type="radio"
-              id={radioTwo}
-              name={name}
-              value={radioTwo[0]}
-              disabled={isDisabled}
-              onChange={onChange}
-              checked={radioTwoChecked}
-              // checked={value === 'option1'}
-            />
-            <label for={radioTwo}>{radioTwo}</label>
-          </div>
+          <Form.Control.Feedback
+            className={`${error ? "d-block" : ""}`}
+            type="invalid"
+          >
+            {error}
+          </Form.Control.Feedback>
         </div>
       ) : (
         // <input

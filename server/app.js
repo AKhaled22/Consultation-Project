@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(errorMiddleware);
 
 const user = require("./routes/userRoute");
 app.use("/api/user", user);
@@ -21,17 +20,10 @@ const stadium = require("./routes/stadiumRoute");
 app.use("/api/stadium", stadium);
 const admin = require("./routes/adminRoute");
 app.use("/api/admin", admin);
-// console.log(admin);
+
 const ticket = require("./routes/ticketRoute");
 app.use("/api/ticket", ticket);
 
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
-// });
-
-// Middleware for Errors
 app.use(errorMiddleware);
 
 module.exports = app;

@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
-
+const Ticket = require("../models/ticketModel");
+const Match = require("../models/matchModel");
 // Getting all pending requests
 exports.getUnapprovedUsers = async (req, res) => {
   try {
@@ -40,8 +41,28 @@ exports.deleteUser = async (req, res) => {
     console.log("Hi");
 
     const { username } = req.body;
+
+    const getuserid = await User.findOne({ username: username });
+    console.log("Gebt el id", getuserid.id);
+
+    const ticketsid = await Ticket.find({ user: getuserid.id });
+    console.log("Gebt el tickets", ticketsid);
+
+    for (let i = 0; i < ticketsid.length; i++) {
+      console.log("AWIL EL FOR");
+      const matchesid = await Match.findOne({ _id: ticketsid[i].match });
+      console.log("matches id", matchesid);
+      console.log("tickets id", ticketsid[i].seat);
+      matchesid.reservedseats = matchesid.reservedseats.filter(
+        (item) => item !== ticketsid[i].seat
+      );
+      await matchesid.save();
+    }
+
     const deleteUser = await User.findOneAndDelete({ username: username });
     console.log("Salam ya sahby:", deleteUser.username);
+    // console.log('Gebt el match', matchesid);
+
     res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
     console.error(error);

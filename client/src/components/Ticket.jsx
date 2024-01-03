@@ -44,7 +44,7 @@ const Ticket = ({
   disableButt,
 }) => {
   //data{ticketid , seatt , matchid}
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleCancelTicket = async (ticketId) => {
     try {
       const res = await axios.post(
@@ -229,8 +229,8 @@ const Ticket = ({
               {linesman2}
             </div>
           </div>
-        </div>
-        <div className="your-tickets">
+          {/* </div>
+        <div className="your-tickets"> */}
           <div className="d-flex justify-content-center align-items-center gap-1">
             <label>Ticket ID:</label>
             <div className="ticketid">{ticketId}</div>
@@ -241,10 +241,14 @@ const Ticket = ({
           </div>
           <button
             disabled={disableButt}
-            onClick={() => {
+            onClick={(e) => {
               handleCancelTicket(ticketId);
             }}
-            className="danger-butt"
+            className={
+              disableButt
+                ? "danger-butt-disabled rounded-pill"
+                : "danger-butt rounded-pill"
+            }
           >
             Cancel
           </button>

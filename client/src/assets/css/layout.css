@@ -29,6 +29,7 @@ h1 {
 
 .radioButtons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: space-evenly;
   gap: 1rem;
@@ -100,7 +101,8 @@ form {
 }
 
 .homepage-container {
-  background-image: url(../Ali\ Maaloul\ -\ FootyRenders.png);
+  /* background-image: url(../Ali\ Maaloul\ -\ FootyRenders.png); */
+  background-image: url(../shika.png);
   /* height: 100%; */
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,6 +123,7 @@ form {
   overflow: hidden;
   width: 15%;
 
+  /* gap: 5rem; */
   /* position: relative;
   right: 0;
   display: flex;
@@ -1148,16 +1151,29 @@ button {
 
 /** admin page khelset **/
 .your-tickets {
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
   padding: 0 4%;
   margin: 2rem 0;
-  font-size: 70%;
+  font-size: 70%; */
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 100%;
+  padding: 2rem;
+  gap: 2rem 1rem;
 }
-
+.danger-butt-disabled {
+  border: none;
+  background-color: var(--bs-danger);
+  color: white;
+  padding: 0.2rem 1rem;
+  /* border-radius: 5px; */
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .danger-butt {
   border: none;
   background-color: var(--bs-danger);
@@ -1196,14 +1212,14 @@ button {
   padding: 0;
 }
 
-.alertpopup{
+.alertpopup {
   transform: translateX(-50%);
-    left: 50%;
-    position: fixed;
-    top: 10px;
-    /* margin-left: 50%; */
-    /* margin-right: 50%; */
-    width: 78%;
+  left: 50%;
+  position: fixed;
+  top: 10px;
+  /* margin-left: 50%; */
+  /* margin-right: 50%; */
+  width: 78%;
 }
 
 .pagen {
