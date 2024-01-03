@@ -4,6 +4,8 @@ import stadLogo from "../assets/stad.png";
 import whistle from "../assets/whistle.png";
 import sideRefLogo from "../assets/sideRefLogo.png";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setPopup } from "../features/ErrorPopupSlice";
 // import Button from './Button'
 import ZamalekLogo from "../assets/ZamalekSC.png";
 import AlAhlyLogo from "../assets/AlAhly.png";
@@ -42,7 +44,7 @@ const Ticket = ({
   disableButt,
 }) => {
   //data{ticketid , seatt , matchid}
-
+  const dispatch = useDispatch()
   const handleCancelTicket = async (ticketId) => {
     try {
       const res = await axios.post(
@@ -57,10 +59,42 @@ const Ticket = ({
       console.log(res);
       if (res.status == 200) {
         console.log("Ticket Cancelled Successfully");
+        dispatch(
+          setPopup({
+            data: "Ticket Cancelled Successfully",
+            type: "success",
+            show: true,
+          })
+        );
+        setTimeout(() => {
+          dispatch(
+            setPopup({
+              data: "Ticket Cancelled Successfully",
+              type: "success",
+              show: false,
+            })
+          );
+        }, 2000);
         window.location.reload();
       }
     } catch (err) {
       console.log(err);
+      dispatch(
+        setPopup({
+          data: err.response.data.error,
+          type: "danger",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
+            type: "danger",
+            show: false,
+          })
+        );
+      }, 2000);
     }
   };
 

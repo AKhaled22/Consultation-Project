@@ -7,6 +7,7 @@ import { setActivePage } from "../features/pageSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { setFirstName } from "../features/nameSlice";
+import { setPopup } from "../features/ErrorPopupSlice";
 const Login = () => {
   // type, label, placeholder, name, optionsArr, radioOne, radioTwo
   const dispatch = useDispatch();
@@ -75,6 +76,22 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err);
+      dispatch(
+        setPopup({
+          data: err.response.data.error,
+          type: "danger",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
+            type: "danger",
+            show: false,
+          })
+        );
+      }, 2000);
     }
   };
 

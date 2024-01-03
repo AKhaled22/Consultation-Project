@@ -56,8 +56,8 @@ const NavBar = () => {
             <Nav className={`${userType != "G" && "d-none"} d-flex gap-3`}>
               <Link
                 to="/home"
-                className={` navrightsideitem ${
-                  activePage == "home" && "activepagenavbar"
+                className={` navrightsideitem 
+                 
                 }`}
                 onClick={() => {
                   dispatch(setActivePage("home"));
@@ -67,8 +67,8 @@ const NavBar = () => {
               </Link>
               <Link
                 to="/login"
-                className={` navrightsideitem ${
-                  activePage == "login" && "activepagenavbar"
+                className={` navrightsideitem 
+                 
                 }`}
                 onClick={() => {
                   dispatch(setActivePage("login"));
@@ -78,8 +78,8 @@ const NavBar = () => {
               </Link>
               <Link
                 to="/register"
-                className={`navrightsideitem ${
-                  activePage == "register" && "activepagenavbar"
+                className={`navrightsideitem 
+                 
                 }`}
                 onClick={() => {
                   dispatch(setActivePage("signup"));

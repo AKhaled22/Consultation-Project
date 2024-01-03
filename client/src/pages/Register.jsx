@@ -7,6 +7,7 @@ import { setFirstName } from "../features/nameSlice";
 import { setUserType } from "../features/userSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { setPopup } from "../features/ErrorPopupSlice";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -131,7 +132,23 @@ const Register = () => {
         navigate("/home");
       }
     } catch (err) {
-      console.log(err);
+      console.log(err.response.data.error);
+      dispatch(
+        setPopup({
+          data: err.response.data.error,
+          type: "danger",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
+            type: "danger",
+            show: false,
+          })
+        );
+      }, 2000);
     }
 
     // }
