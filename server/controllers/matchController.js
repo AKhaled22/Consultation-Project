@@ -174,7 +174,7 @@ exports.editMatch = async (req, res) => {
       });
     } else {
       console.log("hello");
-      const prev_avenue=match.MatchVenue;
+      const prev_avenue=match.stadium;
       const {
         HomeTeam,
         AwayTeam,
