@@ -7,6 +7,7 @@ import axios from "axios";
 import moment from "moment";
 import Feedback from "react-bootstrap/esm/Feedback";
 import AlertDismissible from "../components/Error";
+import { setPopup } from "../features/ErrorPopupSlice";
 
 const EditDetails = () => {
   const dispatch = useDispatch();
@@ -166,14 +167,22 @@ const EditDetails = () => {
             },
           }
         );
-        setMessage("User updated successfully");
+        dispatch(setPopup({data:"User updated successfully",type:"success",show:true}));
+        setTimeout(() => {
+          dispatch(setPopup({data:"User updated successfully",type:"success",show:false}));
+        }, 2000);
         console.log(res);
       } catch (err) {
-        const msg = err.response.data.error;
-        if (!msg.includes("Error")) setMessage("Error: " + msg);
+        dispatch(setPopup({data:err.response.data.error,type:"danger",show:true}));
+        setTimeout(() => {
+          dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
+        }, 2000);
       }
     } else {
-      setMessage("Error Updating User");
+      dispatch(setPopup({data:"Error Updating User",type:"danger",show:true}));
+      setTimeout(() => {
+        dispatch(setPopup({data:"Error Updating User",type:"danger",show:false}));
+      }, 2000);
     }
   };
   return (

@@ -39,48 +39,31 @@ const AddStadium = () => {
   ];
 
   const handleAddStadium = async (values, errors) => {
-    // console.log("ADD STAD");
-    // console.log(values);
-    // console.log(errors);
     if (Object.keys(errors).length === 0) {
       try {
         const res = await axios.post(
           "http://localhost:3001/api/stadium/addstadium",
           values
         );
-        // setMessage("Stadium added successfully");
-        // dispatch(setPopup({data:"Stadium added successfully",type:"success",show:true}));
-        // dispatch(setPopup({data:"Stadium added successfully",type:"success",show:false}));
         dispatch(setPopup({data:"Stadium added successfully",type:"success",show:true}));
-
-// introduce a delay of, for example, 2000 milliseconds (2 seconds)
-setTimeout(() => {
-  dispatch(setPopup({data:"Stadium added successfully",type:"success",show:false}));
-}, 2000);
+        setTimeout(() => {
+          dispatch(setPopup({data:"Stadium added successfully",type:"success",show:false}));
+        }, 2000);
 
         console.log(res);
       } catch (err) {
-        //setMessage(err.response.data.error);
-        // dispatch(setPopup({data:err.response.data.error,type:"danger",show:true}));
-        // dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
         dispatch(setPopup({data:err.response.data.error,type:"danger",show:true}));
-
-// introduce a delay of, for example, 2000 milliseconds (2 seconds)
-setTimeout(() => {
-  dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
-}, 2000);
+        setTimeout(() => {
+          dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
+        }, 2000);
 
         console.log(err);
       }
     } else {
-      //setMessage("Error adding Stadium");
       dispatch(setPopup({data:"Error adding Stadium",type:"danger",show:true}));
-
-// introduce a delay of, for example, 2000 milliseconds (2 seconds)
       setTimeout(() => {
         dispatch(setPopup({data:"Error adding Stadium",type:"danger",show:false}));
       }, 2000);
-
     }
   };
 

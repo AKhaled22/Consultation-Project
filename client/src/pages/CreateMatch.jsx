@@ -7,6 +7,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
 import AlertDismissible from "../components/Error";
+import { setPopup } from "../features/ErrorPopupSlice";
 
 const CreateMatch = () => {
   const dispatch = useDispatch();
@@ -148,13 +149,23 @@ const CreateMatch = () => {
           values
         );
         setMessage("Match added successfully");
+        dispatch(setPopup({data:"Match added successfully",type:"success",show:true}));
+        setTimeout(() => {
+          dispatch(setPopup({data:"Match added successfully",type:"success",show:false}));
+        }, 2000);
         console.log(res);
       } catch (err) {
-        setMessage(err.response.data.error);
+        dispatch(setPopup({data:err.response.data.error,type:"danger",show:true}));
+        setTimeout(() => {
+          dispatch(setPopup({data:err.response.data.error,type:"danger",show:false}));
+        }, 2000);
         console.log(err);
       }
     } else {
-      setMessage("Error adding Match");
+      dispatch(setPopup({data:"Error adding Match",type:"danger",show:true}));
+      setTimeout(() => {
+        dispatch(setPopup({data:"Error adding Match",type:"danger",show:false}));
+      }, 2000);
     }
   };
 
