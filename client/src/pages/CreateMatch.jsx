@@ -6,6 +6,8 @@ import SidebarData from "../assets/Data/ManagerSideBarData";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
+import AlertDismissible from "../components/Error";
+import { setPopup } from "../features/ErrorPopupSlice";
 
 const CreateMatch = () => {
   const dispatch = useDispatch();
@@ -140,19 +142,53 @@ const CreateMatch = () => {
     dispatch(setActivePage("creatematch"));
   }, []);
   const handleAddMatch = async (values) => {
-      try {
-        const res = await axios.post(
-          "http://localhost:3001/api/match/creatematch",
-          values
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/match/creatematch",
+        values
+      );
+      setMessage("Match added successfully");
+      dispatch(
+        setPopup({
+          data: "Match added successfully",
+          type: "success",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: "Match added successfully",
+            type: "success",
+            show: false,
+          })
         );
-        setMessage("Match added successfully");
-        console.log(res);
-      } catch (err) {
-        setMessage(err.response.data.error);
-        console.log(err);
-      }
-    } 
+      }, 2000);
+      console.log(res);
+    } catch (err) {
+      dispatch(
+        setPopup({ data: err.response.data.error, type: "danger", show: true })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
+            type: "danger",
+            show: false,
+          })
+        );
+      }, 2000);
+      console.log(err);
+    }
+  };
 
+  //   } else {
+  //     dispatch(setPopup({data:"Error adding Match",type:"danger",show:true}));
+  //     setTimeout(() => {
+  //       dispatch(setPopup({data:"Error adding Match",type:"danger",show:false}));
+  //     }, 2000);
+  //   }
+  // };
 
   return (
     <div>
@@ -166,8 +202,13 @@ const CreateMatch = () => {
         handleSub={handleAddMatch}
       />
       {message && (
-        <div style={{ color: message.includes("Error") ? "red" : "green" }}>
-          {message}
+        <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
+        >
+          {message.includes("Error") ? (
+            <AlertDismissible message={message} variant="danger" />
+          ) : (
+            <AlertDismissible message={message} variant="success" />
+          )}
         </div>
       )}
     </div>

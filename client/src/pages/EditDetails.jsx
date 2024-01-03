@@ -6,6 +6,9 @@ import { setActivePage } from "../features/pageSlice";
 import axios from "axios";
 import moment from "moment";
 import Feedback from "react-bootstrap/esm/Feedback";
+import AlertDismissible from "../components/Error";
+import { setPopup } from "../features/ErrorPopupSlice";
+
 const EditDetails = () => {
   const dispatch = useDispatch();
   // const [user, setUser] = useState({});
@@ -153,25 +156,57 @@ const EditDetails = () => {
     },
   ];
   const handleOnSubmit = async (values, errors) => {
-      try {
-        const res = await axios.post(
-          "http://localhost:3001/api/user/editDetails",
-          values,
-          {
-            headers: {
-              Authorization: localStorage.getItem("Token"),
-            },
-          }
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/user/editDetails",
+        values,
+        {
+          headers: {
+            Authorization: localStorage.getItem("Token"),
+          },
+        }
+      );
+      dispatch(
+        setPopup({
+          data: "User updated successfully",
+          type: "success",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: "User updated successfully",
+            type: "success",
+            show: false,
+          })
         );
-        setMessage("User updated successfully");
-        console.log(res);
-      } catch (err) {
-        setMessage(err.response.data.error);
-        if (!message.includes("Error"))
-          setMessage("Error: " + err.response.data.error);
-        console.log(message);
-      }
-  
+      }, 2000);
+      console.log(res);
+    } catch (err) {
+      dispatch(
+        setPopup({ data: err.response.data.error, type: "danger", show: true })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
+            type: "danger",
+            show: false,
+          })
+        );
+      }, 2000);
+    }
+    // <<<<<<< HEAD
+
+    // =======
+    //     } else {
+    //       dispatch(setPopup({data:"Error Updating User",type:"danger",show:true}));
+    //       setTimeout(() => {
+    //         dispatch(setPopup({data:"Error Updating User",type:"danger",show:false}));
+    //       }, 2000);
+    //     }
+    // >>>>>>> Errors
   };
   return (
     <div>
@@ -189,8 +224,13 @@ const EditDetails = () => {
             edit="true"
           />
           {message && (
-            <div style={{ color: message.includes("Error") ? "red" : "green" }}>
-              {message}
+            <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
+            >
+              {message.includes("Error") ? (
+                <AlertDismissible message={message} variant="danger" />
+              ) : (
+                <AlertDismissible message={message} variant="success" />
+              )}
             </div>
           )}
         </>

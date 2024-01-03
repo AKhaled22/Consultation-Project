@@ -7,6 +7,8 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
 import moment from "moment";
+import AlertDismissible from "../components/Error";
+import { setPopup } from "../features/ErrorPopupSlice";
 
 const EditMatch = () => {
   const dispatch = useDispatch();
@@ -201,20 +203,54 @@ const EditMatch = () => {
 
   const handleEditMatch = async (values, errors) => {
     console.log("In edit match");
-      try {
-        console.log("In edit match");
-        const res = await axios.post(
-          `http://localhost:3001/api/match/editMatch/${matchID}`,
-          values
+    try {
+      console.log("In edit match");
+      const res = await axios.post(
+        `http://localhost:3001/api/match/editMatch/${matchID}`,
+        values
+      );
+      dispatch(
+        setPopup({
+          data: "Match updated successfully",
+          type: "success",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: "Match updated successfully",
+            type: "success",
+            show: false,
+          })
         );
-        console.log("res");
-        setMessage("Match updated successfully");
-        console.log(res);
-      } catch (err) {
-        setMessage(err.response.data.error);
-        console.log(err);
-      }
-  
+      }, 2000);
+      console.log(res);
+    } catch (err) {
+      dispatch(
+        setPopup({ data: err.response.data.error, type: "danger", show: true })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
+            type: "danger",
+            show: false,
+          })
+        );
+      }, 2000);
+      console.log(err);
+    }
+    // <<<<<<< HEAD
+
+    // =======
+    //     } else {
+    //       dispatch(setPopup({data:"Error updating match",type:"danger",show:true}));
+    //       setTimeout(() => {
+    //         dispatch(setPopup({data:"Error updating match",type:"danger",show:false}));
+    //       }, 2000);
+    //     }
+    // >>>>>>> Errors
   };
 
   return (
@@ -233,8 +269,13 @@ const EditMatch = () => {
             edit="true"
           />
           {message && (
-            <div style={{ color: message.includes("Error") ? "red" : "green" }}>
-              {message}
+            <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
+            >
+              {message.includes("Error") ? (
+                <AlertDismissible message={message} variant="danger" />
+              ) : (
+                <AlertDismissible message={message} variant="success" />
+              )}
             </div>
           )}
         </>

@@ -10,7 +10,7 @@ exports.addstadium = async (req, res) => {
     seatscolcapcity: StadSeats,
   });
   const findstad = await Stadium.findOne({
-    name: StadName,
+    name: { $regex: new RegExp(StadName, 'i') },
   });
   if (!findstad) {
     try {
