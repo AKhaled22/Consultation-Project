@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 import AlertDismissible from "./components/Error";
-import { useSelector } from "react-redux";
+
 import { store } from "./store";
 import { Provider } from "react-redux";
 import MatchDetails from "./components/MatchDetails";

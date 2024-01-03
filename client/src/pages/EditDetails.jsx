@@ -13,7 +13,7 @@ const EditDetails = () => {
   const dispatch = useDispatch();
   // const [user, setUser] = useState({});
   const [values, setValues] = useState({});
-  const [message, setMessage] = useState(null);
+  //const [message, setMessage] = useState(null);
   let user = {};
   // let values = {};
   useEffect(() => {
@@ -223,16 +223,6 @@ const EditDetails = () => {
             handleSub={handleOnSubmit}
             edit="true"
           />
-          {message && (
-            <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
-            >
-              {message.includes("Error") ? (
-                <AlertDismissible message={message} variant="danger" />
-              ) : (
-                <AlertDismissible message={message} variant="success" />
-              )}
-            </div>
-          )}
         </>
       ) : (
         <h2 className="match-details-title">Edit Details</h2>

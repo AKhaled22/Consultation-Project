@@ -12,7 +12,7 @@ import { setPopup } from "../features/ErrorPopupSlice";
 const CreateMatch = () => {
   const dispatch = useDispatch();
 
-  const [message, setMessage] = useState(null);
+  //const [message, setMessage] = useState(null);
 
   const [referee, setreferee] = useState([]);
 
@@ -147,7 +147,7 @@ const CreateMatch = () => {
         "http://localhost:3001/api/match/creatematch",
         values
       );
-      setMessage("Match added successfully");
+      //setMessage("Match added successfully");
       dispatch(
         setPopup({
           data: "Match added successfully",
@@ -201,16 +201,6 @@ const CreateMatch = () => {
         buttText="Create Match"
         handleSub={handleAddMatch}
       />
-      {message && (
-        <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
-        >
-          {message.includes("Error") ? (
-            <AlertDismissible message={message} variant="danger" />
-          ) : (
-            <AlertDismissible message={message} variant="success" />
-          )}
-        </div>
-      )}
     </div>
   );
 };

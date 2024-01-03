@@ -10,7 +10,7 @@ import axios from "axios";
 import AlertDismissible from "../components/Error";
 
 const AddStadium = () => {
-  const [message, setMessage] = useState(null);
+  //const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -39,64 +39,64 @@ const AddStadium = () => {
   ];
 
   const handleAddStadium = async (values, errors) => {
-    if (Object.keys(errors).length === 0) {
-      try {
-        const res = await axios.post(
-          "http://localhost:3001/api/stadium/addstadium",
-          values
-        );
-        dispatch(
-          setPopup({
-            data: "Stadium added successfully",
-            type: "success",
-            show: true,
-          })
-        );
-        setTimeout(() => {
-          dispatch(
-            setPopup({
-              data: "Stadium added successfully",
-              type: "success",
-              show: false,
-            })
-          );
-        }, 2000);
-
-        console.log(res);
-      } catch (err) {
-        dispatch(
-          setPopup({
-            data: err.response.data.error,
-            type: "danger",
-            show: true,
-          })
-        );
-        setTimeout(() => {
-          dispatch(
-            setPopup({
-              data: err.response.data.error,
-              type: "danger",
-              show: false,
-            })
-          );
-        }, 2000);
-
-        console.log(err);
-      }
-    } else {
+    // if (Object.keys(errors).length === 0) {
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/stadium/addstadium",
+        values
+      );
       dispatch(
-        setPopup({ data: "Error adding Stadium", type: "danger", show: true })
+        setPopup({
+          data: "Stadium added successfully",
+          type: "success",
+          show: true,
+        })
       );
       setTimeout(() => {
         dispatch(
           setPopup({
-            data: "Error adding Stadium",
+            data: "Stadium added successfully",
+            type: "success",
+            show: false,
+          })
+        );
+      }, 2000);
+
+      console.log(res);
+    } catch (err) {
+      dispatch(
+        setPopup({
+          data: err.response.data.error,
+          type: "danger",
+          show: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(
+          setPopup({
+            data: err.response.data.error,
             type: "danger",
             show: false,
           })
         );
       }, 2000);
+
+      console.log(err);
     }
+    // } else {
+    //   dispatch(
+    //     setPopup({ data: "Error adding Stadium", type: "danger", show: true })
+    //   );
+    //   setTimeout(() => {
+    //     dispatch(
+    //       setPopup({
+    //         data: "Error adding Stadium",
+    //         type: "danger",
+    //         show: false,
+    //       })
+    //     );
+    //   }, 2000);
+    // }
   };
 
   return (

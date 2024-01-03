@@ -16,7 +16,7 @@ const EditMatch = () => {
   // console.log(matchID);
   // console.log("AANA FE MATCH EDIT");
 
-  const [message, setMessage] = useState(null);
+  //const [message, setMessage] = useState(null);
 
   const [referee, setreferee] = useState([]);
 
@@ -268,16 +268,7 @@ const EditMatch = () => {
             handleSub={handleEditMatch}
             edit="true"
           />
-          {message && (
-            <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
-            >
-              {message.includes("Error") ? (
-                <AlertDismissible message={message} variant="danger" />
-              ) : (
-                <AlertDismissible message={message} variant="success" />
-              )}
-            </div>
-          )}
+          
         </>
       ) : (
         <h2 className="match-details-title">Edit Match Details</h2>
