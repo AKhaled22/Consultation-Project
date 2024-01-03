@@ -24,6 +24,8 @@ const NavBar = () => {
   const toggleSidebar = () => setSideBar(!sideBar);
   const toggleNavbar = () => setCollapse(!collapse);
 
+  const firstName = useSelector((state) => state.firstname.value);
+
   return (
     <>
       <Navbar expand="lg" className=" navbar">
@@ -32,9 +34,7 @@ const NavBar = () => {
           <Nav>
             <div className="navleftside">
               <FaIcons.FaBars
-                className={`crsp  ${
-                  userType == "G" && "d-none"
-                }`}
+                className={`crsp  ${userType == "G" && "d-none"}`}
                 onClick={() => {
                   setSideBar(!sideBar);
                 }}
@@ -51,15 +51,9 @@ const NavBar = () => {
           {/* </NavBar.Toggle> */}
           <Navbar.Collapse
             id="basic-navbar-nav"
-            className={`${
-              userType != "G" && "d-none"
-            } navrightside`}
+            className={`${userType != "G" && "d-none"} navrightside`}
           >
-            <Nav
-              className={`${
-                userType != "G" && "d-none"
-              } d-flex gap-3`}
-            >
+            <Nav className={`${userType != "G" && "d-none"} d-flex gap-3`}>
               <Link
                 to="/home"
                 className={` navrightsideitem ${
@@ -95,12 +89,8 @@ const NavBar = () => {
               </Link>
             </Nav>
           </Navbar.Collapse>
-          <nav
-            className={`${
-              userType == "G" && "d-none"
-            } avatar`}
-          >
-            <span>Hello Ahmed</span>
+          <nav className={`${userType == "G" && "d-none"} avatar`}>
+            <span>Hello {firstName}</span>
             <img src={avatar} className={`avatar-image `} />
           </nav>
 

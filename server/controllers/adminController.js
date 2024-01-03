@@ -1,72 +1,69 @@
 const User = require("../models/userModel");
 
-
-
-// Getting all pending requests 
+// Getting all pending requests
 exports.getUnapprovedUsers = async (req, res) => {
-    try {
-     // console.log('Hi');
-      //const { username, firstname, lastname, email, role } = req.body;
-      const unapprovedUsers = await User.find({approved:false});
-       // console.log(unapprovedUsers);
-      res.status(200).json({ unapprovedUsers });
-    } 
-    catch (error)
-    {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
-  
-  //Inserting users into the database
-  exports.insertUsers = async (req, res) => {
-    try {
-      const { username } = req.body;
-  
-      const insertUsers = await User.findOneAndUpdate
-      (
-        { username: username },
-        { $set: { approved: true } },
-        { new: true } 
-      );
-      console.log('Done ya regoola:', insertUsers.username);
-      res.status(200).json({ message: 'User approved successfully', user: insertUsers });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
-  
+  try {
+    // console.log('Hi');
+    //const { username, firstname, lastname, email, role } = req.body;
+    const unapprovedUsers = await User.find({ approved: false });
+    // console.log(unapprovedUsers);
+    res.status(200).json({ unapprovedUsers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
-  //Deleting users from the database
-  exports.deleteUser = async (req, res) => {
-    try {
-      console.log('Hi');
+//Inserting users into the database
+exports.insertUsers = async (req, res) => {
+  try {
+    const { username } = req.body;
 
-      const { username } = req.body;
-      const deleteUser = await User.findOneAndDelete({ username: username });
-      console.log('Salam ya sahby:', deleteUser.username);
-      res.status(200).json({ message: 'User deleted successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  };
+    const insertUsers = await User.findOneAndUpdate(
+      { username: username },
+      { $set: { approved: true } },
+      { new: true }
+    );
+    console.log("Done ya regoola:", insertUsers.username);
+    res
+      .status(200)
+      .json({ message: "User approved successfully", user: insertUsers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
-// Getting all users 
+//Deleting users from the database
+exports.deleteUser = async (req, res) => {
+  try {
+    console.log("Hi");
+
+    const { username } = req.body;
+    const deleteUser = await User.findOneAndDelete({ username: username });
+    console.log("Salam ya sahby:", deleteUser.username);
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// Getting all users
 exports.getAllUsers = async (req, res) => {
   try {
-    console.log('Hi');
-    //const { username, firstname, lastname, email, role } = req.body;
-    const getAllUsers = await User.find();
-    //console.log(getAllUsers);
-    console.log(getAllUsers);
-    res.status(200).json({ getAllUsers });
-  } 
-  catch (error)
-  {
+    console.log("Hi");
+    // const { username, firstname, lastname, email, role } = req.body;
+
+    const getAllUsers = await User.find({
+      approved: true,
+      role: { $ne: "A" },
+    });
+
+    res.status(200).json(getAllUsers);
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

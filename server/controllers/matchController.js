@@ -28,8 +28,14 @@ exports.viewMatches = async (req, res) => {
       linesman2: (await Ref.findOne({ _id: match.linesmen[1] })).name,
     }))
   );
+  const sortedMatches = mappedMatches.sort((a, b) => {
+    const dateA = new Date(`${a.date} ${a.time}`);
+    const dateB = new Date(`${b.date} ${b.time}`);
+
+    return dateA - dateB;
+  });
   res.status(200).json({
-    matches: mappedMatches,
+    matches: sortedMatches,
   });
 };
 
@@ -174,6 +180,7 @@ exports.editMatch = async (req, res) => {
       });
     } else {
       console.log("hello");
+      const prev_avenue = match.stadium;
       const {
         HomeTeam,
         AwayTeam,
@@ -249,6 +256,11 @@ exports.editMatch = async (req, res) => {
         date: date,
         time: time,
       });
+      if (prev_avenue != avenue) {
+        match.reservedseats = [];
+        await Ticket.deleteMany({ match: match._id });
+      }
+
       if (
         !findmatch &&
         !findmatch1 &&
@@ -346,7 +358,7 @@ exports.getMatch = async (req, res) => {
   //}
 };
 
-exports.getMatch = async (req, res) => {
+exports.getMatchMid = async (req, res) => {
   const matchId = req.params.matchId;
   console.log("matchidddddddddddddddddddddddddd", matchId);
   try {

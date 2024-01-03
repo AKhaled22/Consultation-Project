@@ -46,8 +46,18 @@ const YourTickets = () => {
       {tickets &&
         tickets.map((ticket) => {
           const date = new Date(ticket.match.date);
-          const targetDate = new Date(date.getTime() + 3 * 24 * 60 * 60 * 1000); //
-          console.log(targetDate > Date.now());
+          const targetDate = new Date(date.getTime() - 3 * 24 * 60 * 60 * 1000); //
+          const currentDate = new Date();
+          console.log(currentDate > targetDate);
+          {
+            /* console.log(targetDate > Date.now()); */
+          }
+          console.log("targetDate");
+          console.log(targetDate);
+          console.log("currentDate");
+          console.log(currentDate);
+          console.log("TICKET");
+          console.log(ticket.match.date);
 
           return (
             <Ticket
@@ -64,7 +74,7 @@ const YourTickets = () => {
               seatt={ticket.seat}
               ticketId={ticket.ticketId}
               ticketPrice={ticket.match.ticketPrice}
-              disableButt={targetDate > Date.now()}
+              disableButt={currentDate > targetDate}
             />
           );
         })}

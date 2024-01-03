@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { setFirstName } from "../features/nameSlice";
 const Login = () => {
   // type, label, placeholder, name, optionsArr, radioOne, radioTwo
   const dispatch = useDispatch();
@@ -64,7 +64,13 @@ const Login = () => {
       // console.log(res);
       if (res.status === 200) {
         localStorage.setItem("Token", res.data.Token);
-        localStorage.setItem("Role", res.data.Role);
+        // localStorage.setItem("Role", res.data.Role);
+        dispatch(setUserType(res.data.Role));
+        dispatch(setFirstName(res.data.firstName));
+        // setFirstName(res.data.firstName);
+        console.log("HANDLEEEEEEEEEEE LOGIN");
+        console.log(res.data.firstName);
+
         navigate("/home");
       }
     } catch (err) {

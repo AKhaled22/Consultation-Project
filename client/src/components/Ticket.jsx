@@ -55,9 +55,10 @@ const Ticket = ({
         }
       );
       console.log(res);
-      // if(res.status==200){
-
-      // }
+      if (res.status == 200) {
+        console.log("Ticket Cancelled Successfully");
+        window.location.reload();
+      }
     } catch (err) {
       console.log(err);
     }

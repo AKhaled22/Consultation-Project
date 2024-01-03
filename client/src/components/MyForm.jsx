@@ -51,7 +51,7 @@ const MyForm = ({
           console.log(values);
           setSubmitting(false);
         }}
-        initialValues={edit === "true" ? initVal : {}}
+        initialValues={edit == "true" ? initVal : {}}
         // initialValues={{}}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (

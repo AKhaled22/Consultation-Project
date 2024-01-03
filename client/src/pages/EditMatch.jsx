@@ -201,7 +201,6 @@ const EditMatch = () => {
 
   const handleEditMatch = async (values, errors) => {
     console.log("In edit match");
-    if (Object.keys(errors).length === 0) {
       try {
         console.log("In edit match");
         const res = await axios.post(
@@ -215,9 +214,7 @@ const EditMatch = () => {
         setMessage(err.response.data.error);
         console.log(err);
       }
-    } else {
-      setMessage("Error adding Match");
-    }
+  
   };
 
   return (

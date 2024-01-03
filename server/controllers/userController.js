@@ -7,7 +7,10 @@ const key = "jndskjnwkjniefhwbnfvhbef";
 exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  const userData = await User.findOne({ email: email, password: password });
+  const userData = await User.findOne({
+    email: email,
+    password: password,
+  });
   let token = null;
   if (userData != null) {
     //valid user
@@ -19,12 +22,17 @@ exports.loginUser = async (req, res) => {
       key,
       { expiresIn: "1d" }
     );
-
-    res.status(200).json({
-      isValid: true,
-      Token: token,
-      Role: userData.role,
-    });
+    if (userData.approved === false) {
+      res.status(401).json({
+        error: "User not approved yet!",
+      });
+    } else {
+      res.status(200).json({
+        Token: token,
+        Role: userData.role,
+        firstName: userData.firstname,
+      });
+    }
   } else {
     res.status(404).json({
       error: "User not found!",
@@ -76,6 +84,7 @@ exports.registerUser = async (req, res) => {
       message: "User Saved Successfully!",
       Token: token,
       Role: userData.role,
+      firstName: userData.firstname,
     });
   } catch (err) {
     console.log(err);
@@ -215,7 +224,7 @@ exports.getRole = async (req, res) => {
       console.log(decoded);
       const user = await User.findById(decoded.data);
 
-      if (!user) {
+      if (!user || user.approved === false) {
         res.status(401).json({
           Role: "G",
         });

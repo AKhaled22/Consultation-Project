@@ -7,13 +7,15 @@ const {
   viewTeam,
   editMatch,
   getMatch,
+  getMatchMid,
+
   reserveTickets,
 } = require("../controllers/matchController");
 const router = express.Router();
 const { isAuthenticatedUser } = require("../middleware/auth");
 
 router.route("/viewMatches").get(viewMatches);
-router.route("/getmatch/:matchId").get(getMatch);
+router.route("/getmatchmid/:matchId").get(getMatchMid); //de bt3ml auth
 router.route("/reservetickets/:matchId").post(reserveTickets);
 
 router.route("/viewReferee").get(viewReferee);

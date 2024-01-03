@@ -139,8 +139,7 @@ const CreateMatch = () => {
   useEffect(() => {
     dispatch(setActivePage("creatematch"));
   }, []);
-  const handleAddMatch = async (values, errors) => {
-    if (Object.keys(errors).length === 0) {
+  const handleAddMatch = async (values) => {
       try {
         const res = await axios.post(
           "http://localhost:3001/api/match/creatematch",
@@ -152,10 +151,8 @@ const CreateMatch = () => {
         setMessage(err.response.data.error);
         console.log(err);
       }
-    } else {
-      setMessage("Error adding Match");
-    }
-  };
+    } 
+
 
   return (
     <div>

@@ -40,7 +40,6 @@ const AddStadium = () => {
     // console.log("ADD STAD");
     // console.log(values);
     // console.log(errors);
-    if (Object.keys(errors).length === 0) {
       try {
         const res = await axios.post(
           "http://localhost:3001/api/stadium/addstadium",
@@ -52,9 +51,7 @@ const AddStadium = () => {
         setMessage(err.response.data.error);
         console.log(err);
       }
-    } else {
-      setMessage("Error adding Stadium");
-    }
+  
   };
 
   return (

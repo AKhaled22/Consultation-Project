@@ -193,7 +193,7 @@ const MatchDetails = ({
       <br />
       <Button
         className={
-          (userType === "F" || userType === "G" || userType === "A") && "d-none"
+          (userType === "F" || userType === "G" || userType === "A" || hideButton) && "d-none"
         }
         buttText="Edit Match"
         onClick={() => navigate(`/editmatch/${matchID}`)} //AAO

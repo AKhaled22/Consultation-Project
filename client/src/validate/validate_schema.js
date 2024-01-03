@@ -33,7 +33,10 @@ export const validateSchema = {
     .max(30, "City cannot exceed 30 characters"),
   //address: yup.string().required("Address is required"),
   // password: yup.string().required("Password is required"),
-  dob: yup.date().required("Date of Birth is required"),
+  dob: yup
+    .date()
+    .required("Date of Birth is required")
+    .max(new Date(), "Date of Birth cannot be in the future"),
   gender: yup.string().required("Please select an option"),
   type: yup.string().required("Please select an option"),
   confirmPassword: yup
@@ -66,7 +69,10 @@ export const validateSchema = {
       }
     ),
   MatchVenue: yup.string().required("Please select an option"),
-  date: yup.date().required("Match date is required"),
+  date: yup
+    .date()
+    .required("Match date is required")
+    .min(new Date(), "Match Date cannot be in the past"),
   time: yup.string().required("Match time is required"),
   MainReferee: yup.string().required("Please select an option"),
   Linesman1: yup
@@ -106,7 +112,10 @@ export const validateSchema = {
     .required("Ticket price is required"),
   cardHolderName: yup.string().required("Name is required"),
   cardNumber: yup.number().required("Card number is required"),
-  expiryDate: yup.date().required("Expiry date is required"),
+  expiryDate: yup
+    .date()
+    .required("Expiry date is required")
+    .min(new Date(), "Card Expired"),
   code: yup
     .string()
     .required("CCV is required")

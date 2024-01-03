@@ -144,10 +144,11 @@ function MyVerticallyCenteredModal(props) {
 }
 
 const Seat = ({ name, className, style, isBooked, colI }) => {
+  const userType = useSelector((state) => state.user.value);
   return (
     <>
       <input
-        disabled={isBooked}
+        disabled={isBooked || userType == "M"}
         type="checkbox"
         name="seatsgroup"
         value={name}
@@ -179,6 +180,7 @@ const TicketReservation = () => {
   const [reservedSeats, setReservedSeats] = useState([]);
   const seatsRef = useRef();
   let selectedSeatsArr = [];
+  const userType = useSelector((state) => state.user.value);
 
   useEffect(() => {
     dispatch(setActivePage("ticketreservation"));
@@ -186,7 +188,7 @@ const TicketReservation = () => {
     const getMatch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3001/api/match/getmatch/${matchId}`
+          `http://localhost:3001/api/match/getmatchmid/${matchId}`
         );
         console.log(res);
         if (res.status === 200) {
@@ -208,6 +210,8 @@ const TicketReservation = () => {
     // "width": `calc((100% - ${seatsCols}*5)px/${seatsCols})`,
     "grid-template-columns": `repeat(${match.cols} , minmax(auto,50px))`,
   };
+  //match.rows
+  //match.cols
   const seatsArr = Array.from({ length: match.rows }, (v, index) =>
     Array.from({ length: match.cols }, (v2, index2) => {
       console.log(reservedSeats);
@@ -257,9 +261,6 @@ const TicketReservation = () => {
 
   const handlePay = async () => {
     // console.log(errors)
-
-    // if (Object.keys(errors).length === 0) {
-    // console.log(selectedSeats);
 
     try {
       const res = await axios.post(
@@ -372,7 +373,7 @@ const TicketReservation = () => {
         </div>
 
         <button
-          class="buyTickets-button type1"
+          class={`buyTickets-button type1 ${userType == "M" && "d-none"}`}
           onClick={() => handleOnSubmit()}
         >
           <span class="btn-txt">Buy Tickets</span>

@@ -153,7 +153,6 @@ const EditDetails = () => {
     },
   ];
   const handleOnSubmit = async (values, errors) => {
-    if (Object.keys(errors).length === 0) {
       try {
         const res = await axios.post(
           "http://localhost:3001/api/user/editDetails",
@@ -172,9 +171,7 @@ const EditDetails = () => {
           setMessage("Error: " + err.response.data.error);
         console.log(message);
       }
-    } else {
-      setMessage("Error Updating User");
-    }
+  
   };
   return (
     <div>
