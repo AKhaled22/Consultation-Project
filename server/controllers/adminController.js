@@ -55,10 +55,7 @@ exports.getAllUsers = async (req, res) => {
     console.log("Hi");
     // const { username, firstname, lastname, email, role } = req.body;
 
-    const getAllUsers = await User.find({
-      approved: true,
-      role: { $ne: "A" },
-    });
+    const getAllUsers = await User.find({ approved: true, role: { $ne: "A" } });
 
     res.status(200).json(getAllUsers);
   } catch (error) {

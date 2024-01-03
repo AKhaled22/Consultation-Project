@@ -17,8 +17,8 @@ const AdminList = ({ usersArray, onDelete, onInsert }) => {
           <tr>
             <th>Username</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th className="col_1">Email</th>
+            <th className="col_1">Role</th>
             <th>Insert</th>
             <th>Delete</th>
           </tr>
@@ -38,16 +38,15 @@ const AdminList = ({ usersArray, onDelete, onInsert }) => {
               <td colSpan="6">No users found</td>
             </tr>
           )}
-          
         </tbody>
       </table>
       <div className="pagen">
-            <Paginationn
-              Arr={usersArray}
-              activePage={activePage}
-              setActivePage={setActivePage}
-              pageSize={pageSize}
-            />
+        <Paginationn
+          Arr={usersArray}
+          activePage={activePage}
+          setActivePage={setActivePage}
+          pageSize={pageSize}
+        />
       </div>
     </div>
   );
