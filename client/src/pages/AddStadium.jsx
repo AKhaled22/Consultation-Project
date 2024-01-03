@@ -6,6 +6,7 @@ import SidebarData from "../assets/Data/ManagerSideBarData";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
 import axios from "axios";
+import AlertDismissible from "../components/Error";
 
 const AddStadium = () => {
   const [message, setMessage] = useState(null);
@@ -69,8 +70,13 @@ const AddStadium = () => {
         handleSub={handleAddStadium}
       />
       {message && (
-        <div style={{ color: message.includes("Error") ? "red" : "green" }}>
-          {message}
+        <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
+        >
+          {message.includes("Error") ? (
+            <AlertDismissible message={message} variant="danger" />
+          ) : (
+            <AlertDismissible message={message} variant="success" />
+          )}
         </div>
       )}
     </div>

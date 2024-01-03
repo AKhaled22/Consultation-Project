@@ -6,6 +6,8 @@ import { setActivePage } from "../features/pageSlice";
 import axios from "axios";
 import moment from "moment";
 import Feedback from "react-bootstrap/esm/Feedback";
+import AlertDismissible from "../components/Error";
+
 const EditDetails = () => {
   const dispatch = useDispatch();
   // const [user, setUser] = useState({});
@@ -167,10 +169,8 @@ const EditDetails = () => {
         setMessage("User updated successfully");
         console.log(res);
       } catch (err) {
-        setMessage(err.response.data.error);
-        if (!message.includes("Error"))
-          setMessage("Error: " + err.response.data.error);
-        console.log(message);
+        const msg = err.response.data.error;
+        if (!msg.includes("Error")) setMessage("Error: " + msg);
       }
     } else {
       setMessage("Error Updating User");
@@ -192,8 +192,13 @@ const EditDetails = () => {
             edit="true"
           />
           {message && (
-            <div style={{ color: message.includes("Error") ? "red" : "green" }}>
-              {message}
+            <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
+            >
+              {message.includes("Error") ? (
+                <AlertDismissible message={message} variant="danger" />
+              ) : (
+                <AlertDismissible message={message} variant="success" />
+              )}
             </div>
           )}
         </>

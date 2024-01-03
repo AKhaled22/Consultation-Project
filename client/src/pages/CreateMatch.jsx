@@ -6,6 +6,7 @@ import SidebarData from "../assets/Data/ManagerSideBarData";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePage } from "../features/pageSlice";
+import AlertDismissible from "../components/Error";
 
 const CreateMatch = () => {
   const dispatch = useDispatch();
@@ -169,8 +170,13 @@ const CreateMatch = () => {
         handleSub={handleAddMatch}
       />
       {message && (
-        <div style={{ color: message.includes("Error") ? "red" : "green" }}>
-          {message}
+        <div /*style={{ color: message.includes("Error") ? "red" : "green" }}> */
+        >
+          {message.includes("Error") ? (
+            <AlertDismissible message={message} variant="danger" />
+          ) : (
+            <AlertDismissible message={message} variant="success" />
+          )}
         </div>
       )}
     </div>
