@@ -130,6 +130,7 @@ function App() {
         message={errorpopup.data}
         variant={errorpopup.type}
         trigger={errorpopup.show}
+        
       />
     </div>
     // </Provider>

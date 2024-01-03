@@ -11,7 +11,7 @@ function AlertDismissible({ message, variant,trigger }) {
   return (
     <>
       {show && (
-        <Alert variant={variant} onClose={() => setShow(false)} dismissible>
+        <Alert className="alertpopup" variant={variant} onClose={() => setShow(false)} dismissible>
           <Alert.Heading>{message}</Alert.Heading>
           <p></p>
         </Alert>
